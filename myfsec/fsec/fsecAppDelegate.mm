@@ -39,6 +39,13 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    Encryptor *encryptor;
+    encryptor = [[Encryptor alloc] init];
+    NSLog(@"hey trying to register service");
+    [NSApp setServicesProvider:encryptor];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setWindowToTypeOfFile)  name:NSControlTextDidChangeNotification object:filePath];
+    
+
     // Insert code here to initialize your application
 }
 
@@ -72,6 +79,7 @@
 
 -(void) setWindowToTypeOfFile
 {
+
    // filePath controlTextDidChange:
     NSString *fileName = [filePath stringValue];
     int fileType;

@@ -32,13 +32,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-<!--    <key>LSHandlerContentTag</key>
-//	<string>myfsec</string>
-//	<key>LSHandlerContentTagClass</key>
-//	<string>public.filename-extension</string>
-//	<key>LSHandlerRoleAll</key>
-//	<string>mycompany.myfsec</string> !-->
-    <key>CFBundleDocumentTypes</key>
+	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -46,20 +40,18 @@
 				<string>myfsec</string>
 				<string>MYFSEC</string>
 			</array>
-            <key>CFBundleTypeName</key>
+			<key>CFBundleTypeName</key>
 			<string>myFsec secured File</string>
-
-            <key>CFBundleTypeIconFile</key>
+			<key>CFBundleTypeIconFile</key>
 			<string>rar.icns</string>
-            <key>CFBundleTypeRole</key>
-			<string>Viewer</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
-			<false/>
+			<true/>
 			<key>NSPersistentStoreTypeKey</key>
 			<string>XML</string>
-
-            </dict>
-        </array>
+		</dict>
+	</array>
 	<key>NSServices</key>
 	<array>
 		<dict>

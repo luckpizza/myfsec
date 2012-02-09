@@ -442,7 +442,7 @@
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fsec/myfsec-Prefix.pch";
-				GCC_VERSION = "";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "fsec/myfsec-Info.plist";
 				LD_OPENMP_FLAGS = "-lssl -fopenmp";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -471,7 +471,7 @@
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fsec/myfsec-Prefix.pch";
-				GCC_VERSION = "";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "fsec/myfsec-Info.plist";
 				LD_OPENMP_FLAGS = "-lssl -fopenmp";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;

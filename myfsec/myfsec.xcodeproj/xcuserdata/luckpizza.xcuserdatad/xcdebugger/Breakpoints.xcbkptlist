@@ -183,11 +183,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "fsec/fsecAppDelegate.mm"
-         timestampString = "339388427.615814"
+         timestampString = "347718882.990018"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
          landmarkName = "-setWindowToTypeOfFile"
          landmarkType = "5">
       </FileBreakpoint>
@@ -197,11 +197,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "fsec/fsecAppDelegate.mm"
-         timestampString = "339388427.615814"
+         timestampString = "346803336.070763"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "70"
-         endingLineNumber = "70"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
          landmarkName = "-controlTextDidChange:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -211,11 +211,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "fsec/fsecAppDelegate.mm"
-         timestampString = "339388427.615814"
+         timestampString = "347718882.990018"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
          landmarkName = "-setWindowToTypeOfFile"
          landmarkType = "5">
       </FileBreakpoint>
