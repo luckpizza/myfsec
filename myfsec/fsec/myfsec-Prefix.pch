@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'fsec' target in the 'fsec' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif
