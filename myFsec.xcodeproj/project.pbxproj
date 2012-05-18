@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA929912156486B900DA404D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA929911156486B900DA404D /* Cocoa.framework */; };
+		EA92991C156486B900DA404D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA92991A156486B900DA404D /* InfoPlist.strings */; };
+		EA92991E156486B900DA404D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA92991D156486B900DA404D /* main.m */; };
+		EA929922156486B900DA404D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = EA929920156486B900DA404D /* Credits.rtf */; };
+		EA929925156486B900DA404D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA929924156486B900DA404D /* AppDelegate.m */; };
+		EA929928156486B900DA404D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA929926156486B900DA404D /* MainMenu.xib */; };
+		EA929930156486B900DA404D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA92992F156486B900DA404D /* SenTestingKit.framework */; };
+		EA929931156486B900DA404D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA929911156486B900DA404D /* Cocoa.framework */; };
+		EA929939156486B900DA404D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA929937156486B900DA404D /* InfoPlist.strings */; };
+		EA92993C156486B900DA404D /* myFsecTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA92993B156486B900DA404D /* myFsecTests.m */; };
+		EA92995A156487FB00DA404D /* QuickEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA929948156487FB00DA404D /* QuickEncode.cpp */; };
+		EA92995B156487FB00DA404D /* secureHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA92994A156487FB00DA404D /* secureHeader.cpp */; };
+		EA92995C156487FB00DA404D /* Encryptor.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA92994D156487FB00DA404D /* Encryptor.mm */; };
+		EA92995D156487FB00DA404D /* Lock.icns in Resources */ = {isa = PBXBuildFile; fileRef = EA92994F156487FB00DA404D /* Lock.icns */; };
+		EA92995E156487FB00DA404D /* rar.icns in Resources */ = {isa = PBXBuildFile; fileRef = EA929950156487FB00DA404D /* rar.icns */; };
+		EA92995F156487FB00DA404D /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA929952156487FB00DA404D /* FileUtils.cpp */; };
+		EA929960156487FB00DA404D /* encryptUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA929956156487FB00DA404D /* encryptUtils.cpp */; };
+		EA929961156487FB00DA404D /* memoryUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA929958156487FB00DA404D /* memoryUtils.cpp */; };
+		EA9299651564888B00DA404D /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9299641564888B00DA404D /* libcrypto.dylib */; };
+		EA92997E15649A5B00DA404D /* ServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EA92997D15649A5B00DA404D /* ServiceHandler.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA929932156486B900DA404D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA929904156486B900DA404D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA92990C156486B900DA404D;
+			remoteInfo = myFsec;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EA92990D156486B900DA404D /* myFsec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myFsec.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA929911156486B900DA404D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		EA929914156486B900DA404D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		EA929915156486B900DA404D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EA929916156486B900DA404D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EA929919156486B900DA404D /* myFsec-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myFsec-Info.plist"; sourceTree = "<group>"; };
+		EA92991B156486B900DA404D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA92991D156486B900DA404D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EA92991F156486B900DA404D /* myFsec-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myFsec-Prefix.pch"; sourceTree = "<group>"; };
+		EA929921156486B900DA404D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		EA929923156486B900DA404D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EA929924156486B900DA404D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EA929927156486B900DA404D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		EA92992E156486B900DA404D /* myFsecTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myFsecTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA92992F156486B900DA404D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		EA929936156486B900DA404D /* myFsecTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myFsecTests-Info.plist"; sourceTree = "<group>"; };
+		EA929938156486B900DA404D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA92993A156486B900DA404D /* myFsecTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myFsecTests.h; sourceTree = "<group>"; };
+		EA92993B156486B900DA404D /* myFsecTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myFsecTests.m; sourceTree = "<group>"; };
+		EA929948156487FB00DA404D /* QuickEncode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuickEncode.cpp; sourceTree = "<group>"; };
+		EA929949156487FB00DA404D /* QuickEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickEncode.h; sourceTree = "<group>"; };
+		EA92994A156487FB00DA404D /* secureHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = secureHeader.cpp; sourceTree = "<group>"; };
+		EA92994B156487FB00DA404D /* secureHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secureHeader.h; sourceTree = "<group>"; };
+		EA92994C156487FB00DA404D /* Encryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryptor.h; sourceTree = "<group>"; };
+		EA92994D156487FB00DA404D /* Encryptor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Encryptor.mm; sourceTree = "<group>"; };
+		EA92994F156487FB00DA404D /* Lock.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Lock.icns; sourceTree = "<group>"; };
+		EA929950156487FB00DA404D /* rar.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = rar.icns; sourceTree = "<group>"; };
+		EA929952156487FB00DA404D /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
+		EA929953156487FB00DA404D /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
+		EA929954156487FB00DA404D /* StateCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateCodes.h; sourceTree = "<group>"; };
+		EA929955156487FB00DA404D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		EA929956156487FB00DA404D /* encryptUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = encryptUtils.cpp; sourceTree = "<group>"; };
+		EA929957156487FB00DA404D /* encryptUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encryptUtils.h; sourceTree = "<group>"; };
+		EA929958156487FB00DA404D /* memoryUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = memoryUtils.cpp; sourceTree = "<group>"; };
+		EA929959156487FB00DA404D /* memoryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memoryUtils.h; sourceTree = "<group>"; };
+		EA9299631564886200DA404D /* debugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debugLog.h; sourceTree = "<group>"; };
+		EA9299641564888B00DA404D /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		EA92997C15649A5B00DA404D /* ServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceHandler.h; sourceTree = "<group>"; };
+		EA92997D15649A5B00DA404D /* ServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceHandler.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA92990A156486B900DA404D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9299651564888B00DA404D /* libcrypto.dylib in Frameworks */,
+				EA929912156486B900DA404D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA92992A156486B900DA404D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA929930156486B900DA404D /* SenTestingKit.framework in Frameworks */,
+				EA929931156486B900DA404D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA929902156486B900DA404D = {
+			isa = PBXGroup;
+			children = (
+				EA9299641564888B00DA404D /* libcrypto.dylib */,
+				EA929917156486B900DA404D /* myFsec */,
+				EA929934156486B900DA404D /* myFsecTests */,
+				EA929910156486B900DA404D /* Frameworks */,
+				EA92990E156486B900DA404D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA92990E156486B900DA404D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA92990D156486B900DA404D /* myFsec.app */,
+				EA92992E156486B900DA404D /* myFsecTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA929910156486B900DA404D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA929911156486B900DA404D /* Cocoa.framework */,
+				EA92992F156486B900DA404D /* SenTestingKit.framework */,
+				EA929913156486B900DA404D /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA929913156486B900DA404D /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA929914156486B900DA404D /* AppKit.framework */,
+				EA929915156486B900DA404D /* CoreData.framework */,
+				EA929916156486B900DA404D /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		EA929917156486B900DA404D /* myFsec */ = {
+			isa = PBXGroup;
+			children = (
+				EA9299621564883700DA404D /* View */,
+				EA929947156487FB00DA404D /* Encryption */,
+				EA92994C156487FB00DA404D /* Encryptor.h */,
+				EA92994D156487FB00DA404D /* Encryptor.mm */,
+				EA929951156487FB00DA404D /* Utils */,
+				EA929923156486B900DA404D /* AppDelegate.h */,
+				EA929924156486B900DA404D /* AppDelegate.m */,
+				EA929918156486B900DA404D /* Supporting Files */,
+				EA92997C15649A5B00DA404D /* ServiceHandler.h */,
+				EA92997D15649A5B00DA404D /* ServiceHandler.m */,
+			);
+			path = myFsec;
+			sourceTree = "<group>";
+		};
+		EA929918156486B900DA404D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA92994E156487FB00DA404D /* Resources */,
+				EA929919156486B900DA404D /* myFsec-Info.plist */,
+				EA92991A156486B900DA404D /* InfoPlist.strings */,
+				EA92991D156486B900DA404D /* main.m */,
+				EA92991F156486B900DA404D /* myFsec-Prefix.pch */,
+				EA929920156486B900DA404D /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA929934156486B900DA404D /* myFsecTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA92993A156486B900DA404D /* myFsecTests.h */,
+				EA92993B156486B900DA404D /* myFsecTests.m */,
+				EA929935156486B900DA404D /* Supporting Files */,
+			);
+			path = myFsecTests;
+			sourceTree = "<group>";
+		};
+		EA929935156486B900DA404D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA929936156486B900DA404D /* myFsecTests-Info.plist */,
+				EA929937156486B900DA404D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA929947156487FB00DA404D /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				EA929948156487FB00DA404D /* QuickEncode.cpp */,
+				EA929949156487FB00DA404D /* QuickEncode.h */,
+				EA92994A156487FB00DA404D /* secureHeader.cpp */,
+				EA92994B156487FB00DA404D /* secureHeader.h */,
+			);
+			path = Encryption;
+			sourceTree = "<group>";
+		};
+		EA92994E156487FB00DA404D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA92994F156487FB00DA404D /* Lock.icns */,
+				EA929950156487FB00DA404D /* rar.icns */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EA929951156487FB00DA404D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EA9299631564886200DA404D /* debugLog.h */,
+				EA929952156487FB00DA404D /* FileUtils.cpp */,
+				EA929953156487FB00DA404D /* FileUtils.h */,
+				EA929954156487FB00DA404D /* StateCodes.h */,
+				EA929955156487FB00DA404D /* Utils.h */,
+				EA929956156487FB00DA404D /* encryptUtils.cpp */,
+				EA929957156487FB00DA404D /* encryptUtils.h */,
+				EA929958156487FB00DA404D /* memoryUtils.cpp */,
+				EA929959156487FB00DA404D /* memoryUtils.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		EA9299621564883700DA404D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA929926156486B900DA404D /* MainMenu.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA92990C156486B900DA404D /* myFsec */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA92993F156486B900DA404D /* Build configuration list for PBXNativeTarget "myFsec" */;
+			buildPhases = (
+				EA929909156486B900DA404D /* Sources */,
+				EA92990A156486B900DA404D /* Frameworks */,
+				EA92990B156486B900DA404D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myFsec;
+			productName = myFsec;
+			productReference = EA92990D156486B900DA404D /* myFsec.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA92992D156486B900DA404D /* myFsecTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA929942156486B900DA404D /* Build configuration list for PBXNativeTarget "myFsecTests" */;
+			buildPhases = (
+				EA929929156486B900DA404D /* Sources */,
+				EA92992A156486B900DA404D /* Frameworks */,
+				EA92992B156486B900DA404D /* Resources */,
+				EA92992C156486B900DA404D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA929933156486B900DA404D /* PBXTargetDependency */,
+			);
+			name = myFsecTests;
+			productName = myFsecTests;
+			productReference = EA92992E156486B900DA404D /* myFsecTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA929904156486B900DA404D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = EA929907156486B900DA404D /* Build configuration list for PBXProject "myFsec" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EA929902156486B900DA404D;
+			productRefGroup = EA92990E156486B900DA404D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA92990C156486B900DA404D /* myFsec */,
+				EA92992D156486B900DA404D /* myFsecTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA92990B156486B900DA404D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA92991C156486B900DA404D /* InfoPlist.strings in Resources */,
+				EA929922156486B900DA404D /* Credits.rtf in Resources */,
+				EA929928156486B900DA404D /* MainMenu.xib in Resources */,
+				EA92995D156487FB00DA404D /* Lock.icns in Resources */,
+				EA92995E156487FB00DA404D /* rar.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA92992B156486B900DA404D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA929939156486B900DA404D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EA92992C156486B900DA404D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA929909156486B900DA404D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA92991E156486B900DA404D /* main.m in Sources */,
+				EA929925156486B900DA404D /* AppDelegate.m in Sources */,
+				EA92995A156487FB00DA404D /* QuickEncode.cpp in Sources */,
+				EA92995B156487FB00DA404D /* secureHeader.cpp in Sources */,
+				EA92995C156487FB00DA404D /* Encryptor.mm in Sources */,
+				EA92995F156487FB00DA404D /* FileUtils.cpp in Sources */,
+				EA929960156487FB00DA404D /* encryptUtils.cpp in Sources */,
+				EA929961156487FB00DA404D /* memoryUtils.cpp in Sources */,
+				EA92997E15649A5B00DA404D /* ServiceHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA929929156486B900DA404D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA92993C156486B900DA404D /* myFsecTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA929933156486B900DA404D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA92990C156486B900DA404D /* myFsec */;
+			targetProxy = EA929932156486B900DA404D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EA92991A156486B900DA404D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA92991B156486B900DA404D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EA929920156486B900DA404D /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA929921156486B900DA404D /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		EA929926156486B900DA404D /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA929927156486B900DA404D /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		EA929937156486B900DA404D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA929938156486B900DA404D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EA92993D156486B900DA404D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EA92993E156486B900DA404D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EA929940156486B900DA404D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myFsec/myFsec-Prefix.pch";
+				INFOPLIST_FILE = "myFsec/myFsec-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EA929941156486B900DA404D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myFsec/myFsec-Prefix.pch";
+				INFOPLIST_FILE = "myFsec/myFsec-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		EA929943156486B900DA404D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/myFsec.app/Contents/MacOS/myFsec";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myFsec/myFsec-Prefix.pch";
+				INFOPLIST_FILE = "myFsecTests/myFsecTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		EA929944156486B900DA404D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/myFsec.app/Contents/MacOS/myFsec";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myFsec/myFsec-Prefix.pch";
+				INFOPLIST_FILE = "myFsecTests/myFsecTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA929907156486B900DA404D /* Build configuration list for PBXProject "myFsec" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA92993D156486B900DA404D /* Debug */,
+				EA92993E156486B900DA404D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA92993F156486B900DA404D /* Build configuration list for PBXNativeTarget "myFsec" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA929940156486B900DA404D /* Debug */,
+				EA929941156486B900DA404D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA929942156486B900DA404D /* Build configuration list for PBXNativeTarget "myFsecTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA929943156486B900DA404D /* Debug */,
+				EA929944156486B900DA404D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA929904156486B900DA404D /* Project object */;
+}

@@ -1,0 +1,20 @@
+//
+//  File.h
+//  fsec
+//
+//  Created by Lucas PIzzagalli on 7/31/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//
+
+#ifndef fsec_File_h
+#define fsec_File_h
+
+#define VERSION 1
+
+int encodeQuick (const char *fileName,const  char * password);
+
+int decodeQuick(const char *fileName, const char *password);
+
+int checkIfFileIsOurs(const char* fileName );
+
+#endif
