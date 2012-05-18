@@ -10,7 +10,6 @@
 #import "QuickEncode.h"
 #import "Encryptor.h"
 #import "StateCodes.h"
-#import "ServiceHandler.h"
 
 
 #define  DECODE_MSG @"File Decoded Succesful!!"
@@ -43,23 +42,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-
-//    Encryptor *encryptor;
-//    encryptor = [[Encryptor alloc] init];
-//    ServiceHandler * service = [[ServiceHandler alloc] init];
-//    NSLog(@"hey trying to register service");
-    
-//    ServiceHandler * serviceObject = [[ServiceHandler alloc] init];
-//    NSRegisterServicesProvider(serviceObject, @"myFsec"); 
-//    NSUnregisterServicesProvider(@"ar.com.myFsec");
-    
+    //Service Provider declaration and update of system services
     [NSApp setServicesProvider: self];
     NSUpdateDynamicServices();
- //   NSRequiredContext();
- //   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setWindowToTypeOfFile)  name:NSControlTextDidChangeNotification object:filePath];
-    
-    
-    // Insert code here to initialize your application
+
 }
 
 -(void) resetForm
@@ -274,18 +260,6 @@
     
 }
 - (void)encrypt:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error{
-    //    while (true) {
-    //        ;
-    //    }
-      [msgLable selectText:@"AT ENCRYPT"];
-  
-    NSAlert *alert;
-    alert = [NSAlert alertWithMessageText:@"sarasasasas" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
-    [alert setAlertStyle:NSInformationalAlertStyle];
-    //
-    [alert runModal];
-    
-    
     
     if([[pboard types] containsObject:NSFilenamesPboardType])
     {

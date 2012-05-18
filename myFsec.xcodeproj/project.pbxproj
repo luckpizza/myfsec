@@ -26,7 +26,6 @@
 		EA929960156487FB00DA404D /* encryptUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA929956156487FB00DA404D /* encryptUtils.cpp */; };
 		EA929961156487FB00DA404D /* memoryUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA929958156487FB00DA404D /* memoryUtils.cpp */; };
 		EA9299651564888B00DA404D /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9299641564888B00DA404D /* libcrypto.dylib */; };
-		EA92997E15649A5B00DA404D /* ServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EA92997D15649A5B00DA404D /* ServiceHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,8 +76,6 @@
 		EA929959156487FB00DA404D /* memoryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memoryUtils.h; sourceTree = "<group>"; };
 		EA9299631564886200DA404D /* debugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debugLog.h; sourceTree = "<group>"; };
 		EA9299641564888B00DA404D /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
-		EA92997C15649A5B00DA404D /* ServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceHandler.h; sourceTree = "<group>"; };
-		EA92997D15649A5B00DA404D /* ServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +151,6 @@
 				EA929923156486B900DA404D /* AppDelegate.h */,
 				EA929924156486B900DA404D /* AppDelegate.m */,
 				EA929918156486B900DA404D /* Supporting Files */,
-				EA92997C15649A5B00DA404D /* ServiceHandler.h */,
-				EA92997D15649A5B00DA404D /* ServiceHandler.m */,
 			);
 			path = myFsec;
 			sourceTree = "<group>";
@@ -353,7 +348,6 @@
 				EA92995F156487FB00DA404D /* FileUtils.cpp in Sources */,
 				EA929960156487FB00DA404D /* encryptUtils.cpp in Sources */,
 				EA929961156487FB00DA404D /* memoryUtils.cpp in Sources */,
-				EA92997E15649A5B00DA404D /* ServiceHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
