@@ -24,7 +24,7 @@
 
 - (int) encodeQuick:(NSString *) filePath password: (NSString *) password
 {
-    return encodeQuick([filePath UTF8String], [password UTF8String]);
+    return encodeDispacher([filePath UTF8String], [password UTF8String], 1, SECURITY_TYPE_QUICKENCODE );
 
     
 }

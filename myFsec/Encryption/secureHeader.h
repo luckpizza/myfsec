@@ -9,6 +9,8 @@
 #ifndef fsec_secureHeader_h
 #define fsec_secureHeader_h
 
+
+
 typedef struct secHeader{
     int signature;
     int version;
@@ -21,5 +23,6 @@ typedef struct secHeader{
 }secureHeader;
 void printHeader(secureHeader * sHeader);
 
+secureHeader * createHeaderForFile(const char *fileName,const  char * password, int securityType, int securityLevel);
 
 #endif

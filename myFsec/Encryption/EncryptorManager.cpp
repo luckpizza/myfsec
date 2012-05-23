@@ -32,11 +32,13 @@ int checkIfFileIsOurs(std::fstream* file ){
     {
         std::cout << "File doesnt seem to be encrypted";
         status= ERROR_NOT_SUPPORTED;
-    }
-    else if(sHeader.signature != SIGNATURE || sHeader.version != VERSION || sHeader.headerSize != sizeof(sHeader)  )
-    {
-        std::cout << "File does not seems to be encrypted by us, sorry";
-        status = ERROR_NOT_SUPPORTED;
+    }else{
+        printHeader(&sHeader);
+        if(sHeader.signature != SIGNATURE || sHeader.version != VERSION || sHeader.headerSize != sizeof(sHeader)  )
+        {
+            std::cout << "File does not seems to be encrypted by us, sorry";
+            status = ERROR_NOT_SUPPORTED;
+        }
     }
     (*file).seekg (0, std::ios::beg);
     return status;
@@ -57,9 +59,13 @@ int checkIfFileIsOurs(const char* fileName ){
     return ret;
 }
 
-int encodeDispacher(const char *fileName,const  char * password, int version, int securityType){
-    if(version == VERSION && securityType == SECURITY_TYPE_QUICKENCODE){
-        return encodeQuick(fileName, password);
+int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType){
+    secureHeader * sHeader = createHeaderForFile(fileName, password, securityType, secureLevel);
+    if(sHeader == NULL){
+        return ERROR_FILE_DOES_NOT_EXIST;
+    }
+    if(sHeader->version == VERSION && sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
+        return encodeQuick(fileName, password, sHeader);
     }
     return ERROR_NOT_SUPPORTED;
 }
@@ -68,6 +74,7 @@ int decodeDispacher(const char *fileName,const  char * password){
 //        return encodeQuick(fileName, password);
 //    }
 //    return ERROR_NOT_SUPPORTED;
+    
     return decodeQuick(fileName, password);
 }
 

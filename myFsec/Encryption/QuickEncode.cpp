@@ -10,7 +10,6 @@
 #include <iostream>
 #include <fstream>
 #include "QuickEncode.h"
-#include "secureHeader.h"
 #include <openssl/sha.h>
 #include <string.h>
 #include <stdio.h>
@@ -38,57 +37,35 @@ using namespace std;
  */
 
 
-int encodeQuick (const char *fileName, const char *password) {
-    if(fileName == NULL || *fileName == '\0')
+int encodeQuick (const char *fileName, const char *password, secureHeader* sHeader) {
+    if(fileName == NULL || *fileName == '\0' || sHeader == NULL)
     {
         return ERROR_FILE_DOES_NOT_EXIST;
     }
 
+
     fstream file (fileName, ios::in | ios::out | ios::binary);
-    secureHeader sHeader;
+    
     long long sizeReaded;
-    char *realFileName;
-    char buffer[sizeof(sHeader)];
-    memset(buffer, 0, sizeof(sHeader));
-    encrypt_md5((unsigned char*) password, MD5Password);
-    debug("hashed password is \n");
-#ifdef DEBUG
-    print_md5_sum(MD5Password);
-#endif
+    char buffer[sizeof(secureHeader)];
+    memset(buffer, 0, sizeof(secureHeader));
 
     if (file.is_open() )
     {
-        file.seekg(0, ios::end);
-        long long size = file.tellg();
         file.seekg (0);
-        if(!file.read (buffer, sizeof(sHeader)))
+        if(!file.read (buffer, sizeof(secureHeader)))
         {
             debug( "File is smaller than Header");//sizeof(sHeader));
             file.clear();
         }
-        debug("number of bytes read =%ld \n size of the file= %lld", file.gcount(), size);
         sizeReaded =file.gcount();
-        memcpy(sHeader.password, MD5Password, MD5_DIGEST_LENGTH);
-        sHeader.signature = SIGNATURE;
-        sHeader.version = VERSION;
-        sHeader.securityType = SECURITY_TYPE_QUICKENCODE;
-        sHeader.fileSize = size;
-        sHeader.headerSize = sizeof(sHeader);
-        realFileName = getFileNameFromPath(fileName);
-        memcpy(sHeader.fileName, realFileName, strlen(realFileName) + 1);
-        free(realFileName);
-        file.seekp(0,ios::beg);
-        printHeader(&sHeader);
-        file.write(reinterpret_cast<char*>(&sHeader), sizeof(sHeader) );
         file.seekp(0,ios::end);
-        size = file.tellg();
-        debug("we are moving to the end of the file: %lld \n",size );
         file.write(reinterpret_cast<char*>(buffer), sizeReaded);
+        file.seekp(0,ios::beg);
+        file.write(reinterpret_cast<char*>(sHeader), sizeof(secureHeader) );
         file.flush();
         file.close();
             
-            cout << "the complete file content is in memory";
-        debug("leido fue+ %s \n", buffer);
     } else {
         return ERROR_FILE_DOES_NOT_EXIST;
     }
@@ -96,7 +73,8 @@ int encodeQuick (const char *fileName, const char *password) {
     strcpy(temp, fileName);
     strcat(temp, FSEC_EXTENTION);
     rename(fileName, temp);
-    free(temp);
+    myFree(temp);
+    myFree(sHeader);
     /*
         else cout << "Unable to open file";
         printf("file name was: %s and password: %s", fileName, password);

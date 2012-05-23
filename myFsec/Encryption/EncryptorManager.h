@@ -17,7 +17,7 @@
 
 int checkIfFileIsOurs(const char* fileName );
 int checkIfFileIsOurs(std::fstream* file );
-int encodeDispacher(const char *fileName,const  char * password, int version, int securityType);
+int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType);
 
 int decodeDispacher(const char *fileName,const  char * password);
 
