@@ -24,5 +24,6 @@ typedef struct secHeader{
 void printHeader(secureHeader * sHeader);
 
 secureHeader * createHeaderForFile(const char *fileName,const  char * password, int securityType, int securityLevel);
+secureHeader * getHeaderFromFile(const char *fileName);
 
 #endif

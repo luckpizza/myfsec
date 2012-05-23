@@ -79,3 +79,34 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     debug("FINISHING ENCRYPT");
     return sHeader;
 }
+
+
+
+
+secureHeader * getHeaderFromFile(const char *fileName) {
+    unsigned char MD5Password[MD5_DIGEST_LENGTH];
+    if(fileName == NULL || *fileName == '\0')
+    {
+        return NULL;
+    }
+       
+    secureHeader* sHeader = (secureHeader*)myMalloc(sizeof(secureHeader));
+    
+    fstream file (fileName, ios::in | ios::out | ios::binary);
+    
+    if (file.is_open() )
+    {
+        if( checkIfFileIsOurs(&file) != OK)
+        {
+            debug("file seems not to be ours!");
+            return NULL;
+        }
+        file.read (reinterpret_cast<char*>(&sHeader), sizeof(secureHeader));
+    }
+    else {
+        return NULL;
+    }      
+    debug("FINISHING GETTING HEADER FROM FILE");
+    return sHeader ;
+    
+}

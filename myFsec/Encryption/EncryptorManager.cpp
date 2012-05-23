@@ -70,12 +70,14 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
     return ERROR_NOT_SUPPORTED;
 }
 int decodeDispacher(const char *fileName,const  char * password){
-//    if(version == VERSION && securityType == SECURITY_TYPE_QUICKENCODE){
-//        return encodeQuick(fileName, password);
-//    }
-//    return ERROR_NOT_SUPPORTED;
-    
-    return decodeQuick(fileName, password);
+    secureHeader * sHeader = getHeaderFromFile(fileName);
+    if(sHeader == NULL){
+        return ERROR_FILE_DOES_NOT_EXIST;
+    }
+    if(sHeader->version == VERSION && sHeader->securityType ==SECURITY_TYPE_QUICKENCODE){
+        return decodeQuick(fileName, password);
+    }
+    return ERROR_NOT_SUPPORTED;
 }
 
 
