@@ -8,13 +8,12 @@
 
 #ifndef fsec_File_h
 #define fsec_File_h
+#define SECURITY_TYPE_QUICKENCODE 1
 
-#define VERSION 1
 
 int encodeQuick (const char *fileName,const  char * password);
 
 int decodeQuick(const char *fileName, const char *password);
 
-int checkIfFileIsOurs(const char* fileName );
 
 #endif

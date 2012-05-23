@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA310C3B1566FA8000B47DF4 /* EncryptorManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA310C3A1566FA8000B47DF4 /* EncryptorManager.cpp */; };
 		EA929912156486B900DA404D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA929911156486B900DA404D /* Cocoa.framework */; };
 		EA92991C156486B900DA404D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA92991A156486B900DA404D /* InfoPlist.strings */; };
 		EA92991E156486B900DA404D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA92991D156486B900DA404D /* main.m */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA310C3A1566FA8000B47DF4 /* EncryptorManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EncryptorManager.cpp; sourceTree = "<group>"; };
+		EA310C3C1566FA9000B47DF4 /* EncryptorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptorManager.h; sourceTree = "<group>"; };
 		EA92990D156486B900DA404D /* myFsec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myFsec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA929911156486B900DA404D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EA929914156486B900DA404D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -194,6 +197,8 @@
 				EA929949156487FB00DA404D /* QuickEncode.h */,
 				EA92994A156487FB00DA404D /* secureHeader.cpp */,
 				EA92994B156487FB00DA404D /* secureHeader.h */,
+				EA310C3A1566FA8000B47DF4 /* EncryptorManager.cpp */,
+				EA310C3C1566FA9000B47DF4 /* EncryptorManager.h */,
 			);
 			path = Encryption;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				EA92995F156487FB00DA404D /* FileUtils.cpp in Sources */,
 				EA929960156487FB00DA404D /* encryptUtils.cpp in Sources */,
 				EA929961156487FB00DA404D /* memoryUtils.cpp in Sources */,
+				EA310C3B1566FA8000B47DF4 /* EncryptorManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,10 +461,15 @@
 		EA929940156486B900DA404D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myFsec/myFsec-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "myFsec/myFsec-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -466,10 +477,15 @@
 		EA929941156486B900DA404D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myFsec/myFsec-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "myFsec/myFsec-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

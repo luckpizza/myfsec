@@ -33,12 +33,6 @@
     return YES;
 }
 
--(void)applicationDidHide:(NSNotification *)notification
-{
-    NSLog(@"hey trying to register service");
-    
-}
-
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -208,26 +202,9 @@
         //        [enc checkIfFileIsOurs:fileName];
         //    }
     }
-}
-
-
--(void) applicationDidFinishLaunching
-{
-    
-    NSAlert *alert;
-    alert = [NSAlert alertWithMessageText:@"AA" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
-    [alert setAlertStyle:NSInformationalAlertStyle];
-    
-    [alert runModal];
-    Encryptor *encryptor;
-    encryptor = [[Encryptor alloc] init];
-    //   printf("AAAAAA");
-    NSLog(@"hey trying to register service");
-    [NSApp setServicesProvider:encryptor];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setWindowToTypeOfFile)  name:NSControlTextDidChangeNotification object:filePath];
-    
     
 }
+
 
 -(NSString *) getEncodeMessage:(int) msgCode
 {
@@ -280,6 +257,13 @@
     ;
 }
 
+/**
+ *  Close app when closing the window
+ */
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)sender
+{
+    return YES;
+}
 
 
 @end
