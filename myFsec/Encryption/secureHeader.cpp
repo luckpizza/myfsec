@@ -75,7 +75,7 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     } else {
         return NULL;
     }
-   
+    file.close();
     debug("FINISHING ENCRYPT");
     return sHeader;
 }
@@ -84,7 +84,6 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
 
 
 secureHeader * getHeaderFromFile(const char *fileName) {
-    unsigned char MD5Password[MD5_DIGEST_LENGTH];
     if(fileName == NULL || *fileName == '\0')
     {
         return NULL;

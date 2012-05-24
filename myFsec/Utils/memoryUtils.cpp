@@ -32,6 +32,22 @@ void * myMalloc(unsigned long size)
 
 }
 
+void * myRealloc(void * pointer, unsigned long size)
+{
+    int i = 0;
+    debug("Using myMalloc");
+    while (i++ < 4) {
+        if((pointer = realloc(pointer, size))){
+            return pointer; 
+        }
+    }
+    memoryErrorHandler();
+    //ONLY TO AVOID WARNING. THIS SHOULD NEVER BEEN REACH
+    return NULL;
+    
+}
+
+
 void * myCalloc (unsigned long amount, unsigned long size)
 {
     void * ret = NULL;

@@ -35,6 +35,24 @@ void encrypt_md5(unsigned char* password,unsigned char * MD5Password)
 
 }
 
+
+void addMyFsecExtention(const char * fileName){
+    char * temp = (char *)myMalloc(strlen(fileName) + strlen(FSEC_EXTENTION) + 1);
+    strcpy(temp, fileName);
+    strcat(temp, FSEC_EXTENTION);
+    rename(fileName, temp);
+    myFree(temp);
+
+}
+
+void recoverOldExtention(const char *fileName, secureHeader * sHeader){
+    char * newFilePath = getOnlyPath(fileName);
+    newFilePath = (char*) myRealloc(newFilePath, strlen(newFilePath) + strlen(sHeader->fileName));
+     strcat(newFilePath, sHeader->fileName);
+    rename(fileName, newFilePath);
+    myFree(newFilePath);
+}
+                         
 //void sprint_md5_sum(unsigned char* md) {
 ///*    int i;
 //    for(i=0; i <MD5_DIGEST_LENGTH; i++) {

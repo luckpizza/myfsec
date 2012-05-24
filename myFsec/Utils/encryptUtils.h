@@ -8,7 +8,7 @@
 
 #ifndef fsec_encryptUtils_h
 #define fsec_encryptUtils_h
-
+#include "secureHeader.h"
 #ifdef DEBUG1
 #define debugMD5(md5Hashed) print_md5_sum(md5Hashed)
 #else
@@ -18,4 +18,7 @@ void print_md5_sum(unsigned char* md);
 
 void encrypt_md5(unsigned char* password,unsigned char * MD5Password);
 
+void addMyFsecExtention(const char * fileName);
+
+void recoverOldExtention(const char *fileName, secureHeader * sHeader);
 #endif

@@ -127,12 +127,9 @@
         msgCode = ERROR_PASSWORDS_DONT_MATCH;
         alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
         
-    }else
-    {
-        NSLog(@"filepat is %@",filePath.stringValue);
+    }else{
         Encryptor *enc= [[Encryptor alloc]init ];
         msgCode = [enc encodeQuick:filePath.stringValue password:password.stringValue];     
-        
         alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
     }
     [alert setAlertStyle:NSInformationalAlertStyle];
@@ -150,7 +147,7 @@
     NSLog(@"filepat is %@",filePath.stringValue);
     Encryptor *enc= [[Encryptor alloc]init ];
     msgCode = [enc decodeQuick:filePath.stringValue password:password.stringValue];                
-    
+
     NSAlert * alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
     [alert setAlertStyle:NSInformationalAlertStyle];
     
@@ -183,7 +180,7 @@
     {
         // Get an array containing the full filenames of all
         // files and directories selected.
-        NSArray* files = [openDlg filenames];
+        NSArray* files = [openDlg  filenames];
         
         // Loop through all the files and process them.
         
@@ -236,6 +233,10 @@
     
     
 }
+
+/*
+ *  Method called whenever the service is called
+ */
 - (void)encrypt:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error{
     
     if([[pboard types] containsObject:NSFilenamesPboardType])
@@ -246,15 +247,6 @@
         [self setWindowToTypeOfFile];
 
     }
-    
-//    
-//    alert = [NSAlert alertWithMessageText:fileName defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
-//    [alert setAlertStyle:NSInformationalAlertStyle];
-//    //
-//    [alert runModal];
-    
-    //   [[[[AppDelegate new ]init] filePath ]setStringValue:fileName];
-    ;
 }
 
 /**

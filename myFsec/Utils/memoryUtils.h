@@ -12,7 +12,7 @@
 
 void * myMalloc(unsigned long size);
 void * myCalloc (unsigned long amount, unsigned long size);
-
+void * myRealloc(void * pointer, unsigned long size);
 
 
 #endif

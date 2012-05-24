@@ -67,6 +67,7 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
     if(sHeader->version == VERSION && sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
         return encodeQuick(fileName, password, sHeader);
     }
+    myFree(sHeader);
     return ERROR_NOT_SUPPORTED;
 }
 int decodeDispacher(const char *fileName,const  char * password){
