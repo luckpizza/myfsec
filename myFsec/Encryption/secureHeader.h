@@ -12,16 +12,21 @@
 #define fsec_secureHeader_h
 
 
-
 typedef struct secHeader{
-    int signature;
-    int version;
+    __int32_t signature;
+    __int32_t version;
     unsigned char password[SHA256_DIGEST_LENGTH];
-    int headerSize;
+    __int32_t headerSize;
     long long fileSize;
-    int securityLevel;
-    int securityType;
+    __int32_t securityLevel;
+    __int32_t securityType;
     char fileName[255];
+    __int32_t extraSize;
+    union u_exra{
+        void * extra;
+        char don_use[8]; //in order to be the same length in 32 and 64 bits
+    }extra;
+    
 }secureHeader;
 void printHeader(secureHeader * sHeader);
 

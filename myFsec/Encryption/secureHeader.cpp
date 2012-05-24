@@ -52,7 +52,8 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     sHeader->securityType = securityType;
     sHeader->securityLevel = securityLevel;
     sHeader->headerSize = sizeof(secureHeader);
-
+    sHeader->extra.extra = NULL;
+    sHeader->extraSize = 0;
     //pasword
     hash_sha256((unsigned char*) password, SHA256Password);
     memcpy(sHeader->password, SHA256Password, SHA256_DIGEST_LENGTH);
