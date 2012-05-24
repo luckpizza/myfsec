@@ -15,12 +15,13 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <openssl/md5.h>
+#include <openssl/sha.h>
 #include "encryptUtils.h"
 #include "Utils.h"
 #include "EncryptorManager.h"
 
 
-unsigned char MD5Password[MD5_DIGEST_LENGTH];
+unsigned char SHA256Password[SHA256_DIGEST_LENGTH];
 int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader);
 int checkIfFileIsOurs(std::fstream* file );
 
@@ -107,9 +108,9 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
         return error;
     }
     file.read (reinterpret_cast<char*>(sHeader), sizeof(secureHeader));
-    encrypt_md5((unsigned char*) password, MD5Password);
+    hash_sha256((unsigned char*) password, SHA256Password);
     debug("hashed password is \n");
-    debugMD5(MD5Password);
+    debugSHA256(SHA256Password);
     debug("password in the header is: \n");
 #ifdef DEBUG
     print_md5_sum(sHeader->password);
@@ -118,7 +119,7 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
     
 #endif
     
-    if(memcmp(sHeader->password, MD5Password, MD5_DIGEST_LENGTH) != 0)
+    if(memcmp(sHeader->password, SHA256Password, SHA256_DIGEST_LENGTH) != 0)
     {
         debug( "wrong password!");
         return  ERROR_WRONG_PASSWORD;

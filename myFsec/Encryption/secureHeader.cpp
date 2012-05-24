@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <openssl/md5.h>
+#include <openssl/sha.h>
 #include "encryptUtils.h"
 #include "Utils.h"
 #include "EncryptorManager.h"
@@ -34,7 +35,8 @@ void printHeader(secureHeader * sHeader)
 }
 
 secureHeader * createHeaderForFile(const char *fileName,const  char * password, int securityType, int securityLevel){
-    unsigned char MD5Password[MD5_DIGEST_LENGTH];
+   // unsigned char MD5Password[MD5_DIGEST_LENGTH];
+    unsigned char SHA256Password[SHA256_DIGEST_LENGTH];
     if(fileName == NULL || *fileName == '\0')
     {
         return NULL;
@@ -52,8 +54,8 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     sHeader->headerSize = sizeof(secureHeader);
 
     //pasword
-    encrypt_md5((unsigned char*) password, MD5Password);
-    memcpy(sHeader->password, MD5Password, MD5_DIGEST_LENGTH);
+    hash_sha256((unsigned char*) password, SHA256Password);
+    memcpy(sHeader->password, SHA256Password, SHA256_DIGEST_LENGTH);
     
     //getting name of the file
     char *realFileName;
@@ -63,7 +65,7 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     
     
     debug("hashed password is \n");
-    debugMD5(MD5Password);
+    debugSHA256(SHA256Password);
     
     if (file.is_open() )
     {

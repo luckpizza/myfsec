@@ -25,14 +25,28 @@ void print_md5_sum(unsigned char* md) {
         printf("%02x",md[i]);
     }
 }
+void print_sha256_sum(unsigned char* md) {
+    int i;
+    for(i=0; i <SHA256_DIGEST_LENGTH; i++) {
+        printf("%02x",md[i]);
+    }
+}
 
-void encrypt_md5(unsigned char* password,unsigned char * MD5Password)
+void hash_md5(unsigned char* password,unsigned char * MD5Password)
 {
      char * passwordAndSalt =  ( char *)myMalloc(strlen((( const char*)password)) + strlen(SALT) + 1);
     strcpy(passwordAndSalt, SALT);
     strcat(passwordAndSalt, (const char*)password);
     MD5((unsigned char*) passwordAndSalt, strlen(passwordAndSalt), MD5Password);
 
+}
+void hash_sha256(unsigned char* password,unsigned char * SHA256Password)
+{
+    char * passwordAndSalt =  ( char *)myMalloc(strlen((( const char*)password)) + strlen(SALT) + 1);
+    strcpy(passwordAndSalt, SALT);
+    strcat(passwordAndSalt, (const char*)password);
+    SHA256((unsigned char*) passwordAndSalt, strlen(passwordAndSalt), SHA256Password);
+    
 }
 
 
