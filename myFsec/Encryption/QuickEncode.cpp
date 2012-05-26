@@ -53,18 +53,18 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
     if (file.is_open() )
     {
         file.seekg (0);
-        if(!file.read (buffer, sizeof(secureHeader)))
+        if((sizeReaded = file.readsome (buffer, sizeof(secureHeader))) < sizeof(secureHeader))
         {
             debug( "File is smaller than Header");//sizeof(sHeader));
-            file.clear();
+       //     file.clear();
         }
-        sizeReaded =file.gcount();
-        //Writing first sizeof(secureHeader) bytes to the end of the file
-        file.seekp(0,ios::end);
-        file.write(reinterpret_cast<char*>(buffer), sizeReaded);
+     //   sizeReaded =file.gcount();
         //Writting header to file
         file.seekp(0,ios::beg);
         file.write(reinterpret_cast<char*>(sHeader), sizeof(secureHeader) );
+        //Writing first sizeof(secureHeader) bytes to the end of the file
+        file.seekp(0,ios::end);
+        file.write(reinterpret_cast<char*>(buffer), sizeReaded);
         file.flush();
         file.close();
             
@@ -84,11 +84,11 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
 //int decodeChecks
  int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader){
     //Make sure that the file that want to be dencrypted has the correct extention. 
-    char * tempName = (char *)myMalloc(strlen(fileName) + 1);
+//    char * tempName = (char *)myMalloc(strlen(fileName) + 1);
      int error;
-     strcpy(tempName, fileName);
-    char * extention = strrchr(tempName, '.');
-    myFree(tempName);
+     //strcpy(tempName, fileName);
+    char * extention = strrchr(fileName, '.');
+ //   myFree(tempName);
     if(extention == NULL || strcmp(extention, FSEC_EXTENTION) != 0)
     {
         debug( "File doesn't look like one of us!");
@@ -113,7 +113,7 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
     debugSHA256(SHA256Password);
     debug("password in the header is: \n");
 #ifdef DEBUG
-    print_md5_sum(sHeader->password);
+    debugSHA256(sHeader->password);
     debug("HEADER READ IS: \n");
     printHeader(sHeader);
     

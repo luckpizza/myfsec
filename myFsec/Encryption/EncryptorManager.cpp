@@ -16,6 +16,7 @@
 #include <openssl/md5.h>
 #include "encryptUtils.h"
 #include "Utils.h"
+#include "AESEncrypt.h"
 /**
  * This function verify if a file has the our internal structure (so it has been encrypted buy us
  * @param the fstream to the file we want to verify
@@ -56,6 +57,7 @@ int checkIfFileIsOurs(const char* fileName ){
     }else{
         ret = ERROR_FILE_DOES_NOT_EXIST;
     }
+    file.close();
     return ret;
 }
 
@@ -65,7 +67,8 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
         return ERROR_FILE_DOES_NOT_EXIST;
     }
     if(sHeader->version == VERSION && sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
-        return encodeQuick(fileName, password, sHeader);
+        //return AES_encrypt(fileName, password, sHeader);
+         return encodeQuick(fileName, password, sHeader);
     }
     myFree(sHeader);
     return ERROR_NOT_SUPPORTED;

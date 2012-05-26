@@ -77,8 +77,7 @@
     // filePath controlTextDidChange:
     NSString *fileName = [filePath stringValue];
     int fileType;
-    Encryptor *enc= [[Encryptor alloc]init ];
-    fileType = [enc checkIfFileIsOurs:fileName];
+    fileType = [Encryptor checkIfFileIsOurs:fileName];
     [self.msgLable setStringValue:@""];
     if(fileType == ERROR_FILE_DOES_NOT_EXIST)
     {
@@ -120,18 +119,17 @@
 
 -(IBAction)encryptButtonPushed:(id)sender
 {
-    int msgCode;
+    int msgCode= 1;
     NSAlert * alert;
     if([[password stringValue] compare:[rePassword stringValue]] != 0)
     {
         msgCode = ERROR_PASSWORDS_DONT_MATCH;
-        alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
         
     }else{
-        Encryptor *enc= [[Encryptor alloc]init ];
-        msgCode = [enc encodeQuick:filePath.stringValue password:password.stringValue];     
-        alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
+        msgCode = [Encryptor encodeQuick:filePath.stringValue password:password.stringValue];     
     }
+    alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
+
     [alert setAlertStyle:NSInformationalAlertStyle];
     
     [alert runModal];
@@ -145,8 +143,7 @@
 {
     int msgCode;
     NSLog(@"filepat is %@",filePath.stringValue);
-    Encryptor *enc= [[Encryptor alloc]init ];
-    msgCode = [enc decodeQuick:filePath.stringValue password:password.stringValue];                
+    msgCode = [Encryptor decodeQuick:filePath.stringValue password:password.stringValue];                
 
     NSAlert * alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
     [alert setAlertStyle:NSInformationalAlertStyle];

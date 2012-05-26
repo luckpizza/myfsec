@@ -11,18 +11,8 @@
 #import "EncryptorManager.h"
 @implementation Encryptor
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
 
-
-- (int) encodeQuick:(NSString *) filePath password: (NSString *) password
++ (int) encodeQuick:(NSString *) filePath password: (NSString *) password
 {
     return encodeDispacher([filePath UTF8String], [password UTF8String], 1, SECURITY_TYPE_QUICKENCODE );
 
@@ -30,13 +20,13 @@
 }
 
 
-- (int) decodeQuick:(NSString *) filePath password: (NSString *) password
++ (int) decodeQuick:(NSString *) filePath password: (NSString *) password
 {
     return decodeQuick([filePath UTF8String], [password UTF8String]);
 
 }
 
-- (int) checkIfFileIsOurs:(NSString*) FilePath
++ (int) checkIfFileIsOurs:(NSString*) FilePath
 {
     return checkIfFileIsOurs([FilePath UTF8String]);
 }

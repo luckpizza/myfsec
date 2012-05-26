@@ -49,11 +49,15 @@ void hash_sha256(unsigned char* password,unsigned char * SHA256Password)
     
 }
 
-
-void addMyFsecExtention(const char * fileName){
+char * add_myFsec_extention_string(const char * fileName){
     char * temp = (char *)myMalloc(strlen(fileName) + strlen(FSEC_EXTENTION) + 1);
     strcpy(temp, fileName);
     strcat(temp, FSEC_EXTENTION);
+    return temp;
+}
+
+void addMyFsecExtention(const char * fileName){
+    char * temp = add_myFsec_extention_string(fileName);
     rename(fileName, temp);
     myFree(temp);
 
@@ -61,7 +65,7 @@ void addMyFsecExtention(const char * fileName){
 
 void recoverOldExtention(const char *fileName, secureHeader * sHeader){
     char * newFilePath = getOnlyPath(fileName);
-    newFilePath = (char*) myRealloc(newFilePath, strlen(newFilePath) + strlen(sHeader->fileName));
+    newFilePath = (char*) myRealloc(newFilePath, strlen(newFilePath) + strlen(sHeader->fileName) + 1);
      strcat(newFilePath, sHeader->fileName);
     rename(fileName, newFilePath);
     myFree(newFilePath);

@@ -35,7 +35,7 @@ void printHeader(secureHeader * sHeader)
 }
 
 secureHeader * createHeaderForFile(const char *fileName,const  char * password, int securityType, int securityLevel){
-   // unsigned char MD5Password[MD5_DIGEST_LENGTH];
+//   // unsigned char MD5Password[MD5_DIGEST_LENGTH];
     unsigned char SHA256Password[SHA256_DIGEST_LENGTH];
     if(fileName == NULL || *fileName == '\0')
     {
@@ -43,7 +43,7 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     }
     //Opening file
     fstream file (fileName, ios::in | ios::out | ios::binary);
-    secureHeader *sHeader = (secureHeader *)myMalloc(sizeof(sHeader));
+    secureHeader *sHeader = (secureHeader *)myMalloc(sizeof(secureHeader));
     memset(sHeader, 0, sizeof(secureHeader));
 
     //static content
@@ -62,7 +62,6 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     char *realFileName;
     realFileName = getFileNameFromPath(fileName);
     memcpy(sHeader->fileName, realFileName, strlen(realFileName) + 1);
-    myFree(realFileName);
     
     
     debug("hashed password is \n");
@@ -79,7 +78,6 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
         return NULL;
     }
     file.close();
-    debug("FINISHING ENCRYPT");
     return sHeader;
 }
 
@@ -107,7 +105,8 @@ secureHeader * getHeaderFromFile(const char *fileName) {
     }
     else {
         return NULL;
-    }      
+    }   
+    file.close();
     debug("FINISHING GETTING HEADER FROM FILE");
     return sHeader ;
     
