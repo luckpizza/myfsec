@@ -23,6 +23,9 @@
  * @return OK if the file is our ERROR_NOT_SUPPORTED if not
  *
  */
+
+using namespace std;
+
 int checkIfFileIsOurs(std::fstream* file ){
     int status = OK;
     
@@ -67,21 +70,77 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
         return ERROR_FILE_DOES_NOT_EXIST;
     }
     if(sHeader->version == VERSION && sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
-        //return AES_encrypt(fileName, password, sHeader);
+       // return AES_encrypt(fileName, password, sHeader);
          return encodeQuick(fileName, password, sHeader);
     }
     myFree(sHeader);
     return ERROR_NOT_SUPPORTED;
 }
+
 int decodeDispacher(const char *fileName,const  char * password){
-    secureHeader * sHeader = getHeaderFromFile(fileName);
-    if(sHeader == NULL){
-        return ERROR_FILE_DOES_NOT_EXIST;
+  //  secureHeader * sHeader = getHeaderFromFile(fileName);
+    secureHeader sHeader;
+    int status = initDecoderHeader(fileName, password, &sHeader);
+    if(status != DECODED){
+        return status;
     }
-    if(sHeader->version == VERSION && sHeader->securityType ==SECURITY_TYPE_QUICKENCODE){
-        return decodeQuick(fileName, password);
+    if(sHeader.version == VERSION && sHeader.securityType ==SECURITY_TYPE_QUICKENCODE){
+        return decodeQuick(fileName, password,&sHeader);
     }
     return ERROR_NOT_SUPPORTED;
 }
+
+
+
+//int decodeChecks
+int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader){
+    unsigned char SHA256Password[SHA256_DIGEST_LENGTH];
+
+    //Make sure that the file that want to be dencrypted has the correct extention. 
+    //    char * tempName = (char *)myMalloc(strlen(fileName) + 1);
+    int error;
+    //strcpy(tempName, fileName);
+    char * extention = strrchr(fileName, '.');
+    //   myFree(tempName);
+    if(extention == NULL || strcmp(extention, FSEC_EXTENTION) != 0)
+    {
+        debug( "File doesn't look like one of us!");
+        return  ERROR_NOT_SUPPORTED;
+    }
+    fstream file (fileName, ios::in | ios::out | ios::binary);
+    
+    if (!file.is_open() ){
+        debug("Unable to open the file!");
+        return  ERROR_FILE_DOES_NOT_EXIST;
+    }
+    
+    
+    if((error = checkIfFileIsOurs(&file)) != OK)
+    {
+        debug("file seems not to be ours!");
+        return error;
+    }
+    file.read (reinterpret_cast<char*>(sHeader), sizeof(secureHeader));
+    hash_sha256((unsigned char*) password, SHA256Password);
+    debug("hashed password is \n");
+    debugSHA256(SHA256Password);
+    debug("password in the header is: \n");
+#ifdef DEBUG
+    debugSHA256(sHeader->password);
+    debug("HEADER READ IS: \n");
+    printHeader(sHeader);
+    
+#endif
+    
+    if(memcmp(sHeader->password, SHA256Password, SHA256_DIGEST_LENGTH) != 0)
+    {
+        debug( "wrong password!");
+        return  ERROR_WRONG_PASSWORD;
+    }
+    file.close();
+    return DECODED;
+    
+}
+
 
 

@@ -21,7 +21,6 @@
 #include "EncryptorManager.h"
 
 
-unsigned char SHA256Password[SHA256_DIGEST_LENGTH];
 int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader);
 int checkIfFileIsOurs(std::fstream* file );
 
@@ -81,77 +80,29 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
 } 
 
 
-//int decodeChecks
- int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader){
-    //Make sure that the file that want to be dencrypted has the correct extention. 
-//    char * tempName = (char *)myMalloc(strlen(fileName) + 1);
-     int error;
-     //strcpy(tempName, fileName);
-    char * extention = strrchr(fileName, '.');
- //   myFree(tempName);
-    if(extention == NULL || strcmp(extention, FSEC_EXTENTION) != 0)
-    {
-        debug( "File doesn't look like one of us!");
-        return  ERROR_NOT_SUPPORTED;
-    }
-    fstream file (fileName, ios::in | ios::out | ios::binary);
-    
-    if (!file.is_open() ){
-        debug("Unable to open the file!");
-        return  ERROR_FILE_DOES_NOT_EXIST;
-    }
-    
-    
-    if((error = checkIfFileIsOurs(&file)) != OK)
-    {
-        debug("file seems not to be ours!");
-        return error;
-    }
-    file.read (reinterpret_cast<char*>(sHeader), sizeof(secureHeader));
-    hash_sha256((unsigned char*) password, SHA256Password);
-    debug("hashed password is \n");
-    debugSHA256(SHA256Password);
-    debug("password in the header is: \n");
-#ifdef DEBUG
-    debugSHA256(sHeader->password);
-    debug("HEADER READ IS: \n");
-    printHeader(sHeader);
-    
-#endif
-    
-    if(memcmp(sHeader->password, SHA256Password, SHA256_DIGEST_LENGTH) != 0)
-    {
-        debug( "wrong password!");
-        return  ERROR_WRONG_PASSWORD;
-    }
-     file.close();
-     return DECODED;
-     
-}
 
 
 
-
-int decodeQuick(const char *fileName, const char *password) {
-    if(fileName == NULL || *fileName == '\0')
+int decodeQuick(const char *fileName, const char *password, secureHeader * sHeader) {
+    if(fileName == NULL || *fileName == '\0' || sHeader == NULL)
     {
         return ERROR_FILE_DOES_NOT_EXIST;
     }
     int msgCode = DECODED;
-    secureHeader sHeader;
+ //   secureHeader sHeader;
     long long fileSizeMoved;
-    char buffer[sizeof(sHeader)];
+    char buffer[sizeof(secureHeader)];
    
-    if((msgCode = initDecoderHeader(fileName, password, &sHeader))!= DECODED){
-        return msgCode;
-    }
+//    if((msgCode = initDecoderHeader(fileName, password, &sHeader))!= DECODED){
+//        return msgCode;
+//    }
     fstream file (fileName, ios::in | ios::out | ios::binary);
     if(!file.is_open()){
         return ERROR_FILE_DOES_NOT_EXIST;
     }
     fileSizeMoved = sizeof(secureHeader);
-    if(sHeader.fileSize <= sizeof(secureHeader))                        //if the file was too small go back that amount
-        fileSizeMoved = sHeader.fileSize;
+    if(sHeader->fileSize <= sizeof(secureHeader))                        //if the file was too small go back that amount
+        fileSizeMoved = sHeader->fileSize;
     file.seekg (-fileSizeMoved, ios::end);
     if(!file.read (reinterpret_cast<char*>(buffer),fileSizeMoved)){    //Read the bytes moved to the end of the file
         cout << "error"; 
@@ -163,10 +114,10 @@ int decodeQuick(const char *fileName, const char *password) {
     file.flush();
     file.close();
     //Truncating the file to its oroginal size
-    truncate(fileName, sHeader.fileSize);
+    truncate(fileName, sHeader->fileSize);
     debug( "the complete file content is in memory");
     debug("decrypting: %s and password: %s", fileName, password);
-    recoverOldExtention(fileName, &sHeader);    
+    recoverOldExtention(fileName, sHeader);    
     
     debug("FINISHING DECRYPT");
     return msgCode ;

@@ -14,7 +14,7 @@
 
 int encodeQuick (const char *fileName, const char *password, secureHeader* sHeader) ;
 
-int decodeQuick(const char *fileName, const char *password);
+int decodeQuick(const char *fileName, const char *password, secureHeader* sHeader);
 
 
 #endif

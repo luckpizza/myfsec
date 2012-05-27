@@ -35,11 +35,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/EncryptorManager.cpp"
-         timestampString = "359583251.68406"
+         timestampString = "359773860.107662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "35"
-         endingLineNumber = "35"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
          landmarkName = "checkIfFileIsOurs(std::fstream* file )"
          landmarkType = "7">
       </FileBreakpoint>
@@ -49,11 +49,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/EncryptorManager.cpp"
-         timestampString = "359583251.68406"
+         timestampString = "359773860.107662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "36"
-         endingLineNumber = "36"
+         startingLineNumber = "39"
+         endingLineNumber = "39"
          landmarkName = "checkIfFileIsOurs(std::fstream* file )"
          landmarkType = "7">
       </FileBreakpoint>
@@ -105,11 +105,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/EncryptorManager.cpp"
-         timestampString = "359583251.68406"
+         timestampString = "359773860.107662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
          landmarkName = "checkIfFileIsOurs(const char* fileName )"
          landmarkType = "7">
       </FileBreakpoint>
@@ -119,11 +119,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "359520376.71681"
+         timestampString = "359773860.107662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "46"
-         endingLineNumber = "46"
+         startingLineNumber = "45"
+         endingLineNumber = "45"
          landmarkName = "encodeQuick (const char *fileName, const char *password, secureHeader* sHeader)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -133,12 +133,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "359520376.71681"
+         timestampString = "359773860.107662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
-         landmarkName = "decodeQuick(const char *fileName, const char *password)"
+         startingLineNumber = "112"
+         endingLineNumber = "112"
+         landmarkName = "decodeQuick(const char *fileName, const char *password, secureHeader * sHeader)"
          landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint
@@ -147,28 +147,14 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "359520376.71681"
+         timestampString = "359773860.107662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "179"
-         endingLineNumber = "179">
+         startingLineNumber = "130"
+         endingLineNumber = "130">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "359520376.71681"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "86"
-         endingLineNumber = "86"
-         landmarkName = "initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"

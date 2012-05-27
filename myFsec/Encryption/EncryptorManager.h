@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include <fstream>
-
+#include "secureHeader.h"
 #define SIGNATURE 111188
 #define VERSION 1
 
@@ -20,5 +20,6 @@ int checkIfFileIsOurs(std::fstream* file );
 int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType);
 
 int decodeDispacher(const char *fileName,const  char * password);
+int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader);
 
 #endif
