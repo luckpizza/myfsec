@@ -43,8 +43,8 @@
 @property (retain, nonatomic) IBOutlet NSSlider * securitySlider;
 @property (retain, nonatomic) IBOutlet NSTextField *msgLable;
 @property (retain, nonatomic) IBOutlet NSMatrix *securityOption;
-
-
+@property (retain, nonatomic) IBOutlet NSProgressIndicator *progressBar;
+@property ( atomic) int status;
 //@property (nonatomic) IBAction
 
 -(IBAction)encryptButtonPushed:(id)sender;

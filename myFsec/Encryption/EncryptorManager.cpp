@@ -25,6 +25,8 @@
  */
 
 using namespace std;
+long long  _g_total_to_do;
+long long _g_amount_done;
 
 int checkIfFileIsOurs(std::fstream* file ){
     int status = OK;

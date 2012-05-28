@@ -12,7 +12,7 @@
 
 #import "Encryptor.h"
 #import "StateCodes.h"
-
+//#import "EncryptorManager.h"
 
 #define  DECODE_MSG @"File Decoded Succesful!!"
 #define  ENCODED_MSG @"File Encoded Successfully!!"
@@ -20,11 +20,14 @@
 #define  ERROR_WRONG_PASSWORD_MSG @"Wrong password!"
 #define  ERROR_FILE_DOES_NOT_EXIST_MSG @"The file does not exist or can't be open!"
 #define  ERROR_PASSWORDS_DONT_MATCH_MSG @"Passwords don't match, please verify your password"
-
+extern long long _g_total_to_do;
+extern long long _g_amount_done;
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securitySlider,fastLable, slowLable, lessSecureLable, moreSecureLable, securityLable, msgLable, securityOption;
+@synthesize progressBar, status;
+
 
 -(BOOL)application:(NSApplication *)app openFile:(NSString *)filename
 {
@@ -41,6 +44,7 @@
     //Service Provider declaration and update of system services
     [NSApp setServicesProvider: self];
     NSUpdateDynamicServices();
+    [_window makeFirstResponder:chooseFile];
 
 }
 
@@ -93,12 +97,12 @@
 
 -(void) setWindowToTypeOfFile
 {
-    
     // filePath controlTextDidChange:
     NSString *fileName = [filePath stringValue];
     int fileType;
     fileType = [Encryptor checkIfFileIsOurs:fileName];
     [self.msgLable setStringValue:@""];
+    [_window makeFirstResponder:password];
     if(fileType == ERROR_FILE_DOES_NOT_EXIST)
     {
         [msgLable setStringValue:ERROR_FILE_DOES_NOT_EXIST_MSG];
@@ -126,7 +130,7 @@
         [dencryptButton setHidden:NO];
         [self.rePasswordLable setHidden:YES];
         [self.rePassword setHidden:YES];
-        
+
         //TODO: FILE TO DENCRYPT
     }else{
         //UNKNOW ERROR
@@ -137,10 +141,46 @@
 {
     [self setWindowToTypeOfFile];
 }
+-(void)encode{
+//    while (1) {
+//        sleep(1);
+//    status++;
+//    if(status > 100) { 
+//        
+//        status = 0; 
+//        [progressBar setDoubleValue:0.0]; 
+//        [progressBar stopAnimation: self]; 
+//    } else {
+//        [progressBar setDoubleValue:(1.0 *status) ];
+//    }
+//    }
 
+//    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
+//                                             target:self selector:@selector(checkThem:) 
+//                                           userInfo:nil repeats:YES] ;
+
+      long option = [securityOption selectedTag];
+    status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];
+   // status = OK;
+//    int count =0;
+//    [progressBar startAnimation: self];
+//    while (1) {
+//        sleep(100);
+//        count++;
+//        [progressBar setDoubleValue:count];
+//    }
+//    [progressBar stopAnimation:self];
+//
+}
 -(IBAction)encryptButtonPushed:(id)sender
 {
-    
+    status = 0;
+    NSTimer *timer;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
+                                              target:self selector:@selector(checkThem:) 
+                                            userInfo:nil repeats:YES] ;
+   // [progressBar setDoubleValue:50];
+    [timer fire];
     int msgCode= 1;
     NSAlert * alert;
     long option = [securityOption selectedTag];
@@ -150,16 +190,20 @@
         msgCode = ERROR_PASSWORDS_DONT_MATCH;
         
     }else{
-        msgCode = [Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];     
+        [self performSelectorInBackground:@selector(encode) withObject:nil];
+    //    while (status == -50) {
+    //        sleep(1000);
+    //    }
+    //    msgCode = [Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];     
     }
-    alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
+//    alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
+//
+//    [alert setAlertStyle:NSInformationalAlertStyle];
+//    
+//    [alert runModal];
+//    if(msgCode == ENCODED)
+//        [self resetForm];
 
-    [alert setAlertStyle:NSInformationalAlertStyle];
-    
-    [alert runModal];
-    if(msgCode == ENCODED)
-        [self resetForm];
-    
     //   encodeQuick([filePath.stringValue UTF8String], [password.stringValue UTF8String]);
 }
 
@@ -272,6 +316,39 @@
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)sender
 {
     return YES;
+}
+-(void)checkThem:(NSTimer *)timer { 
+//    status++;
+//    if(status > 100) { 
+//        status = 0; 
+//        [timer invalidate]; 
+//         timer = NULL;
+//        [progressBar setDoubleValue:0.0]; 
+//        [progressBar stopAnimation: self]; 
+//    } else {
+//        [progressBar setDoubleValue:(1.0 *status) ];
+//    }
+    double progress;
+    if(_g_amount_done == 0 || _g_total_to_do == 0){
+        progress = 0.0;
+
+    }else{
+        progress = (_g_amount_done *100.0) / _g_total_to_do;
+
+    }
+    [progressBar setDoubleValue:progress];
+    NSLog(@"progress: %f total+ %lld, done %lld", progress,_g_total_to_do,  _g_amount_done);
+    if(progress < 100.0){
+        return;
+    }
+    NSAlert * alert = [NSAlert alertWithMessageText:[self getEncodeMessage:status] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
+    
+    [alert setAlertStyle:NSInformationalAlertStyle];
+    
+    [alert runModal];
+    if(status == ENCODED)
+        [self resetForm];
+    [timer invalidate];
 }
 
 

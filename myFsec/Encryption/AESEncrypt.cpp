@@ -24,6 +24,8 @@
 
 //#define AES_BLOCK_SIZE 512
 #define IV_SIZE  8
+extern long long  _g_total_to_do;
+extern long long _g_amount_done;
 using namespace std;
 void init_ctr(struct ctr_state *state, const unsigned char iv[8]);
 const char * findNoExistingFile(const char* fileName);
@@ -86,7 +88,7 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
     
     sHeader->extraSize = IV_SIZE;
     sHeader->extra.extra = myMalloc(IV_SIZE);
-    
+    _g_total_to_do = sHeader->fileSize;
     unsigned char iv[8];
     struct ctr_state state;
     
@@ -122,6 +124,7 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
         while((sizeReaded = file_in.readsome(buffer_in, AES_BLOCK_SIZE)) != 0){
             AES_ctr128_encrypt((const unsigned char*)buffer_in, (unsigned char*)buffer_out, (const unsigned long)sizeReaded , &aes_key, state.ivec, state.ecount, &state.num);
             file_out.write((const char*)buffer_out, sizeReaded);
+            _g_amount_done = file_in.tellg() ;
             
         }
         
@@ -149,7 +152,6 @@ int AES_decrypt (const char *fileName, const char *password, secureHeader* sHead
     {
         return ERROR_FILE_DOES_NOT_EXIST;
     }
-    
     
     unsigned long sizeReaded;
     char buffer_in[AES_BLOCK_SIZE];
