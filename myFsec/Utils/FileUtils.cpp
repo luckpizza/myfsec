@@ -42,7 +42,7 @@ char * getFileNameFromPath(const char * path)
  * @param path to the file we want to know the path
  * @return only the path without the last lvl. This should be freed but the user
  */
-char * getOnlyPath(const char * path)
+char * get_only_path_copy(const char * path)
 {
     char * ret = (char *)myMalloc(strlen(path) + 1);
     memcpy(ret, path, strlen(path) +1);

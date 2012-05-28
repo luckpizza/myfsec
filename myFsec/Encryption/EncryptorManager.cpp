@@ -70,8 +70,8 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
         return ERROR_FILE_DOES_NOT_EXIST;
     }
     if(sHeader->version == VERSION && sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
-       // return AES_encrypt(fileName, password, sHeader);
-         return encodeQuick(fileName, password, sHeader);
+        return AES_encrypt(fileName, password, sHeader);
+       //  return encodeQuick(fileName, password, sHeader);
     }
     myFree(sHeader);
     return ERROR_NOT_SUPPORTED;
@@ -85,7 +85,8 @@ int decodeDispacher(const char *fileName,const  char * password){
         return status;
     }
     if(sHeader.version == VERSION && sHeader.securityType ==SECURITY_TYPE_QUICKENCODE){
-        return decodeQuick(fileName, password,&sHeader);
+       // return decodeQuick(fileName, password,&sHeader);
+        return AES_decrypt(fileName, password, &sHeader);
     }
     return ERROR_NOT_SUPPORTED;
 }
@@ -121,7 +122,7 @@ int initDecoderHeader(const char *fileName, const char *password, secureHeader *
         return error;
     }
     file.read (reinterpret_cast<char*>(sHeader), sizeof(secureHeader));
-    hash_sha256((unsigned char*) password, SHA256Password);
+    hash_sha256_salt((unsigned char*) password, SHA256Password);
     debug("hashed password is \n");
     debugSHA256(SHA256Password);
     debug("password in the header is: \n");

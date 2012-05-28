@@ -40,13 +40,19 @@ void hash_md5(unsigned char* password,unsigned char * MD5Password)
     MD5((unsigned char*) passwordAndSalt, strlen(passwordAndSalt), MD5Password);
 
 }
-void hash_sha256(unsigned char* password,unsigned char * SHA256Password)
+
+void hash_sha256(unsigned char* password,unsigned char * SHA256Password){
+    SHA256((unsigned char*) password, strlen((char*)password), SHA256Password);
+
+}
+
+void hash_sha256_salt(unsigned char* password,unsigned char * SHA256Password)
 {
     char * passwordAndSalt =  ( char *)myMalloc(strlen((( const char*)password)) + strlen(SALT) + 1);
     strcpy(passwordAndSalt, SALT);
     strcat(passwordAndSalt, (const char*)password);
     SHA256((unsigned char*) passwordAndSalt, strlen(passwordAndSalt), SHA256Password);
-    
+
 }
 
 char * add_myFsec_extention_string(const char * fileName){
@@ -64,11 +70,17 @@ void addMyFsecExtention(const char * fileName){
 }
 
 void recoverOldExtention(const char *fileName, secureHeader * sHeader){
-    char * newFilePath = getOnlyPath(fileName);
+    char * newFilePath = get_only_path_copy(fileName);
     newFilePath = (char*) myRealloc(newFilePath, strlen(newFilePath) + strlen(sHeader->fileName) + 1);
      strcat(newFilePath, sHeader->fileName);
     rename(fileName, newFilePath);
     myFree(newFilePath);
+}
+char * recover_old_extention_copy(const char *fileName, secureHeader * sHeader){
+    char * newFilePath = get_only_path_copy(fileName);
+    newFilePath = (char*) myRealloc(newFilePath, strlen(newFilePath) + strlen(sHeader->fileName) + 1);
+    strcat(newFilePath, sHeader->fileName);
+    return newFilePath;
 }
                          
 //void sprint_md5_sum(unsigned char* md) {

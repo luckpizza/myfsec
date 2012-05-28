@@ -22,11 +22,13 @@
 
 void print_md5_sum(unsigned char* md); 
 void print_sha256_sum(unsigned char* md); 
-
-void hash_md5(unsigned char* password,unsigned char * MD5Password);
 void hash_sha256(unsigned char* password,unsigned char * SHA256Password);
+void hash_md5(unsigned char* password,unsigned char * MD5Password);
+void hash_sha256_salt(unsigned char* password,unsigned char * SHA256Password);
 char * add_myFsec_extention_string(const char * fileName);
 void addMyFsecExtention(const char * fileName);
 
 void recoverOldExtention(const char *fileName, secureHeader * sHeader);
+char * recover_old_extention_copy(const char *fileName, secureHeader * sHeader);
+
 #endif

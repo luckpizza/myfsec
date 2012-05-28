@@ -11,5 +11,5 @@
 #import "secureHeader.h"
 
 int AES_encrypt (const char *fileName, const char *password, secureHeader* sHeader);
-
+int AES_decrypt (const char *fileName, const char *password, secureHeader* sHeader);
 #endif

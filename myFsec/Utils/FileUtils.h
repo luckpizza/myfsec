@@ -22,6 +22,6 @@
 
 
 char * getFileNameFromPath(const char * path);
-char * getOnlyPath(const char * path);
+char * get_only_path_copy(const char * path);
 long get_filename_ext(const char *filename, char *ext);
 #endif

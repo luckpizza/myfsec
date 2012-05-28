@@ -55,7 +55,7 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     sHeader->extra.extra = NULL;
     sHeader->extraSize = 0;
     //pasword
-    hash_sha256((unsigned char*) password, SHA256Password);
+    hash_sha256_salt((unsigned char*) password, SHA256Password);
     memcpy(sHeader->password, SHA256Password, SHA256_DIGEST_LENGTH);
     
     //getting name of the file
