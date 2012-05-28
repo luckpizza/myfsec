@@ -10,8 +10,7 @@
 
 @interface Encryptor : NSObject
 
-+ (int) encodeQuick:(NSString *) path password: (NSString *) password;
-
++ (int) encodeDispacher:(NSString *) filePath password: (NSString *) password securityType:(int) security;
 
 + (int) decodeQuick:(NSString *) path password: (NSString *) password;
 

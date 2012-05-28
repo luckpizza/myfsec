@@ -12,9 +12,9 @@
 @implementation Encryptor
 
 
-+ (int) encodeQuick:(NSString *) filePath password: (NSString *) password
++ (int) encodeDispacher:(NSString *) filePath password: (NSString *) password securityType:(int) security
 {
-    return encodeDispacher([filePath UTF8String], [password UTF8String], 1, SECURITY_TYPE_QUICKENCODE );
+    return encodeDispacher([filePath UTF8String], [password UTF8String], 1, security );
 
     
 }

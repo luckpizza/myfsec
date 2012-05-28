@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "QuickEncode.h"
+#import "AESEncrypt.h"
+
 #import "Encryptor.h"
 #import "StateCodes.h"
 
@@ -22,7 +24,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securitySlider,fastLable, slowLable, lessSecureLable, moreSecureLable, securityLable, msgLable;
+@synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securitySlider,fastLable, slowLable, lessSecureLable, moreSecureLable, securityLable, msgLable, securityOption;
 
 -(BOOL)application:(NSApplication *)app openFile:(NSString *)filename
 {
@@ -63,8 +65,26 @@
     [self.encryptButton setEnabled:YES];
     [self.dencryptButton setEnabled:YES];
     [self.msgLable setStringValue:@""];
-    
+    [self.securityOption setHidden:YES];
 }
+
+- (int) getSecurityType:(long) option
+{
+    int rta = ERROR;
+    switch (option) {
+        case 0:
+            rta = SECURITY_TYPE_QUICKENCODE;
+            break;
+        case 1:
+            rta = SECURITY_TYPE_AES256;
+            break;
+        default:
+            rta = ERROR;
+            break;
+    }
+    return rta;
+}
+
 
 -(void) controlTextDidChange: (NSNotification *)notification
 {
@@ -98,6 +118,7 @@
         [self.fastLable setHidden:NO];
         [self.slowLable setHidden:NO];
         [self.securityLable setHidden:NO];
+        [self.securityOption setHidden:NO];
     }else if( fileType == OK)
     {
         [encryptButton setHidden:YES];
@@ -119,14 +140,17 @@
 
 -(IBAction)encryptButtonPushed:(id)sender
 {
+    
     int msgCode= 1;
     NSAlert * alert;
+    long option = [securityOption selectedTag];
+    NSLog(@"option is: %ld", option);
     if([[password stringValue] compare:[rePassword stringValue]] != 0)
     {
         msgCode = ERROR_PASSWORDS_DONT_MATCH;
         
     }else{
-        msgCode = [Encryptor encodeQuick:filePath.stringValue password:password.stringValue];     
+        msgCode = [Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];     
     }
     alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
 
@@ -224,11 +248,7 @@
             break;
     }
     return retMsg;
-    
-    
-    
-    
-    
+
 }
 
 /*

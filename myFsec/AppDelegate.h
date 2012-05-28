@@ -25,7 +25,8 @@
     NSSlider * securitySlider;
     NSTextField * rePasswordLable;
     NSTextField *msgLable;
-    
+    NSMatrix *securityOption;
+
 }
 @property (assign) IBOutlet NSWindow *window;
 @property (retain) IBOutlet NSTextField *filePath;
@@ -41,6 +42,7 @@
 @property (retain, nonatomic) IBOutlet NSTextField *securityLable;
 @property (retain, nonatomic) IBOutlet NSSlider * securitySlider;
 @property (retain, nonatomic) IBOutlet NSTextField *msgLable;
+@property (retain, nonatomic) IBOutlet NSMatrix *securityOption;
 
 
 //@property (nonatomic) IBAction

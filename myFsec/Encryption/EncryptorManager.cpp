@@ -66,29 +66,41 @@ int checkIfFileIsOurs(const char* fileName ){
 
 int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType){
     secureHeader * sHeader = createHeaderForFile(fileName, password, securityType, secureLevel);
+    int rta = ERROR;
     if(sHeader == NULL){
         return ERROR_FILE_DOES_NOT_EXIST;
     }
-    if(sHeader->version == VERSION && sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
-        return AES_encrypt(fileName, password, sHeader);
-       //  return encodeQuick(fileName, password, sHeader);
+    if(sHeader->version != VERSION){
+        rta = ERROR_NOT_SUPPORTED_VERSION;
+    }else if(sHeader->securityType == SECURITY_TYPE_AES256){
+        rta =  AES_encrypt(fileName, password, sHeader);
+    }else if(sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
+        rta = encodeQuick(fileName, password, sHeader);
+    }else{
+        rta = ERROR_NOT_SUPPORTED_ENCRYPTION;
     }
     myFree(sHeader);
-    return ERROR_NOT_SUPPORTED;
+    return rta;
 }
 
 int decodeDispacher(const char *fileName,const  char * password){
-  //  secureHeader * sHeader = getHeaderFromFile(fileName);
     secureHeader sHeader;
+    int rta = ERROR;
+
     int status = initDecoderHeader(fileName, password, &sHeader);
     if(status != DECODED){
         return status;
     }
-    if(sHeader.version == VERSION && sHeader.securityType ==SECURITY_TYPE_QUICKENCODE){
-       // return decodeQuick(fileName, password,&sHeader);
-        return AES_decrypt(fileName, password, &sHeader);
+    if(sHeader.version != VERSION){
+        rta = ERROR_NOT_SUPPORTED_VERSION;
+    }else if(sHeader.securityType == SECURITY_TYPE_AES256){
+        rta =  AES_decrypt(fileName, password, &sHeader);
+    }else if(sHeader.securityType == SECURITY_TYPE_QUICKENCODE){
+        rta = decodeQuick(fileName, password, &sHeader);
+    }else{
+        rta = ERROR_NOT_SUPPORTED_ENCRYPTION;
     }
-    return ERROR_NOT_SUPPORTED;
+    return rta;
 }
 
 
