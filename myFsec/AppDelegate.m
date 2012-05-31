@@ -42,20 +42,34 @@ extern long long _g_amount_done;
 }
 
 
+
+- (void)sheetDidEnd:(NSWindow *)sheet
+         returnCode:(int)returnCode
+        contextInfo:(void  *)contextInfo
+{
+//    UNUSED(sheet);
+//    UNUSED(contextInfo);
+//    m_returnCode = returnCode;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     //Service Provider declaration and update of system services
     [NSApp setServicesProvider: self];
     NSUpdateDynamicServices();
-    [_window makeFirstResponder:chooseFile];
-//    ProgressPanel * asd = [ProgressPanel new];
-//    
+//    [_window makeFirstResponder:chooseFile];
+  //  AppDelegate * del = [AppDelegate alloc
 //    NSWindow * pAbtWindow = [asd window];
-//
-//    [NSApp beginSheetModalForWindow:_window modalDelegate:self didEndSelector:@selector(didLoadBytes:loadComplete:) contextInfo:nil];
-//      
+//    ProgressPanel * asd = [[ProgressPanel alloc]init];
+//    [[NSApplication sharedApplication] beginSheet: asd
+//                                   modalForWindow: _window
+//                                    modalDelegate: self
+//                                   didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
+//                                      contextInfo: nil];
+//    
+//    [[NSApplication sharedApplication] runModalForWindow: asd];//      
     
-//    [NSApp runModalForWindow: pAbtWindow];
+//    [NSApp runModalForWindow: asd];
 
    // [NSBundle loadNibNamed: @"ProgressPanel" owner: self];
 //    [NSApp beginSheet: pAbtWindow
@@ -165,6 +179,8 @@ extern long long _g_amount_done;
 
     long option = [securityOption selectedTag];
     status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];
+    [self showStatusMsg];
+
 }
 -(IBAction)encryptButtonPushed:(id)sender
 {
@@ -175,7 +191,7 @@ extern long long _g_amount_done;
     NSLog(@"option is: %ld", option);
     if([[password stringValue] compare:[rePassword stringValue]] != 0)
     {
-        msgCode = ERROR_PASSWORDS_DONT_MATCH;
+        status = ERROR_PASSWORDS_DONT_MATCH;
         [self showStatusMsg];
 
     }else{
@@ -202,6 +218,8 @@ extern long long _g_amount_done;
 
 -(void)decode{
         status =[Encryptor decodeQuick:filePath.stringValue password:password.stringValue ];
+    [self showStatusMsg];
+
 }
 
 -(IBAction)dencryptButtonPushed:(id)sender
@@ -418,7 +436,6 @@ extern long long _g_amount_done;
         }
     }
     [timer invalidate];
-    [self showStatusMsg];
 }
 
 
