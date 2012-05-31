@@ -11,7 +11,6 @@
 #import "AESEncrypt.h"
 #import "Encryptor.h"
 #import "StateCodes.h"
-#import "ProgressPanel.h"
 #import "ProgressBarViewController.h"
 //#import "EncryptorManager.h"
 
@@ -23,16 +22,26 @@ extern long long _g_amount_done;
 
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
-@synthesize progressBar, status, progressBarViewController, idle;
+@synthesize progressBar, status, progressBarViewController, idle ;
 
 
+-(void)applicationWillFinishLaunching:(NSNotification *)notification
+{
+    idle = TRUE;
+}
 
 -(BOOL)application:(NSApplication *)app openFile:(NSString *)filename
 {
+    if(!idle){
+        NSAlert * alert = [NSAlert alertWithMessageText:[self getEncodeMessage:ERROR_APPLICATION_BUSSY] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert runModal];
+    }else{
     
-    [filePath setStringValue:filename];
-    [self setWindowToTypeOfFile];
-    NSLog(@"File name %@", filename);
+        [filePath setStringValue:filename];
+        [self setWindowToTypeOfFile];
+        NSLog(@"File name %@", filename);
+    }
     return YES;
 }
 
@@ -50,22 +59,10 @@ extern long long _g_amount_done;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    idle = TRUE;
     //Service Provider declaration and update of system services
     [NSApp setServicesProvider: self];
     NSUpdateDynamicServices();
-//    [_window makeFirstResponder:chooseFile];
-  //  AppDelegate * del = [AppDelegate alloc
-//    NSWindow * pAbtWindow = [asd window];
- //    [[NSApplication sharedApplication] runModalForWindow: asd.window ];//      
-    
-//    [NSApp runModalForWindow: asd];
-
-   // [NSBundle loadNibNamed: @"ProgressPanel" owner: self];
-//    [NSApp beginSheet: pAbtWindow
-//       modalForWindow: _window
-//        modalDelegate: self
-//       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
-//          contextInfo: nil];
 }
 
 -(void) resetForm
@@ -171,8 +168,6 @@ extern long long _g_amount_done;
     [[NSApplication sharedApplication] stopModal];
     [progressBarViewController.window orderOut:nil];
     [progressBarViewController.window close];
-//    [progressBarViewController close];
-//    [self showStatusMsg];
 
 }
 -(IBAction)encryptButtonPushed:(id)sender
@@ -257,13 +252,6 @@ extern long long _g_amount_done;
     [openDlg setCanChooseFiles:YES];
     // Disable the selection of directories in the dialog.
     [openDlg setCanChooseDirectories:NO];
- //   ProgressPanelViewController * panel = [ProgressPanelViewController new];
-//    if( progressPanel == nil)
-//        progressPanel = [[ProgressPanel alloc]init];
-//    //    progressPanel = [[ProgressPanelViewController alloc]initWithWindowNibName:@"ProgressPanel"];
-//  
-//    
-//    
 //    //create the file name label
 //    NSTextField* newFileNameLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 10, 300.0, 20.0)];
 //    //set properties

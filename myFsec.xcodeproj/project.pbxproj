@@ -11,7 +11,6 @@
 		EA310C46156EB42800B47DF4 /* AESEncrypt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA310C45156EB42800B47DF4 /* AESEncrypt.cpp */; };
 		EA8C795B1577BFE70023B1B5 /* ProgressBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8C795A1577BFE70023B1B5 /* ProgressBarViewController.m */; };
 		EA8C872C1574436D00CA7BA1 /* ProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8C872B1574436D00CA7BA1 /* ProgressPanel.xib */; };
-		EA8C873C15745FF500CA7BA1 /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8C873B15745FF500CA7BA1 /* ProgressPanel.m */; };
 		EA929912156486B900DA404D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA929911156486B900DA404D /* Cocoa.framework */; };
 		EA92991C156486B900DA404D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA92991A156486B900DA404D /* InfoPlist.strings */; };
 		EA92991E156486B900DA404D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA92991D156486B900DA404D /* main.m */; };
@@ -51,8 +50,6 @@
 		EA8C79591577BFE70023B1B5 /* ProgressBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressBarViewController.h; path = VIew/ProgressBarViewController.h; sourceTree = "<group>"; };
 		EA8C795A1577BFE70023B1B5 /* ProgressBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressBarViewController.m; path = VIew/ProgressBarViewController.m; sourceTree = "<group>"; };
 		EA8C872B1574436D00CA7BA1 /* ProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPanel.xib; sourceTree = "<group>"; };
-		EA8C873A15745FF500CA7BA1 /* ProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressPanel.h; path = myFsec/ProgressPanel.h; sourceTree = "<group>"; };
-		EA8C873B15745FF500CA7BA1 /* ProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressPanel.m; path = myFsec/ProgressPanel.m; sourceTree = "<group>"; };
 		EA92990D156486B900DA404D /* myFsec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myFsec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA929911156486B900DA404D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EA929914156486B900DA404D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -117,8 +114,6 @@
 		EA929902156486B900DA404D = {
 			isa = PBXGroup;
 			children = (
-				EA8C873A15745FF500CA7BA1 /* ProgressPanel.h */,
-				EA8C873B15745FF500CA7BA1 /* ProgressPanel.m */,
 				EA9299641564888B00DA404D /* libcrypto.dylib */,
 				EA929917156486B900DA404D /* myFsec */,
 				EA929934156486B900DA404D /* myFsecTests */,
@@ -374,7 +369,6 @@
 				EA929961156487FB00DA404D /* memoryUtils.cpp in Sources */,
 				EA310C3B1566FA8000B47DF4 /* EncryptorManager.cpp in Sources */,
 				EA310C46156EB42800B47DF4 /* AESEncrypt.cpp in Sources */,
-				EA8C873C15745FF500CA7BA1 /* ProgressPanel.m in Sources */,
 				EA8C795B1577BFE70023B1B5 /* ProgressBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

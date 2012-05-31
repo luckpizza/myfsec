@@ -21,6 +21,9 @@
     NSTextField * rePasswordLable;
     NSTextField *msgLable;
     NSMatrix *securityOption;
+    
+    BOOL idle;
+
 
 }
 @property (assign) IBOutlet NSWindow *window;

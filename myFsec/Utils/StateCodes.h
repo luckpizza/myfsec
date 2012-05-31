@@ -21,6 +21,7 @@
 #define ERROR_NOT_SUPPORTED_ENCRYPTION -6 //todo:error msg
 #define ERROR_NOT_SUPPORTED_VERSION -7 //todo:msg
 #define ERROR_PASSWORD -8 //TODO: MSG
+#define ERROR_APPLICATION_BUSSY -9
 #define FSEC_EXTENTION ".myfsec"
 
 
