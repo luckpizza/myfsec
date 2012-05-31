@@ -36,7 +36,6 @@
 @property (retain, nonatomic) IBOutlet NSTextField *securityLable;
 @property (retain, nonatomic) IBOutlet NSTextField *msgLable;
 @property (retain, nonatomic) IBOutlet NSMatrix *securityOption;
-@property (retain, nonatomic) IBOutlet NSProgressIndicator *progressBar;
 @property (retain, nonatomic) ProgressBarViewController * progressBarViewController;
 @property ( atomic) int status;
 @property (nonatomic) BOOL idle;

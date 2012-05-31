@@ -22,7 +22,7 @@ extern long long _g_amount_done;
 
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
-@synthesize progressBar, status, progressBarViewController, idle ;
+@synthesize  status, progressBarViewController, idle ;
 
 
 -(void)applicationWillFinishLaunching:(NSNotification *)notification
@@ -67,7 +67,6 @@ extern long long _g_amount_done;
 
 -(void) resetForm
 {
-    [self.progressBar setHidden:NO];
     [self.dencryptButton setHidden:YES];
     [self.encryptButton setHidden:YES];
     [self.rePasswordLable setHidden:YES];
@@ -114,13 +113,13 @@ extern long long _g_amount_done;
     int fileType;
     fileType = [Encryptor checkIfFileIsOurs:fileName];
     [self.msgLable setStringValue:@""];
-    [self.progressBar setHidden:YES];
     [self.rePasswordLable setHidden:YES];
     [self.rePassword setHidden:YES];
     [self.securityLable setHidden:YES];
     [self.securityOption setHidden:YES];
 
     [_window makeFirstResponder:password];
+    
     if(fileType == ERROR_FILE_DOES_NOT_EXIST)
     {
         [msgLable setStringValue:ERROR_FILE_DOES_NOT_EXIST_MSG];
@@ -130,7 +129,6 @@ extern long long _g_amount_done;
         //TODO: IF FILE DOES NOT EXIST
     }else if( fileType == ERROR_NOT_SUPPORTED)
     {        
-        [self.progressBar setHidden:NO];
         [self.encryptButton setEnabled:YES];
         [self.dencryptButton setHidden:YES];
         [self.encryptButton setHidden:NO];
@@ -140,7 +138,6 @@ extern long long _g_amount_done;
         [self.securityOption setHidden:NO];
     }else if( fileType == OK)
     {
-        [self.progressBar setHidden:NO];
         [encryptButton setHidden:YES];
         [dencryptButton setEnabled:YES];
         [dencryptButton setHidden:NO];
