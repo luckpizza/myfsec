@@ -12,6 +12,7 @@
 #import "Encryptor.h"
 #import "StateCodes.h"
 #import "ProgressPanel.h"
+#import "ProgressBarViewController.h"
 //#import "EncryptorManager.h"
 
 extern long long _g_total_to_do;
@@ -22,7 +23,7 @@ extern long long _g_amount_done;
 
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
-@synthesize progressBar, status, progressPanel;
+@synthesize progressBar, status, progressBarViewController, idle;
 
 
 
@@ -41,6 +42,9 @@ extern long long _g_amount_done;
          returnCode:(int)returnCode
         contextInfo:(void  *)contextInfo
 {
+    [[NSApplication sharedApplication] stopModal];
+    [progressBarViewController.window orderOut:nil];
+    [self showStatusMsg];
 
 }
 
@@ -52,14 +56,7 @@ extern long long _g_amount_done;
 //    [_window makeFirstResponder:chooseFile];
   //  AppDelegate * del = [AppDelegate alloc
 //    NSWindow * pAbtWindow = [asd window];
-//    ProgressPanel * asd = [[ProgressPanel alloc]init];
-//    [[NSApplication sharedApplication] beginSheet: asd
-//                                   modalForWindow: _window
-//                                    modalDelegate: self
-//                                   didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
-//                                      contextInfo: nil];
-//    
-//    [[NSApplication sharedApplication] runModalForWindow: asd];//      
+ //    [[NSApplication sharedApplication] runModalForWindow: asd.window ];//      
     
 //    [NSApp runModalForWindow: asd];
 
@@ -167,13 +164,22 @@ extern long long _g_amount_done;
 
     long option = [securityOption selectedTag];
     status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];
-    [self showStatusMsg];
+    while (!idle ) {
+        usleep(100);
+    }
+    [[NSApplication sharedApplication] endSheet:progressBarViewController.window];
+    [[NSApplication sharedApplication] stopModal];
+    [progressBarViewController.window orderOut:nil];
+    [progressBarViewController.window close];
+//    [progressBarViewController close];
+//    [self showStatusMsg];
 
 }
 -(IBAction)encryptButtonPushed:(id)sender
 {
     status = 0;
     NSTimer *timer;
+    idle= FALSE;
     long option = [securityOption selectedTag];
     NSLog(@"option is: %ld", option);
     if([[password stringValue] compare:[rePassword stringValue]] != 0)
@@ -186,26 +192,30 @@ extern long long _g_amount_done;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
                                                  target:self selector:@selector(checkThem:) 
                                                userInfo:nil repeats:YES] ;
+        progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
+        [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
+                                       modalForWindow: _window
+                                        modalDelegate: self
+                                       didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
+                                          contextInfo: nil];
+
         [timer fire];
     }
     
-
-
-//    alert = [NSAlert alertWithMessageText:[self getEncodeMessage:msgCode] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
-//
-//    [alert setAlertStyle:NSInformationalAlertStyle];
-//    
-//    [alert runModal];
-//    if(msgCode == ENCODED)
-//        [self resetForm];
-
-    //   encodeQuick([filePath.stringValue UTF8String], [password.stringValue UTF8String]);
 }
 
 
 -(void)decode{
-        status =[Encryptor decodeQuick:filePath.stringValue password:password.stringValue ];
-    [self showStatusMsg];
+    status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue ];
+    while (!idle ) {
+        sleep(1);
+    }
+
+    [NSApp endSheet:progressBarViewController.window];
+    [[NSApplication sharedApplication] stopModal];
+    [progressBarViewController.window orderOut:nil];
+    [progressBarViewController close];
+    [[NSApplication sharedApplication] abortModal];
 
 }
 
@@ -214,7 +224,7 @@ extern long long _g_amount_done;
     
     status = 0;
     NSTimer *timer;
-
+    idle = FALSE;
     if([password stringValue] ==  nil)
     {
         status = ERROR_PASSWORD;
@@ -225,6 +235,15 @@ extern long long _g_amount_done;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
                                                  target:self selector:@selector(checkThem:) 
                                                userInfo:nil repeats:YES] ;
+        
+        progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
+        [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
+                                       modalForWindow: _window
+                                        modalDelegate: self
+                                       didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
+                                          contextInfo: nil];
+        
+
         [timer fire];
     }
             
@@ -397,7 +416,7 @@ extern long long _g_amount_done;
     NSAlert * alert = [NSAlert alertWithMessageText:[self getEncodeMessage:status] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
     [alert setAlertStyle:NSInformationalAlertStyle];
     [alert beginSheetModalForWindow:_window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
-    
+    [_window makeKeyAndOrderFront:alert];
 }
 
 
@@ -411,13 +430,14 @@ extern long long _g_amount_done;
             progress = (_g_amount_done *100.0) / _g_total_to_do;
             
         }
-        [progressBar setDoubleValue:progress];
+        [progressBarViewController.progressIndicator setDoubleValue:progress];
         NSLog(@"progress: %f total+ %lld, done %lld", progress,_g_total_to_do,  _g_amount_done);
         if(progress < 100.0){
             return;
         }
     }
     [timer invalidate];
+    idle = TRUE;
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class ProgressPanel;
+@class ProgressBarViewController;
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     NSButton *encryptButton;
     NSButton *dencryptButton;
@@ -34,8 +34,9 @@
 @property (retain, nonatomic) IBOutlet NSTextField *msgLable;
 @property (retain, nonatomic) IBOutlet NSMatrix *securityOption;
 @property (retain, nonatomic) IBOutlet NSProgressIndicator *progressBar;
-@property (retain, nonatomic) ProgressPanel * progressPanel;
+@property (retain, nonatomic) ProgressBarViewController * progressBarViewController;
 @property ( atomic) int status;
+@property (nonatomic) BOOL idle;
 //@property (nonatomic) IBAction
 
 -(IBAction)encryptButtonPushed:(id)sender;

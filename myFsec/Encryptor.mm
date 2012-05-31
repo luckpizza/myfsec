@@ -20,7 +20,7 @@
 }
 
 
-+ (int) decodeQuick:(NSString *) filePath password: (NSString *) password
++ (int) decodeDispacher:(NSString *) filePath password: (NSString *) password
 {
     return decodeDispacher([filePath UTF8String], [password UTF8String]);
 

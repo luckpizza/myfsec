@@ -12,7 +12,7 @@
 
 + (int) encodeDispacher:(NSString *) filePath password: (NSString *) password securityType:(int) security;
 
-+ (int) decodeQuick:(NSString *) path password: (NSString *) password;
++ (int) decodeDispacher:(NSString *) path password: (NSString *) password;
 
 + (int) checkIfFileIsOurs:(NSString*) filePath;
 

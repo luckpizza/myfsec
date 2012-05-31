@@ -8,7 +8,7 @@
 
 #import <AppKit/AppKit.h>
 
-@interface ProgressPanel : NSPanel
+@interface ProgressPanel : NSWindowController
 @property (retain, nonatomic) IBOutlet NSProgressIndicator * progressIndicator;
 @property (retain, nonatomic) IBOutlet NSWindow * window;
 
