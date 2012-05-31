@@ -22,7 +22,6 @@
 #include "EncryptorManager.h"
 #include <openssl/sha.h>
 
-//#define AES_BLOCK_SIZE 512
 #define IV_SIZE  8
 extern long long  _g_total_to_do;
 extern long long _g_amount_done;

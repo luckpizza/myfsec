@@ -14,12 +14,6 @@
 #import "ProgressPanel.h"
 //#import "EncryptorManager.h"
 
-#define  DECODE_MSG @"File Decoded Succesful!!"
-#define  ENCODED_MSG @"File Encoded Successfully!!"
-#define  ERROR_NOT_SUPPORTED_MSG @"File is not encoded buy us, choos another file!"
-#define  ERROR_WRONG_PASSWORD_MSG @"Wrong password!"
-#define  ERROR_FILE_DOES_NOT_EXIST_MSG @"The file does not exist or can't be open!"
-#define  ERROR_PASSWORDS_DONT_MATCH_MSG @"Passwords don't match, please verify your password"
 extern long long _g_total_to_do;
 extern long long _g_amount_done;
 
@@ -27,7 +21,7 @@ extern long long _g_amount_done;
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securitySlider,fastLable, slowLable, lessSecureLable, moreSecureLable, securityLable, msgLable, securityOption;
+@synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
 @synthesize progressBar, status, progressPanel;
 
 
@@ -47,9 +41,7 @@ extern long long _g_amount_done;
          returnCode:(int)returnCode
         contextInfo:(void  *)contextInfo
 {
-//    UNUSED(sheet);
-//    UNUSED(contextInfo);
-//    m_returnCode = returnCode;
+
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -86,11 +78,6 @@ extern long long _g_amount_done;
     [self.encryptButton setHidden:YES];
     [self.rePasswordLable setHidden:YES];
     [self.rePassword setHidden:YES];
-    [self.lessSecureLable setHidden:YES];
-    [self.securitySlider setHidden:YES];
-    [self.moreSecureLable setHidden:YES];
-    [self.fastLable setHidden:YES];
-    [self.slowLable setHidden:YES];
     [self.securityLable setHidden:YES];
     [self.rePasswordLable setHidden:YES];
     [self.rePassword setHidden:YES];
@@ -134,12 +121,18 @@ extern long long _g_amount_done;
     fileType = [Encryptor checkIfFileIsOurs:fileName];
     [self.msgLable setStringValue:@""];
     [self.progressBar setHidden:YES];
+    [self.rePasswordLable setHidden:YES];
+    [self.rePassword setHidden:YES];
+    [self.securityLable setHidden:YES];
+    [self.securityOption setHidden:YES];
+
     [_window makeFirstResponder:password];
     if(fileType == ERROR_FILE_DOES_NOT_EXIST)
     {
         [msgLable setStringValue:ERROR_FILE_DOES_NOT_EXIST_MSG];
         [self.encryptButton setEnabled:NO];
         [self.dencryptButton setEnabled:NO];
+
         //TODO: IF FILE DOES NOT EXIST
     }else if( fileType == ERROR_NOT_SUPPORTED)
     {        
@@ -149,11 +142,6 @@ extern long long _g_amount_done;
         [self.encryptButton setHidden:NO];
         [self.rePasswordLable setHidden:NO];
         [self.rePassword setHidden:NO];
-        [self.lessSecureLable setHidden:NO];
-        [self.securitySlider setHidden:NO];
-        [self.moreSecureLable setHidden:NO];
-        [self.fastLable setHidden:NO];
-        [self.slowLable setHidden:NO];
         [self.securityLable setHidden:NO];
         [self.securityOption setHidden:NO];
     }else if( fileType == OK)
@@ -186,7 +174,6 @@ extern long long _g_amount_done;
 {
     status = 0;
     NSTimer *timer;
-    int msgCode= 1;
     long option = [securityOption selectedTag];
     NSLog(@"option is: %ld", option);
     if([[password stringValue] compare:[rePassword stringValue]] != 0)
@@ -245,11 +232,6 @@ extern long long _g_amount_done;
 
 -(IBAction)chooseFileButtonPushed:(id)sender
 {
-    
-    
-//    ASLogDebug(@"Show file open panel");
-    
-    NSString *dir = nil;
     
     NSOpenPanel *openDlg = [NSOpenPanel openPanel];
     // Enable the selection of files in the dialog.

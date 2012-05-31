@@ -24,4 +24,12 @@
 #define FSEC_EXTENTION ".myfsec"
 
 
+#define  DECODE_MSG @"File Decoded Succesful!!"
+#define  ENCODED_MSG @"File Encoded Successfully!!"
+#define  ERROR_NOT_SUPPORTED_MSG @"File is not encoded buy us, choos another file!"
+#define  ERROR_WRONG_PASSWORD_MSG @"Wrong password!"
+#define  ERROR_FILE_DOES_NOT_EXIST_MSG @"The file does not exist or can't be open!"
+#define  ERROR_PASSWORDS_DONT_MATCH_MSG @"Passwords don't match, please verify your password"
+
+
 #endif

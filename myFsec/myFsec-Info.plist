@@ -63,7 +63,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Encrypt File</string>
+				<string>Encrypt or Decrypt File</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>encrypt</string>
