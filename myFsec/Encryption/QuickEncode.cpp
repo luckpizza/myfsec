@@ -19,7 +19,8 @@
 #include "encryptUtils.h"
 #include "Utils.h"
 #include "EncryptorManager.h"
-
+extern double _g_total_to_do;
+extern double _g_amount_done;
 
 int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader);
 int checkIfFileIsOurs(std::fstream* file );
@@ -50,14 +51,14 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
     memset(buffer, 0, sizeof(secureHeader));
 
     if (file.is_open() )
-    {
+    {        
+        _g_total_to_do = sHeader->fileSize;
+
         file.seekg (0);
         if((sizeReaded = file.readsome (buffer, sizeof(secureHeader))) < sizeof(secureHeader))
         {
             debug( "File is smaller than Header");//sizeof(sHeader));
-       //     file.clear();
         }
-     //   sizeReaded =file.gcount();
         //Writting header to file
         file.seekp(0,ios::beg);
         file.write(reinterpret_cast<char*>(sHeader), sizeof(secureHeader) );
@@ -66,7 +67,8 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
         file.write(reinterpret_cast<char*>(buffer), sizeReaded);
         file.flush();
         file.close();
-            
+        _g_amount_done = sHeader->fileSize;
+
     } else {
         return ERROR_FILE_DOES_NOT_EXIST;
     }
@@ -89,13 +91,9 @@ int decodeQuick(const char *fileName, const char *password, secureHeader * sHead
         return ERROR_FILE_DOES_NOT_EXIST;
     }
     int msgCode = DECODED;
- //   secureHeader sHeader;
     long long fileSizeMoved;
     char buffer[sizeof(secureHeader)];
-   
-//    if((msgCode = initDecoderHeader(fileName, password, &sHeader))!= DECODED){
-//        return msgCode;
-//    }
+    _g_total_to_do = sHeader->fileSize;
     fstream file (fileName, ios::in | ios::out | ios::binary);
     if(!file.is_open()){
         return ERROR_FILE_DOES_NOT_EXIST;
@@ -113,6 +111,8 @@ int decodeQuick(const char *fileName, const char *password, secureHeader * sHead
     file.write(reinterpret_cast<char*>(buffer), fileSizeMoved);
     file.flush();
     file.close();
+    _g_amount_done = sHeader->fileSize;
+
     //Truncating the file to its oroginal size
     truncate(fileName, sHeader->fileSize);
     debug( "the complete file content is in memory");

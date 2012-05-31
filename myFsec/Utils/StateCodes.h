@@ -20,6 +20,7 @@
 #define ERROR_PASSWORDS_DONT_MATCH -4
 #define ERROR_NOT_SUPPORTED_ENCRYPTION -6 //todo:error msg
 #define ERROR_NOT_SUPPORTED_VERSION -7 //todo:msg
+#define ERROR_PASSWORD -8 //TODO: MSG
 #define FSEC_EXTENTION ".myfsec"
 
 

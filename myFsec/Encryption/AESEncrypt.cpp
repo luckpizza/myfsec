@@ -50,6 +50,8 @@ void init_ctr(struct ctr_state *state, const unsigned char iv[8])
     /* Copy IV into 'ivec' */
     memcpy(state->ivec, iv, 8);
 }
+
+
 const char * findNoExistingFile(const char* fileName)
 {
     return fileName;
@@ -101,7 +103,6 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
     memcpy(&iv[4], &random, 4);
     memcpy(sHeader->extra.extra, iv, IV_SIZE);
     
-   // memset(iv, 0, IV_SIZE);
     
     init_ctr(&state, iv);
     AES_KEY aes_key;
@@ -154,6 +155,7 @@ int AES_decrypt (const char *fileName, const char *password, secureHeader* sHead
     }
     
     unsigned long sizeReaded;
+    long long totalDone = 0;
     char buffer_in[AES_BLOCK_SIZE];
     unsigned char buffer_out[ AES_BLOCK_SIZE];
     hash_sha256((unsigned char*) password, SHA256Password);
@@ -185,10 +187,12 @@ int AES_decrypt (const char *fileName, const char *password, secureHeader* sHead
     if (AES_set_encrypt_key(SHA256Password, SHA256_DIGEST_LENGTH * 8, &aes_key)){
         return ERROR_WRONG_PASSWORD;
     }
-    
+    _g_total_to_do = sHeader->fileSize;
     while((sizeReaded = file_in.readsome(buffer_in, AES_BLOCK_SIZE)) != 0){
         AES_ctr128_encrypt((const unsigned char*)buffer_in, (unsigned char*)buffer_out, (const unsigned long)sizeReaded , &aes_key, state.ivec, state.ecount, &state.num);
         file_out.write((const char*)buffer_out, sizeReaded);
+        totalDone +=sizeReaded;
+        _g_amount_done = totalDone ;
     }    
     file_out.flush();
     file_in.close();

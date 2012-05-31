@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+@class ProgressPanel;
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     NSButton *encryptButton;
     NSButton *dencryptButton;
@@ -44,6 +44,7 @@
 @property (retain, nonatomic) IBOutlet NSTextField *msgLable;
 @property (retain, nonatomic) IBOutlet NSMatrix *securityOption;
 @property (retain, nonatomic) IBOutlet NSProgressIndicator *progressBar;
+@property (retain, nonatomic) ProgressPanel * progressPanel;
 @property ( atomic) int status;
 //@property (nonatomic) IBAction
 
@@ -53,5 +54,8 @@
 -(NSString *) getEncodeMessage:(int) msgCode;
 -(void) setWindowToTypeOfFile;
 - (void)encrypt:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error;
+-(void) showStatusMsg;
+-(void)checkThem:(NSTimer *)timer;
+
 
 @end
