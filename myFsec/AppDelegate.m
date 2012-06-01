@@ -70,6 +70,10 @@ extern long long _g_amount_done;
 
 -(void) resetForm
 {
+    if(viewMoment == BIG_VIEW){
+        [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 250)  display:YES animate:YES];
+        viewMoment = SMALL_VIEW;
+    }
     [self.dencryptButton setHidden:YES];
     [self.encryptButton setHidden:YES];
     [self.rePasswordLable setHidden:YES];
@@ -173,12 +177,25 @@ extern long long _g_amount_done;
     [self setWindowToTypeOfFile];
 }
 -(void)encode{
+    NSTimer *timer;
+
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
+                                             target:self selector:@selector(checkThem:) 
+                                           userInfo:nil repeats:YES] ;
+    progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
+    [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
+                                   modalForWindow: _window
+                                    modalDelegate: self
+                                   didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
+                                      contextInfo: nil];
+    
 
     long option = [securityOption selectedTag];
+    [timer fire];
     status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];
-    while (!idle ) {
-        usleep(100);
-    }
+
+    [timer invalidate];
+    idle = TRUE;
     [[NSApplication sharedApplication] endSheet:progressBarViewController.window];
     [[NSApplication sharedApplication] stopModal];
     [progressBarViewController.window orderOut:nil];
@@ -188,7 +205,6 @@ extern long long _g_amount_done;
 -(IBAction)encryptButtonPushed:(id)sender
 {
     status = 0;
-    NSTimer *timer;
     idle= FALSE;
     long option = [securityOption selectedTag];
     NSLog(@"option is: %ld", option);
@@ -199,28 +215,31 @@ extern long long _g_amount_done;
 
     }else{
         [self performSelectorInBackground:@selector(encode) withObject:nil];
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
-                                                 target:self selector:@selector(checkThem:) 
-                                               userInfo:nil repeats:YES] ;
-        progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
-        [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
-                                       modalForWindow: _window
-                                        modalDelegate: self
-                                       didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
-                                          contextInfo: nil];
-
-        [timer fire];
     }
     
 }
 
 
 -(void)decode{
-    status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue ];
-    while (!idle ) {
-        sleep(1);
-    }
+    NSTimer *timer;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
+                                             target:self selector:@selector(checkThem:) 
+                                           userInfo:nil repeats:YES] ;
+    progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
+    [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
+                                   modalForWindow: _window
+                                    modalDelegate: self
+                                   didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
+                                      contextInfo: nil];
+    
 
+    [timer fire];
+
+    status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue ];
+//    while (!idle ) {
+//        sleep(1);
+//    }
+    [timer invalidate];
     [NSApp endSheet:progressBarViewController.window];
     [[NSApplication sharedApplication] stopModal];
     [progressBarViewController.window orderOut:nil];
@@ -233,8 +252,9 @@ extern long long _g_amount_done;
 {
     
     status = 0;
-    NSTimer *timer;
     idle = FALSE;
+    if(viewMoment == BIG_VIEW)
+        return ;
     if([password stringValue] ==  nil)
     {
         status = ERROR_PASSWORD;
@@ -242,19 +262,8 @@ extern long long _g_amount_done;
         
     }else{
         [self performSelectorInBackground:@selector(decode) withObject:nil];
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
-                                                 target:self selector:@selector(checkThem:) 
-                                               userInfo:nil repeats:YES] ;
-        
-        progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
-        [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
-                                       modalForWindow: _window
-                                        modalDelegate: self
-                                       didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
-                                          contextInfo: nil];
         
 
-        [timer fire];
     }
             
 }
@@ -263,30 +272,14 @@ extern long long _g_amount_done;
 {
     
     NSOpenPanel *openDlg = [NSOpenPanel openPanel];
+    [_window makeFirstResponder:filePath];
+
     // Enable the selection of files in the dialog.
     [openDlg setCanChooseFiles:YES];
     // Disable the selection of directories in the dialog.
     [openDlg setCanChooseDirectories:NO];
-//    //create the file name label
-//    NSTextField* newFileNameLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 10, 300.0, 20.0)];
-//    //set properties
-//    [newFileNameLabel setBordered: NO];
-//    [newFileNameLabel setTextColor: [NSColor whiteColor]];
-//    [newFileNameLabel setDrawsBackground:NO];
-//    [newFileNameLabel setEditable:NO];
-//    [newFileNameLabel setStringValue: @"File Name:"];
-//    
-//  //  [[progressPanel attachedSheet ] addSubview:newFileNameLabel];
-////    NSWindow *asd = [[NSWindow alloc]init];
-//    [[NSApplication sharedApplication] beginSheet:progressPanel.window modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil];
-//    [[NSApplication sharedApplication] runModalForWindow: progressPanel];
 
-    //  [[NSApplication sharedApplication] runModalForWindow: progressPanel];
-
- //   [NSBundle loadNibNamed: @"ProgressPanel" owner: self];
-
- //  [NSApp beginSheet:progressPanel  modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil];
-   // [NSApp runModalForWindow:[progressPanel window]];
+    [_window makeKeyAndOrderFront:openDlg];
     [openDlg beginSheetModalForWindow:_window completionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton) {
           
@@ -314,47 +307,7 @@ extern long long _g_amount_done;
 
                   }
     }];
-    {
-    //VIM COMDE
-//    [panel setAllowsMultipleSelection:YES];
-////    [panel setAccessoryView:showHiddenFilesView()];
-//#if (MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_6)
-//    // NOTE: -[NSOpenPanel runModalForDirectory:file:types:] is deprecated on
-//    // 10.7 but -[NSOpenPanel setDirectoryURL:] requires 10.6 so jump through
-//    // the following hoops on 10.6+.
-//    dir = [dir stringByExpandingTildeInPath];
-//    if (dir) {
-//        NSURL *dirURL = [NSURL fileURLWithPath:dir isDirectory:YES];
-//        if (dirURL)
-//            [panel setDirectoryURL:dirURL];
-//    }
-//    
-//    NSInteger result = [panel runModal];
-//#else
-//    NSInteger result = [panel runModalForDirectory:dir file:nil types:nil];
-//#endif
-//    if (NSOKButton == result) {
-//        // NOTE: -[NSOpenPanel filenames] is deprecated on 10.7 so use
-//        // -[NSOpenPanel URLs] instead.  The downside is that we have to check
-//        // that each URL is really a path first.
-//        NSMutableArray *filenames = [NSMutableArray array];
-//        NSArray *urls = [panel URLs];
-//        NSUInteger i, count = [urls count];
-//        for (i = 0; i < count; ++i) {
-//            NSURL *url = [urls objectAtIndex:i];
-//            if ([url isFileURL]) {
-//                NSString *path = [url path];
-//                if (path)
-//                    [filenames addObject:path];
-//            }
-//        }
-//        
-//        if ([filenames count] > 0)
-//            [self application:NSApp openFiles:filenames];
-//    }
-
     
-    }
 }
 
 
@@ -439,8 +392,8 @@ extern long long _g_amount_done;
             return;
         }
     }
-    [timer invalidate];
-    idle = TRUE;
+//    [timer invalidate];
+//    idle = TRUE;
 }
 
 
