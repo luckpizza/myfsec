@@ -73,6 +73,8 @@ void recoverOldExtention(const char *fileName, secureHeader * sHeader){
     char * newFilePath = get_only_path_copy(fileName);
     newFilePath = (char*) myRealloc(newFilePath, strlen(newFilePath) + strlen(sHeader->fileName) + 1);
      strcat(newFilePath, sHeader->fileName);
+    printHeader(sHeader);
+    fprintf(stderr, "newFile is %s", newFilePath);
     rename(fileName, newFilePath);
     myFree(newFilePath);
 }

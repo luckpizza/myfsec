@@ -18,7 +18,8 @@
 
 char * getFileNameFromPath(const char * path)
 {
-    return strrchr(path, '/');
+    
+    return (strrchr(path, '/')) + 1;
     
 }
 
@@ -47,7 +48,7 @@ char * get_only_path_copy(const char * path)
     char * ret = (char *)myMalloc(strlen(path) + 1);
     memcpy(ret, path, strlen(path) +1);
     char * lastPathRef = strrchr(ret, '/');
-    *lastPathRef = '\0';
+    *(lastPathRef + 1) = '\0';
     debug("only path is= %s \n",ret);
     return ret;
     

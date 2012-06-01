@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 //#define DEBUG
-#define DEBUG1 
+#define DEBUG1 1
 #include <iostream>
 #include <fstream>
 #include "QuickEncode.h"

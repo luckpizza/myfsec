@@ -7,10 +7,13 @@
 //
 #include <openssl/md5.h>
 #include <openssl/sha.h>
-
 #ifndef fsec_secureHeader_h
 #define fsec_secureHeader_h
-
+#ifdef DEBUG1
+#define debugprintHeader(header) printHeader(header)
+#else
+#define debugprintHeader(header) 
+#endif
 
 typedef struct secHeader{
     __int32_t signature;

@@ -5,7 +5,7 @@
 //  Created by Lucas Pizzagalli on 5/18/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
+#define DEBUG1 1
 #include "EncryptorManager.h"
 #include "QuickEncode.h"
 #include "secureHeader.h"
@@ -152,6 +152,8 @@ int initDecoderHeader(const char *fileName, const char *password, secureHeader *
         debug( "wrong password!");
         return  ERROR_WRONG_PASSWORD;
     }
+    printHeader(sHeader);
+
     file.close();
     return DECODED;
     

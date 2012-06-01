@@ -5,7 +5,7 @@
 //  Created by Lucas PIzzagalli on 9/1/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
-#define DEBUG1 
+#define DEBUG1 1
 
 #include <iostream>
 #include "secureHeader.h"
@@ -77,6 +77,7 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     } else {
         return NULL;
     }
+    printHeader(sHeader);
     file.close();
     return sHeader;
 }
@@ -107,6 +108,7 @@ secureHeader * getHeaderFromFile(const char *fileName) {
         return NULL;
     }   
     file.close();
+    printHeader(sHeader);
     debug("FINISHING GETTING HEADER FROM FILE");
     return sHeader ;
     
