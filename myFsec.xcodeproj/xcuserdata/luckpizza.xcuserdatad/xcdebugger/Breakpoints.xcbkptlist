@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186044.064933"
+         timestampString = "360187084.7785"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
          landmarkName = "-applicationDidFinishLaunching:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -63,11 +63,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "154"
-         endingLineNumber = "154"
+         startingLineNumber = "172"
+         endingLineNumber = "172"
          landmarkName = "-pathFileFilled:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -77,11 +77,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "155"
-         endingLineNumber = "155"
+         startingLineNumber = "173"
+         endingLineNumber = "173"
          landmarkName = "-pathFileFilled:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -91,11 +91,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360187118.440548"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
          landmarkName = "-setWindowToTypeOfFile"
          landmarkType = "5">
       </FileBreakpoint>
@@ -215,11 +215,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "177"
-         endingLineNumber = "177"
+         startingLineNumber = "195"
+         endingLineNumber = "195"
          landmarkName = "-encryptButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -229,11 +229,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360187084.7785"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
          landmarkName = "-getSecurityType:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -243,11 +243,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "390"
-         endingLineNumber = "390"
+         startingLineNumber = "408"
+         endingLineNumber = "408"
          landmarkName = "-applicationShouldTerminateAfterLastWindowClosed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -257,11 +257,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186044.064933"
+         timestampString = "360187084.7785"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
          landmarkName = "-applicationDidFinishLaunching:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -271,11 +271,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "183"
-         endingLineNumber = "183"
+         startingLineNumber = "201"
+         endingLineNumber = "201"
          landmarkName = "-encryptButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -313,11 +313,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "271"
-         endingLineNumber = "271"
+         startingLineNumber = "289"
+         endingLineNumber = "289"
          landmarkName = "-chooseFileButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -397,11 +397,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "201"
-         endingLineNumber = "201"
+         startingLineNumber = "219"
+         endingLineNumber = "219"
          landmarkName = "-decode"
          landmarkType = "5">
       </FileBreakpoint>
@@ -411,11 +411,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "217"
-         endingLineNumber = "217"
+         startingLineNumber = "235"
+         endingLineNumber = "235"
          landmarkName = "-dencryptButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -425,11 +425,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "394"
-         endingLineNumber = "394"
+         startingLineNumber = "412"
+         endingLineNumber = "412"
          landmarkName = "-alertDidEnd:returnCode:contextInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -439,11 +439,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "411"
-         endingLineNumber = "411"
+         startingLineNumber = "429"
+         endingLineNumber = "429"
          landmarkName = "-checkThem:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -453,11 +453,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "410"
-         endingLineNumber = "410"
+         startingLineNumber = "428"
+         endingLineNumber = "428"
          landmarkName = "-checkThem:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -467,11 +467,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "424"
-         endingLineNumber = "424"
+         startingLineNumber = "442"
+         endingLineNumber = "442"
          landmarkName = "-checkThem:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -481,11 +481,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "222"
-         endingLineNumber = "222"
+         startingLineNumber = "240"
+         endingLineNumber = "240"
          landmarkName = "-dencryptButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -495,11 +495,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "179"
-         endingLineNumber = "179"
+         startingLineNumber = "197"
+         endingLineNumber = "197"
          landmarkName = "-encryptButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -509,11 +509,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186044.064933"
+         timestampString = "360187084.7785"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
          landmarkName = "-sheetDidEnd:returnCode:contextInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -523,12 +523,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
-         timestampString = "360186571.77514"
+         timestampString = "360203461.222959"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "159"
-         endingLineNumber = "159"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-encode"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "myFsec/AppDelegate.m"
+         timestampString = "360203461.222959"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "156"
+         endingLineNumber = "156"
+         landmarkName = "-setWindowToTypeOfFile"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

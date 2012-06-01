@@ -22,11 +22,13 @@ extern long long _g_amount_done;
 
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
-@synthesize  status, progressBarViewController, idle ;
+@synthesize  status, progressBarViewController, idle, viewMoment ;
 
 
 -(void)applicationWillFinishLaunching:(NSNotification *)notification
 {
+    [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y, [_window frame].size.width, 250)  display:YES animate:YES];
+    viewMoment = SMALL_VIEW;
     idle = TRUE;
 }
 
@@ -63,6 +65,7 @@ extern long long _g_amount_done;
     //Service Provider declaration and update of system services
     [NSApp setServicesProvider: self];
     NSUpdateDynamicServices();
+
 }
 
 -(void) resetForm
@@ -108,6 +111,8 @@ extern long long _g_amount_done;
 
 -(void) setWindowToTypeOfFile
 {
+ //   [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y, [_window frame].size.width, 250)  display:YES animate:YES];
+
     // filePath controlTextDidChange:
     NSString *fileName = [filePath stringValue];
     int fileType;
@@ -117,18 +122,27 @@ extern long long _g_amount_done;
     [self.rePassword setHidden:YES];
     [self.securityLable setHidden:YES];
     [self.securityOption setHidden:YES];
-
+    
     [_window makeFirstResponder:password];
     
     if(fileType == ERROR_FILE_DOES_NOT_EXIST)
     {
+        if(viewMoment == BIG_VIEW){
+            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 250)  display:YES animate:YES];
+            viewMoment = SMALL_VIEW;
+        }
         [msgLable setStringValue:ERROR_FILE_DOES_NOT_EXIST_MSG];
         [self.encryptButton setEnabled:NO];
         [self.dencryptButton setEnabled:NO];
 
         //TODO: IF FILE DOES NOT EXIST
     }else if( fileType == ERROR_NOT_SUPPORTED)
-    {        
+    {   
+        if(viewMoment == SMALL_VIEW){
+            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y-140 , [_window frame].size.width, 390)  display:YES animate:YES];
+            viewMoment = BIG_VIEW;
+        }
+
         [self.encryptButton setEnabled:YES];
         [self.dencryptButton setHidden:YES];
         [self.encryptButton setHidden:NO];
@@ -138,6 +152,10 @@ extern long long _g_amount_done;
         [self.securityOption setHidden:NO];
     }else if( fileType == OK)
     {
+        if(viewMoment ==BIG_VIEW){
+            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 250)  display:YES animate:YES];
+            viewMoment = SMALL_VIEW;
+        }
         [encryptButton setHidden:YES];
         [dencryptButton setEnabled:YES];
         [dencryptButton setHidden:NO];

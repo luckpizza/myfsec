@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#define SMALL_VIEW 1
+#define BIG_VIEW 2
 @class ProgressBarViewController;
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     NSButton *encryptButton;
@@ -39,6 +41,7 @@
 @property (retain, nonatomic) ProgressBarViewController * progressBarViewController;
 @property ( atomic) int status;
 @property (nonatomic) BOOL idle;
+@property (nonatomic) int viewMoment;
 //@property (nonatomic) IBAction
 
 -(IBAction)encryptButtonPushed:(id)sender;
