@@ -51,7 +51,6 @@
 -(void) setWindowToTypeOfFile;
 - (void)encrypt:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error;
 -(void) showStatusMsg;
--(void)checkThem:(NSTimer *)timer;
-
+-(void)progresIndicatorUpdater:(NSTimer *)timer;
 
 @end

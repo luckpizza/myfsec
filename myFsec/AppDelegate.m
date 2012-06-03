@@ -32,6 +32,9 @@ extern long long _g_amount_done;
     idle = TRUE;
 }
 
+/**
+ * Code to be executed if a ".myfsec" file is double clicked!
+ */
 -(BOOL)application:(NSApplication *)app openFile:(NSString *)filename
 {
     if(!idle){
@@ -47,7 +50,9 @@ extern long long _g_amount_done;
     return YES;
 }
 
-
+/**
+ *  Code executed when the progress bar should not be shown any more
+ */
 
 - (void)sheetDidEnd:(NSWindow *)sheet
          returnCode:(int)returnCode
@@ -57,6 +62,22 @@ extern long long _g_amount_done;
     [progressBarViewController.window orderOut:nil];
     [self showStatusMsg];
 
+}
+
+/**
+ * 
+ */
+-(int) commonChecks
+{
+    if([[password stringValue] length] == 0)
+    {
+        return ERROR_PASSWORD;
+    }
+    if([[filePath stringValue] length] == 0)
+    {
+        return ERROR_CHOOSE_A_FILE;
+    }
+    return OK;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -115,9 +136,6 @@ extern long long _g_amount_done;
 
 -(void) setWindowToTypeOfFile
 {
- //   [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y, [_window frame].size.width, 250)  display:YES animate:YES];
-
-    // filePath controlTextDidChange:
     NSString *fileName = [filePath stringValue];
     int fileType;
     fileType = [Encryptor checkIfFileIsOurs:fileName];
@@ -176,96 +194,144 @@ extern long long _g_amount_done;
 {
     [self setWindowToTypeOfFile];
 }
--(void)encode{
-    NSTimer *timer;
 
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
-                                             target:self selector:@selector(checkThem:) 
-                                           userInfo:nil repeats:YES] ;
-    progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
-    [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
-                                   modalForWindow: _window
-                                    modalDelegate: self
-                                   didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
-                                      contextInfo: nil];
+ /*
+  * -(void) finishingTask
+  * Code that has to be executed after a file has already been encrypted/decrypted
+  * For now: remove the modal panel with the progress bar
+  *
+  */
+-(void) finishingTask
+{
+    [[NSApplication sharedApplication] endSheet:progressBarViewController.window];
+    [[NSApplication sharedApplication] stopModal];
+    [progressBarViewController.window orderOut:nil];
+    [progressBarViewController.window close];
+}
+
+/**
+ * -(void) encode:(NSTimer*) timer
+ *  Call this function to perform the encode of a file, this is ment to be 
+ *  called in a different thread. This will start timer, ecnrypt file and 
+ *  stop timer and remove progress bar
+ *  timer: Timer setted up buy caller to perform a progress status bar.
+ *
+ */
+
+-(void)encode:(NSTimer *) timer{
     
-
+    if(timer == nil){
+        status = ERROR_UNKNOWN;
+        return;
+    }
+    
     long option = [securityOption selectedTag];
     [timer fire];
     status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];
 
     [timer invalidate];
+    [self performSelectorOnMainThread:@selector(finishingTask) withObject:nil waitUntilDone:YES];
     idle = TRUE;
-    [[NSApplication sharedApplication] endSheet:progressBarViewController.window];
-    [[NSApplication sharedApplication] stopModal];
-    [progressBarViewController.window orderOut:nil];
-    [progressBarViewController.window close];
+  
 
 }
+/**
+ *  Action of the encryt button
+ */
 -(IBAction)encryptButtonPushed:(id)sender
 {
-    status = 0;
+      status = 0;
     idle= FALSE;
     long option = [securityOption selectedTag];
     NSLog(@"option is: %ld", option);
-    if([[password stringValue] compare:[rePassword stringValue]] != 0)
+    if( (status = [self commonChecks]) != OK)
+    {
+        [self showStatusMsg];
+    }    else if([[password stringValue] compare:[rePassword stringValue]] != 0)
     {
         status = ERROR_PASSWORDS_DONT_MATCH;
         [self showStatusMsg];
+        idle = TRUE;
+        return;
 
     }else{
-        [self performSelectorInBackground:@selector(encode) withObject:nil];
+        NSTimer *timer;
+        
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
+                                                 target:self selector:@selector(progresIndicatorUpdater:) 
+                                               userInfo:nil repeats:YES] ;
+
+        [self performSelectorInBackground:@selector(encode:) withObject:timer];
+        progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
+        [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
+                                       modalForWindow: _window
+                                        modalDelegate: self
+                                       didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
+                                          contextInfo: nil];
+        
     }
     
-}
-
-
--(void)decode{
-    NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
-                                             target:self selector:@selector(checkThem:) 
-                                           userInfo:nil repeats:YES] ;
-    progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
-    [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
-                                   modalForWindow: _window
-                                    modalDelegate: self
-                                   didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
-                                      contextInfo: nil];
+  
     
+}
+/**
+ * -(void) decode:(NSTimer*) timer
+ *  Call this function to perform the decode of a file, this is ment to be 
+ *  called in a different thread. This will start timer, decrypt file and 
+ *  stop timer and remove progress bar
+ *  timer: Timer setted up buy caller to perform a progress status bar.
+ *
+ */
 
+-(void)decode:(NSTimer*) timer
+{
+ 
+    if(timer == nil){
+        status = ERROR_UNKNOWN;
+        return;
+    }
     [timer fire];
 
     status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue ];
-//    while (!idle ) {
-//        sleep(1);
-//    }
     [timer invalidate];
-    [NSApp endSheet:progressBarViewController.window];
-    [[NSApplication sharedApplication] stopModal];
-    [progressBarViewController.window orderOut:nil];
-    [progressBarViewController close];
-    [[NSApplication sharedApplication] abortModal];
+    [self performSelectorOnMainThread:@selector(finishingTask) withObject:nil waitUntilDone:YES];
+    idle = TRUE;
 
 }
-
+/*
+ *  Action of the decrypt button
+ */
 -(IBAction)dencryptButtonPushed:(id)sender
 {
-    
+
     status = 0;
     idle = FALSE;
     if(viewMoment == BIG_VIEW)
         return ;
-    if([password stringValue] ==  nil)
+
+    if( (status = [self commonChecks]) != OK)
     {
-        status = ERROR_PASSWORD;
         [self showStatusMsg];
-        
     }else{
-        [self performSelectorInBackground:@selector(decode) withObject:nil];
+        // IF no errors, setup timer, to start and decode async!
+        NSTimer *timer;
+        
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
+                                                 target:self selector:@selector(progresIndicatorUpdater:) 
+                                               userInfo:nil repeats:YES] ;
         
 
+        [self performSelectorInBackground:@selector(decode:) withObject:timer];
+        // show the progres bar in a diferent panel
+        progressBarViewController = [[ProgressBarViewController alloc] initWithWindowNibName:@"ProgressPanel"];
+        [[NSApplication sharedApplication] beginSheet: progressBarViewController.window
+                                       modalForWindow: _window
+                                        modalDelegate: self
+                                       didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:)
+                                          contextInfo: nil];
     }
-            
+  
+
 }
 
 -(IBAction)chooseFileButtonPushed:(id)sender
@@ -376,7 +442,7 @@ extern long long _g_amount_done;
 }
 
 
--(void)checkThem:(NSTimer *)timer { 
+-(void)progresIndicatorUpdater:(NSTimer *)timer { 
     double progress;
     if(timer != nil){
         if(_g_amount_done == 0 || _g_total_to_do == 0){
@@ -392,8 +458,6 @@ extern long long _g_amount_done;
             return;
         }
     }
-//    [timer invalidate];
-//    idle = TRUE;
 }
 
 
