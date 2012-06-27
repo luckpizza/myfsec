@@ -8,6 +8,11 @@
 
 #ifndef fsec_memoryUtils_h
 #define fsec_memoryUtils_h
+#ifndef RELEASE
+#define myFree(x) free(x); x = NULL
+#else
+#define myFree(x) free(x)
+#endif
 
 
 void * myMalloc(unsigned long size);

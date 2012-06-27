@@ -28,8 +28,3 @@
 #endif
 
 
-#ifndef RELEASE
-#define myFree(x) free(x); x = NULL
-#else
-#define myFree(x) free(x)
-#endif
