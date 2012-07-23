@@ -5,10 +5,9 @@
 //  Created by Lucas PIzzagalli on 7/31/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-#include <openssl/md5.h>
-#include <openssl/sha.h>
 #ifndef fsec_secureHeader_h
 #define fsec_secureHeader_h
+#include <openssl/sha.h>
 #ifdef DEBUG1
 #define debugprintHeader(header) printHeader(header)
 #else

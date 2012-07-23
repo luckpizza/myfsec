@@ -23,7 +23,7 @@
     NSTextField * rePasswordLable;
     NSTextField *msgLable;
     NSMatrix *securityOption;
-    
+    int status;
     BOOL idle;
 
 
@@ -39,7 +39,7 @@
 @property (retain, nonatomic) IBOutlet NSTextField *msgLable;
 @property (retain, nonatomic) IBOutlet NSMatrix *securityOption;
 @property (retain, nonatomic) ProgressBarViewController * progressBarViewController;
-@property ( atomic) int status;
+@property ( ) int status;
 @property (nonatomic) BOOL idle;
 @property (nonatomic) int viewMoment;
 //@property (nonatomic) IBAction

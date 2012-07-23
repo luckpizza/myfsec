@@ -10,6 +10,8 @@
 
 @interface ProgressBarViewController : NSWindowController
 @property(retain, nonatomic)IBOutlet NSProgressIndicator *progressIndicator;
+@property (retain, nonatomic) IBOutlet NSButton *cancelButton;
+-(IBAction)cancelButton:(id)sender;
 
 @end
 

@@ -7,9 +7,9 @@
 //
 
 #import "ProgressBarViewController.h"
-
+#import "EncryptorManager.h"
 @implementation ProgressBarViewController
-@synthesize progressIndicator;
+@synthesize progressIndicator, cancelButton;
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
@@ -25,6 +25,10 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+}
+-(IBAction)cancelButton:(id)sender
+{
+    cancelProcess();
 }
 
 @end

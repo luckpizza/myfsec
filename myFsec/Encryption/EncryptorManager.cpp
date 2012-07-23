@@ -27,6 +27,7 @@
 using namespace std;
 long long  _g_total_to_do;
 long long _g_amount_done;
+int cancel;
 
 int checkIfFileIsOurs(std::fstream* file ){
     int status = OK;
@@ -67,6 +68,7 @@ int checkIfFileIsOurs(const char* fileName ){
 }
 
 int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType){
+    cancel = 0;
     secureHeader * sHeader = createHeaderForFile(fileName, password, securityType, secureLevel);
     int rta = ERROR;
     if(sHeader == NULL){
@@ -86,6 +88,7 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
 }
 
 int decodeDispacher(const char *fileName,const  char * password){
+    cancel = 0;
     secureHeader sHeader;
     int rta = ERROR;
 
@@ -159,5 +162,8 @@ int initDecoderHeader(const char *fileName, const char *password, secureHeader *
     
 }
 
-
+void cancelProcess()
+{
+    cancel = CANCEL;
+}
 

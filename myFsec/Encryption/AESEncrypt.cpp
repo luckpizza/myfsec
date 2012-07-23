@@ -25,6 +25,7 @@
 #define IV_SIZE  8
 extern long long  _g_total_to_do;
 extern long long _g_amount_done;
+extern int cancel;
 using namespace std;
 void init_ctr(struct ctr_state *state, const unsigned char iv[8]);
 const char * findNoExistingFile(const char* fileName);
@@ -125,6 +126,11 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
             AES_ctr128_encrypt((const unsigned char*)buffer_in, (unsigned char*)buffer_out, (const unsigned long)sizeReaded , &aes_key, state.ivec, state.ecount, &state.num);
             file_out.write((const char*)buffer_out, sizeReaded);
             _g_amount_done = file_in.tellg() ;
+            if(cancel == CANCEL)
+            {
+                return CANCEL_PROCESS;
+                //TODO: clean up everything!!!
+            }
             
         }
         
@@ -192,6 +198,12 @@ int AES_decrypt (const char *fileName, const char *password, secureHeader* sHead
         file_out.write((const char*)buffer_out, sizeReaded);
         totalDone +=sizeReaded;
         _g_amount_done = totalDone ;
+        if(cancel == CANCEL)
+        {
+            return CANCEL_PROCESS;
+            //TODO: clean up everything!!!
+        }
+
     }    
     file_out.flush();
     file_in.close();
