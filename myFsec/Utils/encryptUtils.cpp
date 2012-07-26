@@ -39,8 +39,8 @@ void print_sha256_sum(unsigned char* md) {
 //
 //}
 
-void hash_sha256(unsigned char* password,unsigned char * SHA256Password){
-    SHA256((unsigned char*) password, strlen((char*)password), SHA256Password);
+void hash_sha256(unsigned char* password,int lenght, unsigned char * SHA256Password){
+    SHA256((unsigned char*) password, lenght, SHA256Password);
 
 }
 
@@ -83,6 +83,23 @@ char * recover_old_extention_copy(const char *fileName, secureHeader * sHeader){
     newFilePath = (char*) myRealloc(newFilePath, strlen(newFilePath) + strlen(sHeader->fileName) + 1);
     strcat(newFilePath, sHeader->fileName);
     return newFilePath;
+}
+/**
+ *  xorg_bytes:
+ * Does the xor byte by byte of the 2 given arrays and stores the result in dst
+ * return OK if no error paramenter, ERROR if error;
+ */
+
+int xor_bytes(const char * src1, int src1_lenght, const char * src2, int src2_lenght, char * dst)
+{
+    int i = 0;
+    if(src1 == NULL || src2 == NULL || src1 <= 0 || src2 <= 0)
+        return ERROR;
+    while( i < src2_lenght && i < src1_lenght){
+        dst[i] = src1[i] ^ src2[i];
+        ++i;
+    }
+    return OK;
 }
 
 int random_k_bytes(char * bytes, int k)

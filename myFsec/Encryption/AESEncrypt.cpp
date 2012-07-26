@@ -22,6 +22,7 @@
 #include "EncryptorManager.h"
 #include <openssl/sha.h>
 
+#define encrypt_cleanup_macro         free(xored_password);
 #define IV_SIZE  8
 extern long long  _g_total_to_do;
 extern long long _g_amount_done;
@@ -77,14 +78,16 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
         return ERROR_FILE_DOES_NOT_EXIST;
     }
     
-    hash_sha256((unsigned char*) password, SHA256Password);
+    //Making the password ready to know if the it is right or wrong
+    char * xored_password = (char*)myMalloc(strlen(password) +1);
+    memcpy(xored_password, password, strlen(password) + 1);
+    xor_bytes(password, strlen(password), sHeader->salt, sHeader->saltLength, xored_password);
+    hash_sha256((unsigned char*) xored_password, strlen(password), SHA256Password);
   
     unsigned long sizeReaded;
     char buffer_in[AES_BLOCK_SIZE];
     unsigned char buffer_out[AES_BLOCK_SIZE];
-   // memset(buffer_out, 0, 5*AES_BLOCK_SIZE);
     char * newFileName = add_myFsec_extention_string(fileName);
-    //    memset(buffer, 0, sizeof(secureHeader));
     fstream file_in (fileName, ios::in | ios::binary);
     ofstream file_out (newFileName, ios::out | ios::binary);
     
@@ -110,6 +113,7 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
     if (AES_set_encrypt_key(SHA256Password, SHA256_DIGEST_LENGTH * 8, &aes_key)){
         /* Handle the error */;
         //TODO: 
+        encrypt_cleanup_macro
         return ERROR_WRONG_PASSWORD;
     }
     
@@ -127,6 +131,7 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
             _g_amount_done = file_in.tellg() ;
             if(cancel == CANCEL)
             {
+                encrypt_cleanup_macro
                 return CANCEL_PROCESS;
                 //TODO: clean up everything!!!
             }
@@ -142,8 +147,10 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
         file_out.close();
         
     } else {
+        encrypt_cleanup_macro
         return ERROR_FILE_DOES_NOT_EXIST;
     }
+    encrypt_cleanup_macro
     debug("FINISHING ENCRYPT");
     return ENCODED;
     
@@ -152,17 +159,22 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
 
 int AES_decrypt (const char *fileName, const char *password, secureHeader* sHeader){
     unsigned char SHA256Password[SHA256_DIGEST_LENGTH];
-    
+
     if(fileName == NULL || *fileName == '\0' || sHeader == NULL)
     {
         return ERROR_FILE_DOES_NOT_EXIST;
     }
+    //Making the password ready to know if the it is right or wrong
+    char * xored_password = (char*)myMalloc(strlen(password) +1);
+    memcpy(xored_password, password, strlen(password) + 1);
+    xor_bytes(password, strlen(password), sHeader->salt, sHeader->saltLength, xored_password);
+    hash_sha256((unsigned char*) xored_password, strlen(password), SHA256Password);
+
     
     unsigned long sizeReaded;
     long long totalDone = 0;
     char buffer_in[AES_BLOCK_SIZE];
     unsigned char buffer_out[ AES_BLOCK_SIZE];
-    hash_sha256((unsigned char*) password, SHA256Password);
     
     char * newFileName = recover_old_extention_copy(fileName, sHeader);
     fstream file_in (fileName, ios::in | ios::binary);
@@ -183,7 +195,6 @@ int AES_decrypt (const char *fileName, const char *password, secureHeader* sHead
     
     memcpy(iv, sHeader->extra.extra, IV_SIZE);
     
-    //memset(iv, 0, IV_SIZE);
     
     init_ctr(&state, iv);
     AES_KEY aes_key;

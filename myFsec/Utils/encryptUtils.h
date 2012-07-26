@@ -22,11 +22,18 @@
 
 void print_md5_sum(unsigned char* md); 
 void print_sha256_sum(unsigned char* md); 
-void hash_sha256(unsigned char* password,unsigned char * SHA256Password);
+void hash_sha256(unsigned char* password,int lenght, unsigned char * SHA256Password);
 void hash_md5(unsigned char* password,unsigned char * MD5Password);
 void hash_sha256_salt(unsigned char* password, char* salt,int salt_length, unsigned char * SHA256Password);
 char * add_myFsec_extention_string(const char * fileName);
 void addMyFsecExtention(const char * fileName);
+/**
+ *  xorg_bytes:
+ * Does the xor byte by byte of the 2 given arrays and stores the result in dst
+ * return OK if no error paramenter, ERROR if error;
+ */
+
+int xor_bytes(const char * src1, int src1_lenght, const char * src2, int src2_lenght, char * dst);
 
 void recoverOldExtention(const char *fileName, secureHeader * sHeader);
 char * recover_old_extention_copy(const char *fileName, secureHeader * sHeader);
