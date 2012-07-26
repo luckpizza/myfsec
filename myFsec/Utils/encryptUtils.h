@@ -24,11 +24,18 @@ void print_md5_sum(unsigned char* md);
 void print_sha256_sum(unsigned char* md); 
 void hash_sha256(unsigned char* password,unsigned char * SHA256Password);
 void hash_md5(unsigned char* password,unsigned char * MD5Password);
-void hash_sha256_salt(unsigned char* password,unsigned char * SHA256Password);
+void hash_sha256_salt(unsigned char* password, char* salt,int salt_length, unsigned char * SHA256Password);
 char * add_myFsec_extention_string(const char * fileName);
 void addMyFsecExtention(const char * fileName);
 
 void recoverOldExtention(const char *fileName, secureHeader * sHeader);
 char * recover_old_extention_copy(const char *fileName, secureHeader * sHeader);
+/**
+ *  This functions fills the byte array with random k chars.
+ *  bytes: pointer to the bytes that want to be filled with random data.
+ *  k: amount of bytes in the bytes pointer
+ *  returns OK if ok, ERROR if any error (ej: k <=0)
+ */
+int random_k_bytes(char * bytes, int k);
 
 #endif

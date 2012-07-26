@@ -13,6 +13,7 @@
 #else
 #define debugprintHeader(header) 
 #endif
+#define SALT_LENGTH 16
 
 typedef struct secHeader{
     __int32_t signature;
@@ -24,6 +25,8 @@ typedef struct secHeader{
     __int32_t securityType;
     char fileName[255];
     __int32_t extraSize;
+    __int32_t saltLength;
+    char salt[SALT_LENGTH];
     union u_exra{
         void * extra;
         char don_use[8]; //in order to be the same length in 32 and 64 bits

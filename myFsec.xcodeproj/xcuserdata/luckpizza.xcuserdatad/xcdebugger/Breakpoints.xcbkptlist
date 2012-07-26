@@ -467,11 +467,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/secureHeader.cpp"
-         timestampString = "360276092.714035"
+         timestampString = "364961022.318985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
+         startingLineNumber = "115"
+         endingLineNumber = "115"
          landmarkName = "getHeaderFromFile(const char *fileName)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -481,11 +481,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/secureHeader.cpp"
-         timestampString = "360276101.370718"
+         timestampString = "364961022.318985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
          landmarkName = "createHeaderForFile(const char *fileName,const char * password, int securityType, int securityLevel)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -495,35 +495,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/secureHeader.cpp"
-         timestampString = "360276315.617493"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "104"
-         endingLineNumber = "104"
-         landmarkName = "getHeaderFromFile(const char *fileName)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "myFsec/Encryption/secureHeader.cpp"
-         timestampString = "360276317.567802"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
-         landmarkName = "getHeaderFromFile(const char *fileName)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "myFsec/Encryption/secureHeader.cpp"
-         timestampString = "360276318.901863"
+         timestampString = "364961022.318985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "108"
@@ -537,11 +509,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/secureHeader.cpp"
-         timestampString = "360276336.530491"
+         timestampString = "364961022.318985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "107"
+         endingLineNumber = "107"
          landmarkName = "getHeaderFromFile(const char *fileName)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -551,11 +523,39 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/secureHeader.cpp"
-         timestampString = "360276338.169214"
+         timestampString = "364961022.318985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "89"
-         endingLineNumber = "89"
+         startingLineNumber = "112"
+         endingLineNumber = "112"
+         landmarkName = "getHeaderFromFile(const char *fileName)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "myFsec/Encryption/secureHeader.cpp"
+         timestampString = "364961022.318985"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
+         landmarkName = "getHeaderFromFile(const char *fileName)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "myFsec/Encryption/secureHeader.cpp"
+         timestampString = "364961022.318985"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
          landmarkName = "getHeaderFromFile(const char *fileName)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -579,11 +579,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Utils/encryptUtils.cpp"
-         timestampString = "360280985.135864"
+         timestampString = "364961022.318985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "73"
-         endingLineNumber = "73"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
          landmarkName = "recoverOldExtention(const char *fileName, secureHeader * sHeader)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -593,13 +593,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Utils/encryptUtils.cpp"
-         timestampString = "360280987.671707"
+         timestampString = "364961022.318985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
-         landmarkName = "recover_old_extention_copy(const char *fileName, secureHeader * sHeader)"
-         landmarkType = "7">
+         startingLineNumber = "81"
+         endingLineNumber = "81">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

@@ -14,41 +14,41 @@
 #include "encryptUtils.h"
 #include "Utils.h"
 
-#define SALT "*&^%"    
-unsigned char result[MD5_DIGEST_LENGTH];
 
 // Print the MD5 sum as hex-digits.
-void print_md5_sum(unsigned char* md) {
-    int i;
-    for(i=0; i <MD5_DIGEST_LENGTH; i++) {
-        printf("%02x",md[i]);
-    }
-}
+//DEPRECATED
+//void print_md5_sum(unsigned char* md) {
+//    int i;
+//    for(i=0; i <MD5_DIGEST_LENGTH; i++) {
+//        printf("%02x",md[i]);
+//    }
+//}
 void print_sha256_sum(unsigned char* md) {
     int i;
     for(i=0; i <SHA256_DIGEST_LENGTH; i++) {
         printf("%02x",md[i]);
     }
 }
-
-void hash_md5(unsigned char* password,unsigned char * MD5Password)
-{
-     char * passwordAndSalt =  ( char *)myMalloc(strlen((( const char*)password)) + strlen(SALT) + 1);
-    strcpy(passwordAndSalt, SALT);
-    strcat(passwordAndSalt, (const char*)password);
-    MD5((unsigned char*) passwordAndSalt, strlen(passwordAndSalt), MD5Password);
-
-}
+//DEPRECATED
+//void hash_md5(unsigned char* password,unsigned char * MD5Password)
+//{
+//     char * passwordAndSalt =  ( char *)myMalloc(strlen((( const char*)password)) + strlen(SALT) + 1);
+//    strcpy(passwordAndSalt, SALT);
+//    strcat(passwordAndSalt, (const char*)password);
+//    MD5((unsigned char*) passwordAndSalt, strlen(passwordAndSalt), MD5Password);
+//
+//}
 
 void hash_sha256(unsigned char* password,unsigned char * SHA256Password){
     SHA256((unsigned char*) password, strlen((char*)password), SHA256Password);
 
 }
 
-void hash_sha256_salt(unsigned char* password,unsigned char * SHA256Password)
+void hash_sha256_salt(unsigned char* password, char* salt,int salt_length, unsigned char * SHA256Password)
 {
-    char * passwordAndSalt =  ( char *)myMalloc(strlen((( const char*)password)) + strlen(SALT) + 1);
-    strcpy(passwordAndSalt, SALT);
+    char * passwordAndSalt =  ( char *)myMalloc(strlen((( const char*)password)) + salt_length + 1);
+    memcpy(passwordAndSalt, salt, salt_length);
+    passwordAndSalt[salt_length] = '\0';
     strcat(passwordAndSalt, (const char*)password);
     SHA256((unsigned char*) passwordAndSalt, strlen(passwordAndSalt), SHA256Password);
 
@@ -77,11 +77,27 @@ void recoverOldExtention(const char *fileName, secureHeader * sHeader){
     rename(fileName, newFilePath);
     myFree(newFilePath);
 }
+
 char * recover_old_extention_copy(const char *fileName, secureHeader * sHeader){
     char * newFilePath = get_only_path_copy(fileName);
     newFilePath = (char*) myRealloc(newFilePath, strlen(newFilePath) + strlen(sHeader->fileName) + 1);
     strcat(newFilePath, sHeader->fileName);
     return newFilePath;
+}
+
+int random_k_bytes(char * bytes, int k)
+{
+    int i = 0;
+    int tmp = 0;
+    int to_copy = 0;
+   if(k <= 0 )
+       return ERROR;
+    for (i = 0; i < k; i+=sizeof(int)) {
+        tmp = rand();
+        k - i < sizeof(int) ?to_copy=k-i:to_copy = sizeof(int);
+        memcpy(&bytes[i], &tmp, to_copy);
+    }
+    return OK;
 }
                          
 //void sprint_md5_sum(unsigned char* md) {

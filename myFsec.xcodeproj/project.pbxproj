@@ -15,7 +15,7 @@
 		EA92991C156486B900DA404D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA92991A156486B900DA404D /* InfoPlist.strings */; };
 		EA92991E156486B900DA404D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA92991D156486B900DA404D /* main.m */; };
 		EA929922156486B900DA404D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = EA929920156486B900DA404D /* Credits.rtf */; };
-		EA929925156486B900DA404D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA929924156486B900DA404D /* AppDelegate.m */; };
+		EA929925156486B900DA404D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA929924156486B900DA404D /* AppDelegate.mm */; };
 		EA929928156486B900DA404D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA929926156486B900DA404D /* MainMenu.xib */; };
 		EA929930156486B900DA404D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA92992F156486B900DA404D /* SenTestingKit.framework */; };
 		EA929931156486B900DA404D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA929911156486B900DA404D /* Cocoa.framework */; };
@@ -61,7 +61,7 @@
 		EA92991F156486B900DA404D /* myFsec-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myFsec-Prefix.pch"; sourceTree = "<group>"; };
 		EA929921156486B900DA404D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		EA929923156486B900DA404D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		EA929924156486B900DA404D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EA929924156486B900DA404D /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		EA929927156486B900DA404D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		EA92992E156486B900DA404D /* myFsecTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myFsecTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA92992F156486B900DA404D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -160,7 +160,7 @@
 				EA92994D156487FB00DA404D /* Encryptor.mm */,
 				EA929951156487FB00DA404D /* Utils */,
 				EA929923156486B900DA404D /* AppDelegate.h */,
-				EA929924156486B900DA404D /* AppDelegate.m */,
+				EA929924156486B900DA404D /* AppDelegate.mm */,
 				EA929918156486B900DA404D /* Supporting Files */,
 			);
 			path = myFsec;
@@ -360,7 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA92991E156486B900DA404D /* main.m in Sources */,
-				EA929925156486B900DA404D /* AppDelegate.m in Sources */,
+				EA929925156486B900DA404D /* AppDelegate.mm in Sources */,
 				EA92995A156487FB00DA404D /* QuickEncode.cpp in Sources */,
 				EA92995B156487FB00DA404D /* secureHeader.cpp in Sources */,
 				EA92995C156487FB00DA404D /* Encryptor.mm in Sources */,

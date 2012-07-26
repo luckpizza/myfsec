@@ -28,7 +28,7 @@ using namespace std;
 void printHeader(secureHeader * sHeader)
 {
     fprintf(stderr, "signature %d \n version %d \n password", sHeader->signature, sHeader->version);
-    print_md5_sum(sHeader->password);
+   // print_md5_sum(sHeader->password);
     fprintf(stderr, "\n headerSize %d \n file size: %lld \n file Name: %s \n", sHeader->headerSize, sHeader->fileSize, sHeader->fileName);
     
      
@@ -37,6 +37,7 @@ void printHeader(secureHeader * sHeader)
 secureHeader * createHeaderForFile(const char *fileName,const  char * password, int securityType, int securityLevel){
 //   // unsigned char MD5Password[MD5_DIGEST_LENGTH];
     unsigned char SHA256Password[SHA256_DIGEST_LENGTH];
+    char salt[SALT_LENGTH];
     if(fileName == NULL || *fileName == '\0')
     {
         return NULL;
@@ -45,7 +46,6 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     fstream file (fileName, ios::in | ios::out | ios::binary);
     secureHeader *sHeader = (secureHeader *)myMalloc(sizeof(secureHeader));
     memset(sHeader, 0, sizeof(secureHeader));
-
     //static content
     sHeader->signature = SIGNATURE;
     sHeader->version = VERSION;
@@ -54,8 +54,12 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
     sHeader->headerSize = sizeof(secureHeader);
     sHeader->extra.extra = NULL;
     sHeader->extraSize = 0;
+    //salt
+    sHeader->saltLength = SALT_LENGTH;
+    random_k_bytes(salt, SALT_LENGTH);
+    memcpy(sHeader->salt, salt, SALT_LENGTH);
     //pasword
-    hash_sha256_salt((unsigned char*) password, SHA256Password);
+    hash_sha256_salt((unsigned char*) password,sHeader->salt, sHeader->saltLength, SHA256Password);
     memcpy(sHeader->password, SHA256Password, SHA256_DIGEST_LENGTH);
     
     //getting name of the file

@@ -139,7 +139,7 @@ int initDecoderHeader(const char *fileName, const char *password, secureHeader *
         return error;
     }
     file.read (reinterpret_cast<char*>(sHeader), sizeof(secureHeader));
-    hash_sha256_salt((unsigned char*) password, SHA256Password);
+    hash_sha256_salt((unsigned char*) password,sHeader->salt, sHeader->saltLength, SHA256Password);
     debug("hashed password is \n");
     debugSHA256(SHA256Password);
     debug("password in the header is: \n");

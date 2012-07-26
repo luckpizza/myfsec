@@ -96,7 +96,6 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
     
     
     
-    srand((unsigned int)time(NULL));
     int random = rand();
     memcpy(iv, &random, 4);
     random = rand();
