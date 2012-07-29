@@ -17,18 +17,19 @@
 #include "encryptUtils.h"
 #include "Utils.h"
 #include "AESEncrypt.h"
-/**
- * This function verify if a file has the our internal structure (so it has been encrypted buy us
- * @param the fstream to the file we want to verify
- * @return OK if the file is our ERROR_NOT_SUPPORTED if not
- *
- */
 
 using namespace std;
 long long  _g_total_to_do;
 long long _g_amount_done;
 int cancel;
 
+/**
+ * @function int checkIfFileIsOurs(std::fstream* file )
+ * This function verify if a file has our internal structure (so it has been encrypted buy us
+ * @param the fstream to the file we want to verify
+ * @return OK if the file is our ERROR_NOT_SUPPORTED if not
+ *
+ */
 int checkIfFileIsOurs(std::fstream* file ){
     int status = OK;
     
@@ -37,13 +38,13 @@ int checkIfFileIsOurs(std::fstream* file ){
     //Checking if file is supported 
     if(!(*file).read (reinterpret_cast<char*>(&sHeader), sizeof(sHeader)))
     {
-        std::cout << "File doesnt seem to be encrypted";
+        error("File doesnt seem to be encrypted");
         status= ERROR_NOT_SUPPORTED;
     }else{
         printHeader(&sHeader);
         if(sHeader.signature != SIGNATURE || sHeader.version != VERSION || sHeader.headerSize != sizeof(sHeader)  )
         {
-            std::cout << "File does not seems to be encrypted by us, sorry";
+            error("File does not seems to be encrypted by us, sorry");
             status = ERROR_NOT_SUPPORTED;
         }
     }
@@ -52,7 +53,13 @@ int checkIfFileIsOurs(std::fstream* file ){
     
 }
 
-
+/**
+ * @function int checkIfFileIsOurs(const char* fileName )
+ * This function verify if a file exists, and has our internal structure (so it has been encrypted buy us
+ * @param the fstream to the file we want to verify
+ * @return OK if the file is our ERROR_NOT_SUPPORTED if not
+ *
+ */
 int checkIfFileIsOurs(const char* fileName ){
     int ret = FILE_EXIST;
     std::fstream file (fileName, std::ios::in | std::ios::out | std::ios::binary);
@@ -67,6 +74,13 @@ int checkIfFileIsOurs(const char* fileName ){
     return ret;
 }
 
+/**
+ * @function int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType)
+ * Dispacher to decide how to encode the file, depending on the securityType.
+ *  @param fileName The fileName of the file
+ *  @param securityLevel NOT IMPLEMENTED
+ *  @param SecurityType How to encode the file
+ */
 int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType){
     cancel = 0;
     secureHeader * sHeader = createHeaderForFile(fileName, password, securityType, secureLevel);
@@ -83,28 +97,35 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
     }else{
         rta = ERROR_NOT_SUPPORTED_ENCRYPTION;
     }
-    myFree(sHeader);
+    destroyHeader(sHeader);
     return rta;
 }
 
+/**
+ * @function int decodeDispacher(const char *fileName,const  char * password)
+ * Dispacher to decide how to decode the file, depending on the securityType(that is stored in the header).
+ *  @param fileName The fileName of the file
+ *  
+ */
 int decodeDispacher(const char *fileName,const  char * password){
     cancel = 0;
-    secureHeader sHeader;
+    secureHeader * sHeader = (secureHeader*)myMalloc(sizeof(secureHeader));
     int rta = ERROR;
 
-    int status = initDecoderHeader(fileName, password, &sHeader);
+    int status = initDecoderHeader(fileName, password, sHeader);
     if(status != DECODED){
         return status;
     }
-    if(sHeader.version != VERSION){
+    if(sHeader->version != VERSION){
         rta = ERROR_NOT_SUPPORTED_VERSION;
-    }else if(sHeader.securityType == SECURITY_TYPE_AES256){
-        rta =  AES_decrypt(fileName, password, &sHeader);
-    }else if(sHeader.securityType == SECURITY_TYPE_QUICKENCODE){
-        rta = decodeQuick(fileName, password, &sHeader);
+    }else if(sHeader->securityType == SECURITY_TYPE_AES256){
+        rta =  AES_decrypt(fileName, password, sHeader);
+    }else if(sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
+        rta = decodeQuick(fileName, password, sHeader);
     }else{
         rta = ERROR_NOT_SUPPORTED_ENCRYPTION;
     }
+    destroyHeader(sHeader);
     return rta;
 }
 
@@ -162,6 +183,11 @@ int initDecoderHeader(const char *fileName, const char *password, secureHeader *
     
 }
 
+/**
+ * @function void cancelProcess()
+ * Call this function to notify the encrypting thread that it should stop
+ * and cancel everything!
+ */
 void cancelProcess()
 {
     cancel = CANCEL;

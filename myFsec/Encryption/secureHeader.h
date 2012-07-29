@@ -35,7 +35,30 @@ typedef struct secHeader{
 }secureHeader;
 void printHeader(secureHeader * sHeader);
 
+/**
+ * secureHeader * createHeaderForFile(const char *fileName,const  char * password, int securityType, int securityLevel)
+ * Creates an standar secure Header, with some data from the file.
+ * returns: a new allocated secureHeader, it is imperative to destroy that header when ever you are done!
+ *
+ */
+
 secureHeader * createHeaderForFile(const char *fileName,const  char * password, int securityType, int securityLevel);
+
+/**
+ * secureHeader * getHeaderFromFile(const char *fileName) {
+ * returns: a new allocated secureHeader that's a copy if the header
+ *      saved in the file! (REMEMBER TO DESTROY IT WHEN TOU ARE DONE!!)
+ *
+ */
+
 secureHeader * getHeaderFromFile(const char *fileName);
+/**
+ *  Destroy Header
+ * Frees in a ordered and secured way the secureHeaders.
+ * This function should be called when every you are done using a secureHeader and
+ * you want to get rid of it!
+ */
+
+void destroyHeader(secureHeader * sHeader);
 
 #endif

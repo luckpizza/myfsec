@@ -22,7 +22,8 @@
 #include "EncryptorManager.h"
 #include <openssl/sha.h>
 
-#define encrypt_cleanup_macro         free(xored_password);
+#define encrypt_cleanup_macro         free(xored_password);file_in.close();file_out.close();
+
 #define IV_SIZE  8
 extern long long  _g_total_to_do;
 extern long long _g_amount_done;
@@ -31,7 +32,7 @@ using namespace std;
 void init_ctr(struct ctr_state *state, const unsigned char iv[8]);
 const char * findNoExistingFile(const char* fileName);
 
-
+// ============================== INTERNAL STUFF ===============================
 struct ctr_state {
     unsigned char ivec[AES_BLOCK_SIZE];  /* ivec[0..7] is the IV, ivec[8..15] is the big-endian counter */
     unsigned int num;
@@ -52,6 +53,7 @@ void init_ctr(struct ctr_state *state, const unsigned char iv[8])
     memcpy(state->ivec, iv, 8);
 }
 
+//=============================== END INTERNAL STUFF =================================
 
 const char * findNoExistingFile(const char* fileName)
 {

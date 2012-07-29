@@ -20,8 +20,22 @@
 #include "encryptUtils.h"
 #include "Utils.h"
 
-
+/**
+ * @function char * getFileNameFromPath(const char * path)
+ * This function returns the file name from the given path 
+ * (only the filename and extention) (IT RETURNS THE POINTER TO THE path argument)
+ * @param path to the file we want to know the name
+ * @return the name of the file.
+ */
 char * getFileNameFromPath(const char * path);
+
+/**
+ * @function char * get_only_path_copy(const char * path)
+ * This function returns only the path with without the file name of a full path
+ * with a file name at the end (errase the last level)
+ * @param path to the file we want to know the path
+ * @return only the path without the last lvl. This should be freed but the user
+ */
 char * get_only_path_copy(const char * path);
 long get_filename_ext(const char *filename, char *ext);
 #endif

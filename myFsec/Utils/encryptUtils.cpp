@@ -23,6 +23,8 @@
 //        printf("%02x",md[i]);
 //    }
 //}
+
+
 void print_sha256_sum(unsigned char* md) {
     int i;
     for(i=0; i <SHA256_DIGEST_LENGTH; i++) {
@@ -85,9 +87,9 @@ char * recover_old_extention_copy(const char *fileName, secureHeader * sHeader){
     return newFilePath;
 }
 /**
- *  xorg_bytes:
+ * @function xorg_bytes:
  * Does the xor byte by byte of the 2 given arrays and stores the result in dst
- * return OK if no error paramenter, ERROR if error;
+ * @return OK if no error paramenter, ERROR if error;
  */
 
 int xor_bytes(const char * src1, int src1_lenght, const char * src2, int src2_lenght, char * dst)
