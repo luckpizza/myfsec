@@ -81,8 +81,8 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
     //Making the password ready to know if the it is right or wrong
     char * xored_password = (char*)myMalloc(strlen(password) +1);
     memcpy(xored_password, password, strlen(password) + 1);
-    xor_bytes(password, strlen(password), sHeader->salt, sHeader->saltLength, xored_password);
-    hash_sha256((unsigned char*) xored_password, strlen(password), SHA256Password);
+    xor_bytes(password, (int)strlen(password), sHeader->salt, sHeader->saltLength, xored_password);
+    hash_sha256((unsigned char*) xored_password, (int)strlen(password), SHA256Password);
   
     unsigned long sizeReaded;
     char buffer_in[AES_BLOCK_SIZE];
@@ -167,8 +167,8 @@ int AES_decrypt (const char *fileName, const char *password, secureHeader* sHead
     //Making the password ready to know if the it is right or wrong
     char * xored_password = (char*)myMalloc(strlen(password) +1);
     memcpy(xored_password, password, strlen(password) + 1);
-    xor_bytes(password, strlen(password), sHeader->salt, sHeader->saltLength, xored_password);
-    hash_sha256((unsigned char*) xored_password, strlen(password), SHA256Password);
+    xor_bytes(password, (int)strlen(password), sHeader->salt, sHeader->saltLength, xored_password);
+    hash_sha256((unsigned char*) xored_password, (int)strlen(password), SHA256Password);
 
     
     unsigned long sizeReaded;
