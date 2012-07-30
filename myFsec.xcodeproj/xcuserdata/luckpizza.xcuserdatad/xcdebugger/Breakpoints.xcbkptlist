@@ -144,62 +144,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "myFsec/Encryption/AESEncrypt.cpp"
-         timestampString = "365295695.316752"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
-         landmarkName = "AES_encrypt (const char *fileName, const char *password, secureHeader* sHeader)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "myFsec/Encryption/AESEncrypt.cpp"
-         timestampString = "365295695.316752"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "121"
-         endingLineNumber = "121"
-         landmarkName = "AES_encrypt (const char *fileName, const char *password, secureHeader* sHeader)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "myFsec/Encryption/AESEncrypt.cpp"
-         timestampString = "365295695.316752"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "194"
-         endingLineNumber = "194"
-         landmarkName = "AES_decrypt (const char *fileName, const char *password, secureHeader* sHeader)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "myFsec/Encryption/AESEncrypt.cpp"
-         timestampString = "365295695.316752"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
-         landmarkName = "AES_decrypt (const char *fileName, const char *password, secureHeader* sHeader)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "myFsec/AppDelegate.m"
          timestampString = "360455801.171048"
          startingColumnNumber = "9223372036854775807"
@@ -256,34 +200,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "myFsec/Encryption/AESEncrypt.cpp"
-         timestampString = "365295695.316752"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "131"
-         endingLineNumber = "131"
-         landmarkName = "AES_encrypt (const char *fileName, const char *password, secureHeader* sHeader)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "myFsec/Encryption/AESEncrypt.cpp"
-         timestampString = "365295695.316752"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "132"
-         endingLineNumber = "132"
-         landmarkName = "AES_encrypt (const char *fileName, const char *password, secureHeader* sHeader)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
          timestampString = "365295695.316752"
          startingColumnNumber = "9223372036854775807"
@@ -319,20 +235,6 @@
          startingLineNumber = "86"
          endingLineNumber = "86"
          landmarkName = "decodeQuick(const char *fileName, const char *password, secureHeader * sHeader)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "myFsec/Encryption/AESEncrypt.cpp"
-         timestampString = "365295695.316752"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "166"
-         endingLineNumber = "166"
-         landmarkName = "AES_decrypt (const char *fileName, const char *password, secureHeader* sHeader)"
          landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint
