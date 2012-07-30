@@ -1412,7 +1412,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="507300721">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">File</string>
+								<string key="NSContents">Archivo</string>
 								<reference key="NSSupport" ref="699653241"/>
 								<string key="NSCellIdentifier">_NS:3936</string>
 								<reference key="NSControlView" ref="628963731"/>
@@ -1446,7 +1446,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="592706263">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Password</string>
+								<string key="NSContents">Contraseña</string>
 								<reference key="NSSupport" ref="699653241"/>
 								<string key="NSCellIdentifier">_NS:3936</string>
 								<reference key="NSControlView" ref="790290010"/>
@@ -1458,7 +1458,7 @@
 						<object class="NSTextField" id="376884339">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">-2147483380</int>
-							<string key="NSFrame">{{22, 159}, {135, 17}}</string>
+							<string key="NSFrame">{{22, 159}, {159, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="301961480"/>
@@ -1467,7 +1467,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="125062898">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Re-enter Password</string>
+								<string key="NSContents">Nuevamente Contraseña</string>
 								<reference key="NSSupport" ref="699653241"/>
 								<string key="NSCellIdentifier">_NS:3936</string>
 								<reference key="NSControlView" ref="376884339"/>
@@ -1488,7 +1488,7 @@
 							<object class="NSButtonCell" key="NSCell" id="312729608">
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Encrypt</string>
+								<string key="NSContents">Encriptar</string>
 								<reference key="NSSupport" ref="699653241"/>
 								<string key="NSCellIdentifier">_NS:3196</string>
 								<reference key="NSControlView" ref="257013749"/>
@@ -1504,7 +1504,7 @@
 						<object class="NSButton" id="740129844">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">-2147483380</int>
-							<string key="NSFrame">{{397, 168}, {111, 32}}</string>
+							<string key="NSFrame">{{392, 168}, {121, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="990376415"/>
@@ -1513,7 +1513,7 @@
 							<object class="NSButtonCell" key="NSCell" id="577304749">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Decrypt</string>
+								<string key="NSContents">Desencriptar</string>
 								<reference key="NSSupport" ref="699653241"/>
 								<string key="NSCellIdentifier">_NS:161</string>
 								<reference key="NSControlView" ref="740129844"/>
@@ -1529,7 +1529,7 @@
 						<object class="NSTextField" id="990376415">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">-2147483380</int>
-							<string key="NSFrame">{{22, 113}, {90, 17}}</string>
+							<string key="NSFrame">{{22, 113}, {122, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="46385420"/>
@@ -1538,7 +1538,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="873580802">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Security Level</string>
+								<string key="NSContents">Nivel de Seguridad</string>
 								<reference key="NSSupport" ref="699653241"/>
 								<string key="NSCellIdentifier">_NS:3983</string>
 								<reference key="NSControlView" ref="990376415"/>
@@ -1550,7 +1550,7 @@
 						<object class="NSTextField" id="211345075">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{10, 316}, {348, 17}}</string>
+							<string key="NSFrame">{{10, 316}, {380, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="458498188"/>
@@ -1559,7 +1559,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="67228517">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Please select a file to encrypt or decrypt</string>
+								<string key="NSContents">Por favor elija el archivo que desea encriptar o desencriptar</string>
 								<reference key="NSSupport" ref="699653241"/>
 								<string key="NSCellIdentifier">_NS:3983</string>
 								<reference key="NSControlView" ref="211345075"/>
@@ -1580,7 +1580,7 @@
 							<object class="NSButtonCell" key="NSCell" id="47930778">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">choose...</string>
+								<string key="NSContents">Elegir...</string>
 								<reference key="NSSupport" ref="699653241"/>
 								<string key="NSCellIdentifier">_NS:633</string>
 								<reference key="NSControlView" ref="343937735"/>
@@ -1633,7 +1633,7 @@
 								<object class="NSButtonCell" id="1043056267">
 									<int key="NSCellFlags">-2080374784</int>
 									<int key="NSCellFlags2">0</int>
-									<string key="NSContents">Realy fast and unsecure</string>
+									<string key="NSContents">Muy rápido pero inseguro</string>
 									<reference key="NSSupport" ref="699653241"/>
 									<reference key="NSControlView" ref="46385420"/>
 									<int key="NSButtonFlags">1211912448</int>
@@ -1649,7 +1649,7 @@
 								<object class="NSButtonCell" id="97325971">
 									<int key="NSCellFlags">67108864</int>
 									<int key="NSCellFlags2">0</int>
-									<string key="NSContents">Slow but secure</string>
+									<string key="NSContents">Lento pero seguro</string>
 									<reference key="NSSupport" ref="699653241"/>
 									<reference key="NSControlView" ref="46385420"/>
 									<int key="NSTag">1</int>
@@ -3171,9 +3171,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<reference ref="343937735"/>
 							<reference ref="458498188"/>
 							<reference ref="46385420"/>
-							<reference ref="211345075"/>
 							<reference ref="740129844"/>
 							<reference ref="257013749"/>
+							<reference ref="211345075"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
