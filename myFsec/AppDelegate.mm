@@ -384,21 +384,23 @@ extern long long _g_amount_done;
     NSString * retMsg = @"ERROR";
     switch (msgCode) {
         case DECODED:
-            retMsg =  DECODE_MSG;
+            retMsg = NSLocalizedStringFromTable (DECODE_MSG, @"Localizable", @"A comment");
             break;
         case ENCODED:
-            retMsg = ENCODED_MSG;
+            retMsg = NSLocalizedStringFromTable (ENCODED_MSG, @"Localizable", @"A comment");
             break;
         case  ERROR_NOT_SUPPORTED:
-            retMsg =  ERROR_NOT_SUPPORTED_MSG;
+            retMsg =  NSLocalizedStringFromTable (ERROR_NOT_SUPPORTED_MSG, @"Custom", @"A comment");
             break;
         case ERROR_WRONG_PASSWORD:
-            retMsg =  ERROR_WRONG_PASSWORD_MSG;
+            retMsg =  NSLocalizedStringFromTable (ERROR_WRONG_PASSWORD_MSG, @"Custom", @"A comment");
             break;
         case ERROR_FILE_DOES_NOT_EXIST:
-            retMsg = ERROR_FILE_DOES_NOT_EXIST_MSG;
+            retMsg = NSLocalizedStringFromTable (ERROR_FILE_DOES_NOT_EXIST_MSG, @"Custom", @"A comment");
+            break;
         case ERROR_PASSWORDS_DONT_MATCH:
-            retMsg = ERROR_PASSWORDS_DONT_MATCH_MSG;
+            retMsg = NSLocalizedStringFromTable (ERROR_PASSWORDS_DONT_MATCH_MSG, @"Custom", @"A comment");
+            break;
         default:
             break;
     }

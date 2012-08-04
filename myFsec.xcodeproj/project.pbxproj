@@ -56,6 +56,13 @@
 		EA7A989315C61C1C00B6E7FE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA7A989415C61C1C00B6E7FE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = es.lproj/Credits.rtf; sourceTree = "<group>"; };
 		EA7A989515C61C1C00B6E7FE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EA7A989615CDB2EE00B6E7FE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA7A989715CDB2EE00B6E7FE /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		EA7A989815CDB2EE00B6E7FE /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/ProgressPanel.xib; sourceTree = "<group>"; };
+		EA7A989915CDB2EE00B6E7FE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA7A989A15CDB2EE00B6E7FE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
+		EA7A989B15CDB2EE00B6E7FE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EA7A989C15CDBDD300B6E7FE /* myFsec.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myFsec.entitlements; sourceTree = "<group>"; };
 		EA8C79591577BFE70023B1B5 /* ProgressBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressBarViewController.h; path = VIew/ProgressBarViewController.h; sourceTree = "<group>"; };
 		EA8C795A1577BFE70023B1B5 /* ProgressBarViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ProgressBarViewController.mm; path = VIew/ProgressBarViewController.mm; sourceTree = "<group>"; };
 		EA92990D156486B900DA404D /* myFsec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myFsec.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +169,7 @@
 		EA929917156486B900DA404D /* myFsec */ = {
 			isa = PBXGroup;
 			children = (
+				EA7A989C15CDBDD300B6E7FE /* myFsec.entitlements */,
 				EA9299621564883700DA404D /* View */,
 				EA929947156487FB00DA404D /* Encryption */,
 				EA92994C156487FB00DA404D /* Encryptor.h */,
@@ -407,6 +415,7 @@
 			children = (
 				EA7A988915C61A2500B6E7FE /* en */,
 				EA7A989215C61C1C00B6E7FE /* es */,
+				EA7A989815CDB2EE00B6E7FE /* de */,
 			);
 			name = ProgressPanel.xib;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 			children = (
 				EA7A988E15C61BD300B6E7FE /* en */,
 				EA7A989515C61C1C00B6E7FE /* es */,
+				EA7A989B15CDB2EE00B6E7FE /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -425,6 +435,7 @@
 			children = (
 				EA92991B156486B900DA404D /* en */,
 				EA7A989315C61C1C00B6E7FE /* es */,
+				EA7A989915CDB2EE00B6E7FE /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -434,6 +445,7 @@
 			children = (
 				EA929921156486B900DA404D /* en */,
 				EA7A989415C61C1C00B6E7FE /* es */,
+				EA7A989A15CDB2EE00B6E7FE /* de */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -443,6 +455,7 @@
 			children = (
 				EA929927156486B900DA404D /* en */,
 				EA7A989115C61C1C00B6E7FE /* es */,
+				EA7A989715CDB2EE00B6E7FE /* de */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -452,6 +465,7 @@
 			children = (
 				EA929938156486B900DA404D /* en */,
 				EA7A989015C61C1C00B6E7FE /* es */,
+				EA7A989615CDB2EE00B6E7FE /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

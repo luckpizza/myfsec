@@ -5,3 +5,10 @@
   Created by Lucas Pizzagalli on 7/29/12.
 
 */
+"File Encoded Successfully!!" = "File Encoded Successfully!!";
+"File Decoded Succesful!!" = "File Decoded Succesful!!";
+"File is not encoded buy us, choos another file!" = "File is not encoded buy us, choos another file!";
+"Wrong password!" = "Wrong password!";
+"The file does not exist or can't be open!" = "The file does not exist or can't be open!";
+"Passwords don't match, please verify your password" = "Passwords don't match, please verify your password";
+

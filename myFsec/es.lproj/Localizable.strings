@@ -5,3 +5,10 @@
   Created by Lucas Pizzagalli on 7/29/12.
 
 */
+"File Encoded Successfully!!" = "Archivo Encriptado Exitosamente!";
+"File Decoded Succesful!!" = "Archivo Desencriptado Exitosamente!";
+"File is not encoded buy us, choos another file!" = "El archivo no fue encriptado por nosotros, elija otro archivo";
+"Wrong password!" = "Contraseña erronea!";
+"The file does not exist or can't be open!" = "El archivo no existe o no se puede abrir!";
+"Passwords don't match, please verify your password" = "Las cibtraseñas no coinciden, por favor verifique las!";
+
