@@ -47,7 +47,6 @@
 -(IBAction)encryptButtonPushed:(id)sender;
 -(IBAction)dencryptButtonPushed:(id)sender;
 -(IBAction)chooseFileButtonPushed:(id)sender;
--(NSString *) getEncodeMessage:(int) msgCode;
 -(void) setWindowToTypeOfFile;
 - (void)encrypt:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error;
 -(void) showStatusMsg;

@@ -11,8 +11,8 @@
 #import "AESEncrypt.h"
 #import "Encryptor.h"
 #import "StateCodes.h"
+#import "Utils.h"
 #import "ProgressBarViewController.h"
-//#import "EncryptorManager.h"
 
 extern long long _g_total_to_do;
 extern long long _g_amount_done;
@@ -40,7 +40,7 @@ extern long long _g_amount_done;
 -(BOOL)application:(NSApplication *)app openFile:(NSString *)filename
 {
     if(!idle){
-        NSAlert * alert = [NSAlert alertWithMessageText:[self getEncodeMessage:ERROR_APPLICATION_BUSSY] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
+        NSAlert * alert = [NSAlert alertWithMessageText:[ MessageUtils getEncodeMessage:ERROR_APPLICATION_BUSSY] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ];
         [alert setAlertStyle:NSInformationalAlertStyle];
         [alert runModal];
     }else{
@@ -379,35 +379,6 @@ extern long long _g_amount_done;
 }
 
 
--(NSString *) getEncodeMessage:(int) msgCode
-{
-    NSString * retMsg = @"ERROR";
-    switch (msgCode) {
-        case DECODED:
-            retMsg = NSLocalizedStringFromTable (DECODE_MSG, @"Localizable", @"A comment");
-            break;
-        case ENCODED:
-            retMsg = NSLocalizedStringFromTable (ENCODED_MSG, @"Localizable", @"A comment");
-            break;
-        case  ERROR_NOT_SUPPORTED:
-            retMsg =  NSLocalizedStringFromTable (ERROR_NOT_SUPPORTED_MSG, @"Custom", @"A comment");
-            break;
-        case ERROR_WRONG_PASSWORD:
-            retMsg =  NSLocalizedStringFromTable (ERROR_WRONG_PASSWORD_MSG, @"Custom", @"A comment");
-            break;
-        case ERROR_FILE_DOES_NOT_EXIST:
-            retMsg = NSLocalizedStringFromTable (ERROR_FILE_DOES_NOT_EXIST_MSG, @"Custom", @"A comment");
-            break;
-        case ERROR_PASSWORDS_DONT_MATCH:
-            retMsg = NSLocalizedStringFromTable (ERROR_PASSWORDS_DONT_MATCH_MSG, @"Custom", @"A comment");
-            break;
-        default:
-            break;
-    }
-    return retMsg;
-
-}
-
 /*
  *  Method called whenever the service is called
  */
@@ -439,7 +410,7 @@ extern long long _g_amount_done;
 
 -(void) showStatusMsg
 {
-    NSAlert * alert = [NSAlert alertWithMessageText:[self getEncodeMessage:status] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ]; 
+    NSAlert * alert = [NSAlert alertWithMessageText:[MessageUtils getEncodeMessage:status] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""   ];
     [alert setAlertStyle:NSInformationalAlertStyle];
     [alert beginSheetModalForWindow:_window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
     [_window makeKeyAndOrderFront:alert];

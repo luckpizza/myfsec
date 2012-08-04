@@ -14,4 +14,5 @@
 #import "memoryUtils.h"
 #import "FileUtils.h"
 #import "StateCodes.h"
+#import "MessageUtils.h"
 #endif

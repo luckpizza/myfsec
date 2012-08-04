@@ -11,4 +11,13 @@
 "Wrong password!" = "Wrong password!";
 "The file does not exist or can't be open!" = "The file does not exist or can't be open!";
 "Passwords don't match, please verify your password" = "Passwords don't match, please verify your password";
+"ERROR" = "ERROR";
+"Not supported encryption type" = "Not supported encryption type";
+"The file is not supported by this program, try upgrading!!" = "The file is not supported by this program, try upgrading!!";
+"Try with a different password!" = "Try with a different password!";
+"Application is Bussy, please try again later" = "Application is Bussy, please try again later";
+"Sorry, an unknown error happend!" = "Sorry, an unknown error happend!";
+"Please choose a file!" = "Please choose a file!";
+"Process has been canceled!" = "Process has been canceled!";
+"Error while reading file, make sure you have the rights to read it" = "Error while reading file, make sure you have the rights to read it";
 

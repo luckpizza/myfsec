@@ -15,15 +15,6 @@
 #include "Utils.h"
 
 
-// Print the MD5 sum as hex-digits.
-//DEPRECATED
-//void print_md5_sum(unsigned char* md) {
-//    int i;
-//    for(i=0; i <MD5_DIGEST_LENGTH; i++) {
-//        printf("%02x",md[i]);
-//    }
-//}
-
 
 void print_sha256_sum(unsigned char* md) {
     int i;
@@ -31,15 +22,6 @@ void print_sha256_sum(unsigned char* md) {
         printf("%02x",md[i]);
     }
 }
-//DEPRECATED
-//void hash_md5(unsigned char* password,unsigned char * MD5Password)
-//{
-//     char * passwordAndSalt =  ( char *)myMalloc(strlen((( const char*)password)) + strlen(SALT) + 1);
-//    strcpy(passwordAndSalt, SALT);
-//    strcat(passwordAndSalt, (const char*)password);
-//    MD5((unsigned char*) passwordAndSalt, strlen(passwordAndSalt), MD5Password);
-//
-//}
 
 void hash_sha256(unsigned char* password,int lenght, unsigned char * SHA256Password){
     SHA256((unsigned char*) password, lenght, SHA256Password);
@@ -86,6 +68,7 @@ char * recover_old_extention_copy(const char *fileName, secureHeader * sHeader){
     strcat(newFilePath, sHeader->fileName);
     return newFilePath;
 }
+
 /**
  * @function xorg_bytes:
  * Does the xor byte by byte of the 2 given arrays and stores the result in dst
@@ -119,10 +102,3 @@ int random_k_bytes(char * bytes, int k)
     return OK;
 }
                          
-//void sprint_md5_sum(unsigned char* md) {
-///*    int i;
-//    for(i=0; i <MD5_DIGEST_LENGTH; i++) {
-//        sprintf("%02x",md[i]);
-//    }
-//*/
-//}

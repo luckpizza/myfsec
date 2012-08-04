@@ -24,19 +24,6 @@ char * getFileNameFromPath(const char * path)
 }
 
 
-//char * getFileNameFromPath(const char * path)
-//{
-//    char * tmp = (char *)myMalloc(strlen(path) + 1);
-//    memcpy(tmp, path, strlen(path) +1);
-//    char * lastPathRef = strrchr(tmp, '/');
-//    char * ret = (char *)myMalloc(strlen(lastPathRef)+ 1);
-//    strcpy(ret, lastPathRef);
-//    // *lastPathRef = '\0';
-//    myFree(tmp);
-//    debug( "name from path is + %s \n", ret);
-//    return ret;
-//    
-//}
 
 /**
  * @function char * get_only_path_copy(const char * path)
