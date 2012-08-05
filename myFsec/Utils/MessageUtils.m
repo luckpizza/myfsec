@@ -7,7 +7,7 @@
 //
 
 #import "MessageUtils.h"
-
+#import "StateCodes.h"
 @implementation MessageUtils
 
 +(NSString *) getEncodeMessage:(int) msgCode

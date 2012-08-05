@@ -38,5 +38,9 @@ char * getFileNameFromPath(const char * path);
  * @return only the path without the last lvl. This should be freed but the user
  */
 char * get_only_path_copy(const char * path);
+
 long get_filename_ext(const char *filename, char *ext);
+
+const char * find_non_existing_file(const char* fileName);
+
 #endif

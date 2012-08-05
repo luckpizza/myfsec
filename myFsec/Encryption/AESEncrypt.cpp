@@ -53,23 +53,6 @@ void init_ctr(struct ctr_state *state, const unsigned char iv[8])
 
 //=============================== END INTERNAL STUFF =================================
 
-const char * findNoExistingFile(const char* fileName)
-{
-    return fileName;
-    //    fstream file;
-    //    char * ext;
-    //    file.open(fileName, ios_base::in);
-    //    if(!file.good()){
-    //        return fileName;
-    //    }
-    //    long index = 0;
-    //
-    //    while (file.good()){
-    //        file.close();
-    //       index = get_filename_ext(fileName, ext);
-    //    }
-}
-
 int AES_encrypt (const char *fileName, const char *password, secureHeader* sHeader)
 {
     unsigned char SHA256Password[SHA256_DIGEST_LENGTH];
@@ -97,7 +80,6 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
     _g_total_to_do = sHeader->fileSize;
     unsigned char iv[8];
     struct ctr_state state;
-    
     
     
     int random = rand();

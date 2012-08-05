@@ -47,3 +47,23 @@ long get_filename_ext(const char *filename, char *ext) {
     strcpy(ext, dot);
     return dot -filename ;
 }
+
+/**
+ *  TODO: THIS may be an interesting function to have!
+ */
+const char * find_non_existing_file(const char* fileName)
+{
+    return fileName;
+    //    fstream file;
+    //    char * ext;
+    //    file.open(fileName, ios_base::in);
+    //    if(!file.good()){
+    //        return fileName;
+    //    }
+    //    long index = 0;
+    //
+    //    while (file.good()){
+    //        file.close();
+    //       index = get_filename_ext(fileName, ext);
+    //    }
+}

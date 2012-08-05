@@ -9,10 +9,10 @@
 #ifndef fsec_Utils_h
 #define fsec_Utils_h
 
-#import "encryptUtils.h"
-#import "debugLog.h"
-#import "memoryUtils.h"
-#import "FileUtils.h"
-#import "StateCodes.h"
+#include "encryptUtils.h"
+#include "debugLog.h"
+#include "memoryUtils.h"
+#include "FileUtils.h"
+#include "StateCodes.h"
 
 #endif
