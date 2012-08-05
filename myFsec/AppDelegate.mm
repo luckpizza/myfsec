@@ -13,6 +13,7 @@
 #import "StateCodes.h"
 #import "Utils.h"
 #import "ProgressBarViewController.h"
+#import "MessageUtils.h"
 
 extern long long _g_total_to_do;
 extern long long _g_amount_done;

@@ -8,12 +8,15 @@
 
 #ifndef fsec_encryptUtils_h
 #define fsec_encryptUtils_h
+
 #include "secureHeader.h"
+
 #ifdef DEBUG1
 #define debugMD5(md5Hashed) print_md5_sum(md5Hashed)
 #else
 #define debugMD5(md5Hashed) 
 #endif
+
 #ifdef DEBUG1
 #define debugSHA256(shaHashed) print_sha256_sum(shaHashed)
 #else

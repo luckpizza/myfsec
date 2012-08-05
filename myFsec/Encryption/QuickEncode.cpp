@@ -9,16 +9,16 @@
 #define DEBUG1 1
 #include <iostream>
 #include <fstream>
-#include "QuickEncode.h"
 #include <openssl/sha.h>
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <openssl/md5.h>
 #include <openssl/sha.h>
-#include "encryptUtils.h"
+
+#include "QuickEncode.h"
 #include "Utils.h"
 #include "EncryptorManager.h"
+
 extern double _g_total_to_do;
 extern double _g_amount_done;
 

@@ -8,19 +8,16 @@
 
 #include <iostream>
 #include <string.h>
-#include "AESEncrypt.h"
-#include "Utils.h"
 #include <openssl/aes.h>
 #include <fstream>
-#include "QuickEncode.h"
 #include <openssl/sha.h>
-#include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "encryptUtils.h"
-#include "Utils.h"
+
+#include "QuickEncode.h"
+#include "AESEncrypt.h"
 #include "EncryptorManager.h"
-#include <openssl/sha.h>
+#include "Utils.h"
 
 #define encrypt_cleanup_macro         file_in.close();file_out.close();
 

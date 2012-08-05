@@ -10,14 +10,14 @@
 #define myfsec_FileUtils_h
 #include <iostream>
 #include <fstream>
-#include "QuickEncode.h"
-#include "secureHeader.h"
 #include <openssl/sha.h>
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <openssl/md5.h>
+
 #include "encryptUtils.h"
+#include "QuickEncode.h"
+#include "secureHeader.h"
 #include "Utils.h"
 
 /**

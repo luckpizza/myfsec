@@ -8,20 +8,18 @@
 #define DEBUG1 1
 
 #include <iostream>
-#include "secureHeader.h"
-#include "Utils.h"
 #include <fstream>
-#include "QuickEncode.h"
-#include "secureHeader.h"
-#include <openssl/sha.h>
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <openssl/md5.h>
 #include <openssl/sha.h>
+
+#include "QuickEncode.h"
+#include "secureHeader.h"
 #include "encryptUtils.h"
 #include "Utils.h"
 #include "EncryptorManager.h"
+
 using namespace std;
 
 

@@ -8,6 +8,7 @@
 
 #ifndef myFsec_AESEncrypt_h
 #define myFsec_AESEncrypt_h
+
 #import "secureHeader.h"
 #define SECURITY_TYPE_AES256 2
 

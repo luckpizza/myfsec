@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 #define DEBUG1 1
-#include "EncryptorManager.h"
-#include "QuickEncode.h"
-#include "secureHeader.h"
 #include <openssl/sha.h>
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <openssl/md5.h>
-#include "encryptUtils.h"
+
 #include "Utils.h"
+#include "EncryptorManager.h"
+#include "QuickEncode.h"
+#include "secureHeader.h"
 #include "AESEncrypt.h"
 
 using namespace std;

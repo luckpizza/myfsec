@@ -8,6 +8,7 @@
 
 #ifndef fsec_memoryUtils_h
 #define fsec_memoryUtils_h
+
 #ifndef RELEASE
 #define myFree(x) free(x); x = NULL
 #else

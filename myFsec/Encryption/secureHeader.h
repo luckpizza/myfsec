@@ -7,7 +7,9 @@
 //
 #ifndef fsec_secureHeader_h
 #define fsec_secureHeader_h
+
 #include <openssl/sha.h>
+
 #ifdef DEBUG1
 #define debugprintHeader(header) printHeader(header)
 #else

@@ -8,23 +8,28 @@
 
 #ifndef fsec_debugLog_h
 #define fsec_debugLog_h
+
 #include <stdio.h>
 #include <stdlib.h>
+
 #ifdef DEBUG1
 #define debug(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
 #else
 #define debug(fmt, ...)
 #endif
 #endif
+
 #ifdef INFO
 #define info(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
 #else
 #define info(fmt, ...)
 #endif
+
 #ifndef NO_ERROR
 #define error(fmt, ...) fprintf(stderr,fmt, ##__VA_ARGS__)
 #else
 #define error(fmt, ...)
+
 #endif
 
 
