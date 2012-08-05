@@ -9,6 +9,7 @@
 #import "Encryptor.h"
 #import "QuickEncode.h"
 #import "EncryptorManager.h"
+
 @implementation Encryptor
 
 

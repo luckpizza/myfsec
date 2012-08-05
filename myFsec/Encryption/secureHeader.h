@@ -35,6 +35,7 @@ typedef struct secHeader{
     }extra;
     
 }secureHeader;
+
 void printHeader(secureHeader * sHeader);
 
 /**

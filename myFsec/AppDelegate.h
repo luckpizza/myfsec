@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
 #define SMALL_VIEW 1
 #define BIG_VIEW 2
+
 @class ProgressBarViewController;
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     NSButton *encryptButton;

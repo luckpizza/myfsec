@@ -16,6 +16,7 @@ void memoryErrorHandler()
     error("MEMORY ERROR!");
     exit(-1);
 }
+
 void * myMalloc(unsigned long size)
 {
     void * ret = NULL;
@@ -46,7 +47,6 @@ void * myRealloc(void * pointer, unsigned long size)
     return NULL;
     
 }
-
 
 void * myCalloc (unsigned long amount, unsigned long size)
 {

@@ -22,6 +22,7 @@
 #define encrypt_cleanup_macro         file_in.close();file_out.close();
 
 #define IV_SIZE  8
+
 extern long long  _g_total_to_do;
 extern long long _g_amount_done;
 extern int cancel;

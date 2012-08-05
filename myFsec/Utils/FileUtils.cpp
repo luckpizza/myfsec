@@ -20,9 +20,7 @@ char * getFileNameFromPath(const char * path)
 {
     
     return (strrchr(path, '/')) + 1;
-    
 }
-
 
 
 /**
@@ -40,8 +38,6 @@ char * get_only_path_copy(const char * path)
     *(lastPathRef + 1) = '\0';
     debug("only path is= %s \n",ret);
     return ret;
-    
-    
 }
 
 long get_filename_ext(const char *filename, char *ext) {

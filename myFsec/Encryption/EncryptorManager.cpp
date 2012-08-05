@@ -5,7 +5,9 @@
 //  Created by Lucas Pizzagalli on 5/18/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+
 #define DEBUG1 1
+
 #include <openssl/sha.h>
 #include <string.h>
 #include <stdio.h>

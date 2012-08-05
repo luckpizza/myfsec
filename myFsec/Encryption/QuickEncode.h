@@ -9,6 +9,7 @@
 #ifndef fsec_File_h
 #define fsec_File_h
 #define SECURITY_TYPE_QUICKENCODE 1
+
 #include "secureHeader.h"
 
 /**

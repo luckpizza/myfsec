@@ -8,6 +8,7 @@
 
 #ifndef myFsec_EncryptorManager_h
 #define myFsec_EncryptorManager_h
+
 #include "FileUtils.h"
 #include "secureHeader.h"
 
@@ -50,6 +51,7 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
  */
 
 int decodeDispacher(const char *fileName,const  char * password);
+
 int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader);
 
 /**

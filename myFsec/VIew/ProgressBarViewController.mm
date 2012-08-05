@@ -8,8 +8,12 @@
 
 #import "ProgressBarViewController.h"
 #import "EncryptorManager.h"
+
 @implementation ProgressBarViewController
+
 @synthesize progressIndicator, cancelButton;
+
+
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];

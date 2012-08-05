@@ -7,6 +7,7 @@
 //
 //#define DEBUG
 #define DEBUG1 1
+
 #include <iostream>
 #include <fstream>
 #include <openssl/sha.h>
