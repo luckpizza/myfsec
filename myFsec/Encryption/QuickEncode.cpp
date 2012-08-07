@@ -70,7 +70,6 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
     } else {
         return ERROR_FILE_DOES_NOT_EXIST;
     }
-    addMyFsecExtention(fileName);
     /*
         else cout << "Unable to open file";
         printf("file name was: %s and password: %s", fileName, password);

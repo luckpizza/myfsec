@@ -21,3 +21,5 @@
 "Process has been canceled!" = "Process has been canceled!";
 "Error while reading file, make sure you have the rights to read it" = "Error while reading file, make sure you have the rights to read it";
 
+
+"keepOldFileMsg" = "Keep Old unencrypted file";

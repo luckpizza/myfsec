@@ -23,7 +23,7 @@ extern long long _g_amount_done;
 
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
-@synthesize  status, progressBarViewController, idle, viewMoment ;
+@synthesize  status, progressBarViewController, idle, viewMoment, keepOldFile ;
 
 
 -(void)applicationWillFinishLaunching:(NSNotification *)notification
@@ -147,7 +147,8 @@ extern long long _g_amount_done;
     [self.rePassword setHidden:YES];
     [self.securityLable setHidden:YES];
     [self.securityOption setHidden:YES];
-    
+    [self.keepOldFile setHidden:YES];
+    [self.keepOldFile setLocalizedKey:@"keepOldFileMsg"];
     [_window makeFirstResponder:password];
     
     if(fileType == ERROR_FILE_DOES_NOT_EXIST)
@@ -175,6 +176,7 @@ extern long long _g_amount_done;
         [self.rePassword setHidden:NO];
         [self.securityLable setHidden:NO];
         [self.securityOption setHidden:NO];
+        [self.keepOldFile setHidden:NO];
     }else if( fileType == OK)
     {
         if(viewMoment ==BIG_VIEW){

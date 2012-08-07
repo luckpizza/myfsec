@@ -96,6 +96,7 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
         rta =  AES_encrypt(fileName, password, sHeader);
     }else if(sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
         rta = encodeQuick(fileName, password, sHeader);
+        addMyFsecExtention(fileName);
     }else{
         rta = ERROR_NOT_SUPPORTED_ENCRYPTION;
     }
