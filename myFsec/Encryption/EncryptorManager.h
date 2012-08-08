@@ -20,7 +20,7 @@
  * @function int checkIfFileIsOurs(std::fstream* file )
  * This function verify if a file has our internal structure (so it has been encrypted buy us
  * @param the fstream to the file we want to verify
- * @return OK if the file is our ERROR_NOT_SUPPORTED if not
+ * @return the securitytype if the file is our ERROR_NOT_SUPPORTED if not
  *
  */
 int checkIfFileIsOurs(const char* fileName );
@@ -29,7 +29,7 @@ int checkIfFileIsOurs(const char* fileName );
  * @function int checkIfFileIsOurs(const char* fileName )
  * This function verify if a file exists, and has our internal structure (so it has been encrypted buy us
  * @param the fstream to the file we want to verify
- * @return OK if the file is our ERROR_NOT_SUPPORTED if not
+ * @return the securitytype if the file is our ERROR_NOT_SUPPORTED if not
  *
  */
 int checkIfFileIsOurs(std::fstream* file );

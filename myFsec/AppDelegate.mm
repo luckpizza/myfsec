@@ -23,7 +23,7 @@ extern long long _g_amount_done;
 
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
-@synthesize  status, progressBarViewController, idle, viewMoment, keepOldFile ;
+@synthesize  status, progressBarViewController, idle, viewMoment, keepEncryptedFile, keepUnencryptedFile ;
 
 
 -(void)applicationWillFinishLaunching:(NSNotification *)notification
@@ -112,6 +112,8 @@ extern long long _g_amount_done;
     [self.dencryptButton setEnabled:YES];
     [self.msgLable setStringValue:@""];
     [self.securityOption setHidden:YES];
+    [self.keepUnencryptedFile setHidden:YES];
+    [self.keepEncryptedFile setHidden:YES];
 }
 
 - (int) getSecurityType:(long) option
@@ -140,15 +142,15 @@ extern long long _g_amount_done;
 -(void) setWindowToTypeOfFile
 {
     NSString *fileName = [filePath stringValue];
-    int fileType;
+    int fileType, securityType;
     fileType = [Encryptor checkIfFileIsOurs:fileName];
     [self.msgLable setStringValue:@""];
     [self.rePasswordLable setHidden:YES];
     [self.rePassword setHidden:YES];
     [self.securityLable setHidden:YES];
     [self.securityOption setHidden:YES];
-    [self.keepOldFile setHidden:YES];
-    [self.keepOldFile setLocalizedKey:@"keepOldFileMsg"];
+    [self.keepUnencryptedFile setHidden:YES];
+    [self.keepEncryptedFile setHidden:YES];
     [_window makeFirstResponder:password];
     
     if(fileType == ERROR_FILE_DOES_NOT_EXIST)
@@ -168,7 +170,6 @@ extern long long _g_amount_done;
             [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y-140 , [_window frame].size.width, 390)  display:YES animate:YES];
             viewMoment = BIG_VIEW;
         }
-
         [self.encryptButton setEnabled:YES];
         [self.dencryptButton setHidden:YES];
         [self.encryptButton setHidden:NO];
@@ -176,8 +177,12 @@ extern long long _g_amount_done;
         [self.rePassword setHidden:NO];
         [self.securityLable setHidden:NO];
         [self.securityOption setHidden:NO];
-        [self.keepOldFile setHidden:NO];
-    }else if( fileType == OK)
+        securityType = [self getSecurityType:[self.securityOption selectedTag]];
+        if(securityType == SECURITY_TYPE_AES256)
+        {
+            [self.keepUnencryptedFile setHidden:NO];
+        }
+    }else if( fileType == SECURITY_TYPE_QUICKENCODE || fileType == SECURITY_TYPE_AES256 )
     {
         if(viewMoment ==BIG_VIEW){
             [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 250)  display:YES animate:YES];
@@ -189,6 +194,10 @@ extern long long _g_amount_done;
         [self.rePasswordLable setHidden:YES];
         [self.rePassword setHidden:YES];
 
+        if(fileType == SECURITY_TYPE_AES256)
+        {
+            [self.keepEncryptedFile setHidden:NO];
+        }
         //TODO: FILE TO DENCRYPT
     }else{
         //UNKNOW ERROR
@@ -418,6 +427,18 @@ extern long long _g_amount_done;
     [alert beginSheetModalForWindow:_window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
     [_window makeKeyAndOrderFront:alert];
 }
+
+-(IBAction)securityLevelChosen:(id)sender
+{
+    long securityType = [self getSecurityType:[self.securityOption selectedTag]];
+    if(securityType == SECURITY_TYPE_AES256)
+    {
+        [self.keepUnencryptedFile setHidden:NO];
+    }else{
+        [self.keepUnencryptedFile setHidden:YES];
+    }
+}
+
 
 
 -(void)progresIndicatorUpdater:(NSTimer *)timer { 

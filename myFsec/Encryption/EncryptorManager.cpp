@@ -29,7 +29,7 @@ int cancel;
  * @function int checkIfFileIsOurs(std::fstream* file )
  * This function verify if a file has our internal structure (so it has been encrypted buy us
  * @param the fstream to the file we want to verify
- * @return OK if the file is our ERROR_NOT_SUPPORTED if not
+ * @return the securitytype if the file is our ERROR_NOT_SUPPORTED if not
  *
  */
 int checkIfFileIsOurs(std::fstream* file ){
@@ -51,7 +51,7 @@ int checkIfFileIsOurs(std::fstream* file ){
         }
     }
     (*file).seekg (0, std::ios::beg);
-    return status;
+    return status == OK?sHeader.securityType:status;
     
 }
 
@@ -59,7 +59,7 @@ int checkIfFileIsOurs(std::fstream* file ){
  * @function int checkIfFileIsOurs(const char* fileName )
  * This function verify if a file exists, and has our internal structure (so it has been encrypted buy us
  * @param the fstream to the file we want to verify
- * @return OK if the file is our ERROR_NOT_SUPPORTED if not
+ * @return the securitytype if the file is our ERROR_NOT_SUPPORTED if not or ERROR_FILE_DOES_NOT_EXIST 
  *
  */
 int checkIfFileIsOurs(const char* fileName ){
@@ -157,7 +157,7 @@ int initDecoderHeader(const char *fileName, const char *password, secureHeader *
     }
     
     
-    if((error = checkIfFileIsOurs(&file)) != OK)
+    if((error = checkIfFileIsOurs(&file)) == ERROR_FILE_DOES_NOT_EXIST || error == ERROR_NOT_SUPPORTED)
     {
         debug("file seems not to be ours!");
         return error;

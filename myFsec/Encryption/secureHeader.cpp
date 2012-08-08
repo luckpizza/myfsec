@@ -97,6 +97,7 @@ secureHeader * createHeaderForFile(const char *fileName,const  char * password, 
  *
  */
 secureHeader * getHeaderFromFile(const char *fileName) {
+    int status = OK;
     if(fileName == NULL || *fileName == '\0')
     {
         return NULL;
@@ -108,7 +109,7 @@ secureHeader * getHeaderFromFile(const char *fileName) {
     
     if (file.is_open() )
     {
-        if( checkIfFileIsOurs(&file) != OK)
+        if( (status = checkIfFileIsOurs(&file)) == ERROR_FILE_DOES_NOT_EXIST || status == ERROR_NOT_SUPPORTED)
         {
             debug("file seems not to be ours!");
             return NULL;

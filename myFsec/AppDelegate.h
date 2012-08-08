@@ -41,7 +41,8 @@
 @property (retain, nonatomic) IBOutlet NSTextField *msgLable;
 @property (retain, nonatomic) IBOutlet NSMatrix *securityOption;
 @property (retain, nonatomic) ProgressBarViewController * progressBarViewController;
-@property (retain, nonatomic) IBOutlet NSButton *keepOldFile;
+@property (retain, nonatomic) IBOutlet NSButton *keepUnencryptedFile;
+@property (retain, nonatomic) IBOutlet NSButton *keepEncryptedFile;
 @property ( ) int status;
 @property (nonatomic) BOOL idle;
 @property (nonatomic) int viewMoment;
@@ -54,5 +55,6 @@
 - (void)encrypt:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error;
 -(void) showStatusMsg;
 -(void)progresIndicatorUpdater:(NSTimer *)timer;
+-(IBAction)securityLevelChosen:(id)sender;
 
 @end
