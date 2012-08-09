@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#define OPTION_SECURITY @"securityType"
 @interface Encryptor : NSObject
 
-+ (int) encodeDispacher:(NSString *) filePath password: (NSString *) password securityType:(int) security;
++ (int) encodeDispacher:(NSString *) filePath password: (NSString *) password options:(NSMutableDictionary *) options;
 
-+ (int) decodeDispacher:(NSString *) path password: (NSString *) password;
++ (int) decodeDispacher:(NSString *) path password: (NSString *) password options:(NSMutableDictionary *) options;
 
 + (int) checkIfFileIsOurs:(NSString*) filePath;
 

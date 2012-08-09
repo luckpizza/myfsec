@@ -241,7 +241,9 @@ extern long long _g_amount_done;
     
     long option = [securityOption selectedTag];
     [timer fire];
-    status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue securityType:[self getSecurityType:option]];
+    NSMutableDictionary * options = [[ NSMutableDictionary alloc] init];
+    [options setValue:[NSNumber numberWithInt:[self getSecurityType:option]] forKey:OPTION_SECURITY];
+    status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue options:options];
 
     [timer invalidate];
     [self performSelectorOnMainThread:@selector(finishingTask) withObject:nil waitUntilDone:YES];
@@ -306,7 +308,7 @@ extern long long _g_amount_done;
     }
     [timer fire];
 
-    status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue ];
+    status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue options:nil ];
     [timer invalidate];
     [self performSelectorOnMainThread:@selector(finishingTask) withObject:nil waitUntilDone:YES];
     idle = TRUE;

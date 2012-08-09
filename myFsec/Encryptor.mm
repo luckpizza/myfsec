@@ -13,16 +13,18 @@
 @implementation Encryptor
 
 
-+ (int) encodeDispacher:(NSString *) filePath password: (NSString *) password securityType:(int) security
++ (int) encodeDispacher:(NSString *) filePath password: (NSString *) password options: (NSDictionary *) options 
 {
-    return encodeDispacher([filePath UTF8String], [password UTF8String], 1, security );
+    NSNumber * security = (NSNumber*)[options objectForKey:OPTION_SECURITY];
+    return encodeDispacher([filePath UTF8String], [password UTF8String], 1, [security intValue] );
 
     
 }
 
 
-+ (int) decodeDispacher:(NSString *) filePath password: (NSString *) password
++ (int) decodeDispacher:(NSString *) filePath password: (NSString *) password options: (NSDictionary *) options
 {
+    
     return decodeDispacher([filePath UTF8String], [password UTF8String]);
 
 }
