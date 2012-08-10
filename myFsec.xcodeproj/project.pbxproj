@@ -66,6 +66,7 @@
 		EA7A989C15CDBDD300B6E7FE /* myFsec.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myFsec.entitlements; sourceTree = "<group>"; };
 		EA7A989D15CDD0CE00B6E7FE /* MessageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUtils.h; sourceTree = "<group>"; };
 		EA7A989E15CDD0CE00B6E7FE /* MessageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageUtils.m; sourceTree = "<group>"; };
+		EA7A98A815D51A2600B6E7FE /* EncryptionOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncryptionOptions.h; sourceTree = "<group>"; };
 		EA8C79591577BFE70023B1B5 /* ProgressBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressBarViewController.h; path = VIew/ProgressBarViewController.h; sourceTree = "<group>"; };
 		EA8C795A1577BFE70023B1B5 /* ProgressBarViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ProgressBarViewController.mm; path = VIew/ProgressBarViewController.mm; sourceTree = "<group>"; };
 		EA92990D156486B900DA404D /* myFsec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myFsec.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +230,7 @@
 				EA310C3C1566FA9000B47DF4 /* EncryptorManager.h */,
 				EA310C45156EB42800B47DF4 /* AESEncrypt.cpp */,
 				EA310C48156EB43500B47DF4 /* AESEncrypt.h */,
+				EA7A98A815D51A2600B6E7FE /* EncryptionOptions.h */,
 			);
 			path = Encryption;
 			sourceTree = "<group>";

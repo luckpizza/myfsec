@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#define DEBUG1 1
-
 #include <openssl/sha.h>
 #include <string.h>
 #include <stdio.h>
@@ -19,6 +17,10 @@
 #include "QuickEncode.h"
 #include "secureHeader.h"
 #include "AESEncrypt.h"
+//#include "Encryptor.h"
+#define DEBUG1 1
+#import "EncryptionOptions.h"
+
 
 using namespace std;
 long long  _g_total_to_do;
@@ -83,7 +85,7 @@ int checkIfFileIsOurs(const char* fileName ){
  *  @param securityLevel NOT IMPLEMENTED
  *  @param SecurityType How to encode the file
  */
-int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType){
+int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType, int keep_file){
     cancel = 0;
     secureHeader * sHeader = createHeaderForFile(fileName, password, securityType, secureLevel);
     int rta = ERROR;
@@ -94,6 +96,9 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
         rta = ERROR_NOT_SUPPORTED_VERSION;
     }else if(sHeader->securityType == SECURITY_TYPE_AES256){
         rta =  AES_encrypt(fileName, password, sHeader);
+        if(rta == OK && keep_file == DONT_KEEP){
+            remove(fileName);
+        }
     }else if(sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
         rta = encodeQuick(fileName, password, sHeader);
         addMyFsecExtention(fileName);
@@ -110,7 +115,7 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
  *  @param fileName The fileName of the file
  *  
  */
-int decodeDispacher(const char *fileName,const  char * password){
+int decodeDispacher(const char *fileName,const  char * password, int keep_file){
     cancel = 0;
     secureHeader * sHeader = (secureHeader*)myMalloc(sizeof(secureHeader));
     int rta = ERROR;
@@ -123,6 +128,9 @@ int decodeDispacher(const char *fileName,const  char * password){
         rta = ERROR_NOT_SUPPORTED_VERSION;
     }else if(sHeader->securityType == SECURITY_TYPE_AES256){
         rta =  AES_decrypt(fileName, password, sHeader);
+        if(rta == OK && keep_file == DONT_KEEP){
+            remove(fileName);
+        }
     }else if(sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
         rta = decodeQuick(fileName, password, sHeader);
     }else{

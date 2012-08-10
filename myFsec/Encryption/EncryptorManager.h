@@ -41,7 +41,7 @@ int checkIfFileIsOurs(std::fstream* file );
  *  @param securityLevel NOT IMPLEMENTED
  *  @param SecurityType How to encode the file
  */
-int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType);
+int encodeDispacher(const char *fileName,const  char * password, int secureLevel, int securityType, int keep_file);
 
 /**
  * @function int decodeDispacher(const char *fileName,const  char * password)
@@ -50,7 +50,7 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
  *
  */
 
-int decodeDispacher(const char *fileName,const  char * password);
+int decodeDispacher(const char *fileName,const  char * password, int keep_file);
 
 int initDecoderHeader(const char *fileName, const char *password, secureHeader * sHeader);
 

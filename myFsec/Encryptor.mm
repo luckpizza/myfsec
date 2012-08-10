@@ -9,6 +9,7 @@
 #import "Encryptor.h"
 #import "QuickEncode.h"
 #import "EncryptorManager.h"
+#import "EncryptionOptions.h"
 
 @implementation Encryptor
 
@@ -16,7 +17,7 @@
 + (int) encodeDispacher:(NSString *) filePath password: (NSString *) password options: (NSDictionary *) options 
 {
     NSNumber * security = (NSNumber*)[options objectForKey:OPTION_SECURITY];
-    return encodeDispacher([filePath UTF8String], [password UTF8String], 1, [security intValue] );
+    return encodeDispacher([filePath UTF8String], [password UTF8String], 1, [security intValue] , 0);
 
     
 }
@@ -25,7 +26,7 @@
 + (int) decodeDispacher:(NSString *) filePath password: (NSString *) password options: (NSDictionary *) options
 {
     
-    return decodeDispacher([filePath UTF8String], [password UTF8String]);
+    return decodeDispacher([filePath UTF8String], [password UTF8String], 0);
 
 }
 

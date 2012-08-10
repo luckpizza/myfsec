@@ -14,6 +14,7 @@
 #import "Utils.h"
 #import "ProgressBarViewController.h"
 #import "MessageUtils.h"
+#import "EncryptionOptions.h"
 
 extern long long _g_total_to_do;
 extern long long _g_amount_done;
