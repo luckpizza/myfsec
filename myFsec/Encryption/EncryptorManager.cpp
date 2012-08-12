@@ -96,7 +96,7 @@ int encodeDispacher(const char *fileName,const  char * password, int secureLevel
         rta = ERROR_NOT_SUPPORTED_VERSION;
     }else if(sHeader->securityType == SECURITY_TYPE_AES256){
         rta =  AES_encrypt(fileName, password, sHeader);
-        if(rta == OK && keep_file == DONT_KEEP){
+        if(rta == ENCODED && keep_file == DONT_KEEP){
             remove(fileName);
         }
     }else if(sHeader->securityType == SECURITY_TYPE_QUICKENCODE){
@@ -128,7 +128,7 @@ int decodeDispacher(const char *fileName,const  char * password, int keep_file){
         rta = ERROR_NOT_SUPPORTED_VERSION;
     }else if(sHeader->securityType == SECURITY_TYPE_AES256){
         rta =  AES_decrypt(fileName, password, sHeader);
-        if(rta == OK && keep_file == DONT_KEEP){
+        if(rta == DECODED && keep_file == DONT_KEEP){
             remove(fileName);
         }
     }else if(sHeader->securityType == SECURITY_TYPE_QUICKENCODE){

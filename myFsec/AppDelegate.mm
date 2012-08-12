@@ -205,6 +205,7 @@ extern long long _g_amount_done;
     }
     
 }
+
 -(IBAction)pathFileFilled:(id)sender
 {
     [self setWindowToTypeOfFile];
@@ -244,6 +245,8 @@ extern long long _g_amount_done;
     [timer fire];
     NSMutableDictionary * options = [[ NSMutableDictionary alloc] init];
     [options setValue:[NSNumber numberWithInt:[self getSecurityType:option]] forKey:OPTION_SECURITY];
+    [options setValue:[NSNumber numberWithInt:([keepUnencryptedFile selectedTag])==1?KEEP:DONT_KEEP] forKey:KEEP_OLD_FILE];
+    
     status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue options:options];
 
     [timer invalidate];
@@ -252,6 +255,7 @@ extern long long _g_amount_done;
   
 
 }
+
 /**
  *  Action of the encryt button
  */
@@ -291,6 +295,7 @@ extern long long _g_amount_done;
   
     
 }
+
 /**
  * -(void) decode:(NSTimer*) timer
  *  Call this function to perform the decode of a file, this is ment to be 
@@ -299,7 +304,6 @@ extern long long _g_amount_done;
  *  timer: Timer setted up buy caller to perform a progress status bar.
  *
  */
-
 -(void)decode:(NSTimer*) timer
 {
  
@@ -308,13 +312,16 @@ extern long long _g_amount_done;
         return;
     }
     [timer fire];
+    NSMutableDictionary * options = [[ NSMutableDictionary alloc] init];
+    [options setValue:[NSNumber numberWithInt:([keepEncryptedFile selectedTag])==1?KEEP:DONT_KEEP] forKey:KEEP_OLD_FILE];
 
-    status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue options:nil ];
+    status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue options:options ];
     [timer invalidate];
     [self performSelectorOnMainThread:@selector(finishingTask) withObject:nil waitUntilDone:YES];
     idle = TRUE;
 
 }
+
 /*
  *  Action of the decrypt button
  */

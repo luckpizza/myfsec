@@ -20,7 +20,7 @@
 
 
 #define KEEP 1
-#define DONT_KEEP 1
+#define DONT_KEEP 0
 
 
 #endif

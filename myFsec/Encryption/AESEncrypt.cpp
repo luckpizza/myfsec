@@ -113,6 +113,7 @@ int AES_encrypt (const char *fileName, const char *password, secureHeader* sHead
             if(cancel == CANCEL)
             {
                 encrypt_cleanup_macro
+                remove(newFileName);
                 return CANCEL_PROCESS;
                 //TODO: clean up everything!!!
             }
@@ -194,6 +195,7 @@ int AES_decrypt (const char *fileName, const char *password, secureHeader* sHead
             file_out.flush();
             file_in.close();
             file_out.close();
+            remove(newFileName);
             return CANCEL_PROCESS;
             //TODO: clean up everything!!!
         }
