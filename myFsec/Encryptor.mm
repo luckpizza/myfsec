@@ -17,6 +17,7 @@
 + (int) encodeDispacher:(NSString *) filePath password: (NSString *) password options: (NSDictionary *) options 
 {
     NSNumber * security = (NSNumber*)[options objectForKey:OPTION_SECURITY];
+    printf("keepOldfileValue = %d", [[options objectForKey:KEEP_OLD_FILE] intValue]);
     return encodeDispacher([filePath UTF8String], [password UTF8String], 1, [security intValue] , [[options objectForKey:KEEP_OLD_FILE ] intValue]);
 
     

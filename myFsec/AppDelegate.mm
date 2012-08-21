@@ -243,9 +243,10 @@ extern long long _g_amount_done;
     
     long option = [securityOption selectedTag];
     [timer fire];
+    int keepFile = [keepUnencryptedFile intValue];
     NSMutableDictionary * options = [[ NSMutableDictionary alloc] init];
     [options setValue:[NSNumber numberWithInt:[self getSecurityType:option]] forKey:OPTION_SECURITY];
-    [options setValue:[NSNumber numberWithInt:([keepUnencryptedFile selectedTag])==1?KEEP:DONT_KEEP] forKey:KEEP_OLD_FILE];
+    [options setValue:[NSNumber numberWithInt:(keepFile)==1?KEEP:DONT_KEEP] forKey:KEEP_OLD_FILE];
     
     status =[Encryptor encodeDispacher:filePath.stringValue password:password.stringValue options:options];
 
@@ -313,7 +314,8 @@ extern long long _g_amount_done;
     }
     [timer fire];
     NSMutableDictionary * options = [[ NSMutableDictionary alloc] init];
-    [options setValue:[NSNumber numberWithInt:([keepEncryptedFile selectedTag])==1?KEEP:DONT_KEEP] forKey:KEEP_OLD_FILE];
+    int keepFile = [keepEncryptedFile intValue];
+    [options setValue:[NSNumber numberWithInt:keepFile==1?KEEP:DONT_KEEP] forKey:KEEP_OLD_FILE];
 
     status =[Encryptor decodeDispacher:filePath.stringValue password:password.stringValue options:options ];
     [timer invalidate];
