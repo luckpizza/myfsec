@@ -21,7 +21,7 @@
     NSTextField *password;
     NSTextField *rePassword;
     
-    NSTextField *securityLable;
+    NSBox *securityLable;
     NSTextField * rePasswordLable;
     NSTextField *msgLable;
     NSMatrix *securityOption;
@@ -37,7 +37,7 @@
 @property (retain, nonatomic) IBOutlet NSButton *encryptButton;
 @property (retain, nonatomic) IBOutlet NSButton *dencryptButton;
 @property (retain) IBOutlet NSTextField *rePasswordLable;
-@property (retain, nonatomic) IBOutlet NSTextField *securityLable;
+@property (retain, nonatomic) IBOutlet NSBox *securityLable;
 @property (retain, nonatomic) IBOutlet NSTextField *msgLable;
 @property (retain, nonatomic) IBOutlet NSMatrix *securityOption;
 @property (retain, nonatomic) ProgressBarViewController * progressBarViewController;
