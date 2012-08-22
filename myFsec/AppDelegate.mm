@@ -29,7 +29,7 @@ extern long long _g_amount_done;
 
 -(void)applicationWillFinishLaunching:(NSNotification *)notification
 {
-    [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y, [_window frame].size.width, 250)  display:YES animate:YES];
+    [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y, [_window frame].size.width, 200)  display:YES animate:YES];
     viewMoment = SMALL_VIEW;
     idle = TRUE;
     srand((unsigned int)time(NULL));
@@ -97,7 +97,7 @@ extern long long _g_amount_done;
 -(void) resetForm
 {
     if(viewMoment == BIG_VIEW){
-        [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 250)  display:YES animate:YES];
+        [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 200)  display:YES animate:YES];
         viewMoment = SMALL_VIEW;
     }
     [self.dencryptButton setHidden:YES];
@@ -158,7 +158,7 @@ extern long long _g_amount_done;
     if(fileType == ERROR_FILE_DOES_NOT_EXIST)
     {
         if(viewMoment == BIG_VIEW){
-            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 250)  display:YES animate:YES];
+            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 200)  display:YES animate:YES];
             viewMoment = SMALL_VIEW;
         }
         [msgLable setStringValue:ERROR_FILE_DOES_NOT_EXIST_MSG];
@@ -169,7 +169,7 @@ extern long long _g_amount_done;
     }else if( fileType == ERROR_NOT_SUPPORTED)
     {   
         if(viewMoment == SMALL_VIEW){
-            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y-140 , [_window frame].size.width, 390)  display:YES animate:YES];
+            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y-140 , [_window frame].size.width, 350)  display:YES animate:YES];
             viewMoment = BIG_VIEW;
         }
         [self.encryptButton setEnabled:YES];
@@ -187,7 +187,7 @@ extern long long _g_amount_done;
     }else if( fileType == SECURITY_TYPE_QUICKENCODE || fileType == SECURITY_TYPE_AES256 )
     {
         if(viewMoment ==BIG_VIEW){
-            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 250)  display:YES animate:YES];
+            [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y+140, [_window frame].size.width, 200)  display:YES animate:YES];
             viewMoment = SMALL_VIEW;
         }
         [encryptButton setHidden:YES];
