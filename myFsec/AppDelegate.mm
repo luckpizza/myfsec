@@ -24,7 +24,7 @@ extern long long _g_amount_done;
 
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
-@synthesize  status, progressBarViewController, idle, viewMoment, keepEncryptedFile, keepUnencryptedFile ;
+@synthesize  status, progressBarViewController, idle, viewMoment, keepEncryptedFile, keepUnencryptedFile, chooseFile;
 
 
 -(void)applicationWillFinishLaunching:(NSNotification *)notification
@@ -33,7 +33,7 @@ extern long long _g_amount_done;
     viewMoment = SMALL_VIEW;
     idle = TRUE;
     srand((unsigned int)time(NULL));
-
+    [chooseFile becomeFirstResponder];
 }
 
 /**
@@ -50,6 +50,7 @@ extern long long _g_amount_done;
         [filePath setStringValue:filename];
         [self setWindowToTypeOfFile];
         NSLog(@"File name %@", filename);
+        [password becomeFirstResponder];
     }
     return YES;
 }

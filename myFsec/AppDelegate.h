@@ -43,6 +43,7 @@
 @property (retain, nonatomic) ProgressBarViewController * progressBarViewController;
 @property (retain, nonatomic) IBOutlet NSButton *keepUnencryptedFile;
 @property (retain, nonatomic) IBOutlet NSButton *keepEncryptedFile;
+@property (retain, nonatomic) IBOutlet NSButton * chooseFile;
 @property ( ) int status;
 @property (nonatomic) BOOL idle;
 @property (nonatomic) int viewMoment;
