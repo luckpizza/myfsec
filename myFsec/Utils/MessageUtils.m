@@ -59,6 +59,8 @@
         case  ERROR_READING_FILE:
             retMsg =  NSLocalizedStringFromTable (ERROR_READING_FILE_MSG, @"Custom", @"A comment");
             break;
+        case ERROR_ONLY_DECODER_VERSION:
+            retMsg = NSLocalizedStringFromTable (ERROR_ONLY_DECODER_VERSION_MSG, @"Custom", @"A comment");
         default:
             break;
     }

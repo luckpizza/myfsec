@@ -26,6 +26,7 @@
 #define ERROR_CHOOSE_A_FILE -11 
 #define CANCEL_PROCESS -12 
 #define ERROR_READING_FILE -13 
+#define ERROR_ONLY_DECODER_VERSION -14
 #define FSEC_EXTENTION ".myfsec"
 
 
@@ -46,4 +47,6 @@
 #define CANCEL_PROCESS_MSG @"Process has been canceled!"
 #define ERROR_READING_FILE_MSG @"Error while reading file, make sure you have the rights to read it"
 
+
+#define ERROR_ONLY_DECODER_VERSION_MSG @"To Secure a file, please buy the full version, this one is only for decoding"
 #endif

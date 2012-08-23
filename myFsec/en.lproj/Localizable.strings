@@ -20,6 +20,8 @@
 "Please choose a file!" = "Please choose a file!";
 "Process has been canceled!" = "Process has been canceled!";
 "Error while reading file, make sure you have the rights to read it" = "Error while reading file, make sure you have the rights to read it";
+"To Secure a file, please buy the full version, this one is only for decoding" = "To Secure a file, please buy the full version, this one is only for decoding"
+
 
 
 "keepOldFileMsg" = "Keep Old unencrypted file";

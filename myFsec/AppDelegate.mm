@@ -16,6 +16,7 @@
 #import "MessageUtils.h"
 #import "EncryptionOptions.h"
 
+
 extern long long _g_total_to_do;
 extern long long _g_amount_done;
 
@@ -25,8 +26,11 @@ extern long long _g_amount_done;
 @synthesize window = _window;
 @synthesize password, rePassword, filePath, encryptButton, dencryptButton, rePasswordLable, securityLable, msgLable, securityOption;
 @synthesize  status, progressBarViewController, idle, viewMoment, keepEncryptedFile, keepUnencryptedFile, chooseFile;
-
-
+bool isOnlyDecode = true;
++(AppDelegate *) start
+{
+    return [[AppDelegate alloc]init];
+}
 -(void)applicationWillFinishLaunching:(NSNotification *)notification
 {
     [_window setFrame:CGRectMake([_window frame].origin.x, [_window frame].origin.y, [_window frame].size.width, 200)  display:YES animate:YES];
@@ -144,6 +148,8 @@ extern long long _g_amount_done;
 -(void) setWindowToTypeOfFile
 {
     NSString *fileName = [filePath stringValue];
+    if(fileName == nil || [fileName compare:@"" ]== 0)
+        return;
     int fileType, securityType;
     fileType = [Encryptor checkIfFileIsOurs:fileName];
     [self.msgLable setStringValue:@""];
@@ -184,6 +190,12 @@ extern long long _g_amount_done;
         {
             [self.keepUnencryptedFile setHidden:NO];
         }
+        if( isOnlyDecode )
+        {
+            [self buyTheApp];
+        }
+
+
     }else if( fileType == SECURITY_TYPE_QUICKENCODE || fileType == SECURITY_TYPE_AES256 )
     {
         if(viewMoment ==BIG_VIEW){
@@ -201,10 +213,11 @@ extern long long _g_amount_done;
             [self.keepEncryptedFile setHidden:NO];
         }
         //TODO: FILE TO DENCRYPT
+        
     }else{
         //UNKNOW ERROR
     }
-    
+       
 }
 
 -(IBAction)pathFileFilled:(id)sender
@@ -263,6 +276,10 @@ extern long long _g_amount_done;
  */
 -(IBAction)encryptButtonPushed:(id)sender
 {
+    if( isOnlyDecode){
+       [ self buyTheApp];
+        return;
+    }
       status = 0;
     idle= FALSE;
     long option = [securityOption selectedTag];
@@ -378,15 +395,15 @@ extern long long _g_amount_done;
           
                 // Get an array containing the full filenames of all
                 // files and directories selected.
-                NSArray* files = [openDlg  filenames];
+            NSArray* files = [openDlg  filenames];
                 
                 // Loop through all the files and process them.
                 
-                NSString* fileName = [files objectAtIndex:0];
-                [filePath setStringValue:fileName];
-                NSLog(@"FileName is = %@", fileName);
+            NSString* fileName = [files objectAtIndex:0];
+            [filePath setStringValue:fileName];
+            NSLog(@"FileName is = %@", fileName);
+            [password becomeFirstResponder];
                 // Do something with the filename.
-                [self setWindowToTypeOfFile];
                 
                 //    for( i = 0; i < [files count]; i++ )
                 //    {
@@ -452,9 +469,17 @@ extern long long _g_amount_done;
     }
 }
 
+-(void)buyTheApp
+{
+    NSAlert * alert = [NSAlert alertWithMessageText:[ MessageUtils getEncodeMessage:ERROR_ONLY_DECODER_VERSION] defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"" ];
+    [alert setAlertStyle:NSInformationalAlertStyle];
+    [alert runModal];
+    [msgLable setStringValue: [MessageUtils getEncodeMessage:ERROR_ONLY_DECODER_VERSION]];
+    [self.encryptButton setEnabled:NO];
 
+}
 
--(void)progresIndicatorUpdater:(NSTimer *)timer { 
+-(void)progresIndicatorUpdater:(NSTimer *)timer {
     double progress;
     if(timer != nil){
         if(_g_amount_done == 0 || _g_total_to_do == 0){
