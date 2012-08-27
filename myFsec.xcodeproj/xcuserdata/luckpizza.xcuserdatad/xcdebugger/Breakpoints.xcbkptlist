@@ -119,11 +119,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "366004308.732885"
+         timestampString = "367728132.164083"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "107"
-         endingLineNumber = "107"
+         startingLineNumber = "114"
+         endingLineNumber = "114"
          landmarkName = "decodeQuick(const char *fileName, const char *password, secureHeader * sHeader)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -133,11 +133,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "366004308.732885"
+         timestampString = "367728132.164083"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127">
+         startingLineNumber = "134"
+         endingLineNumber = "134">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -201,11 +201,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "366004308.732885"
+         timestampString = "367728132.164083"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
          landmarkName = "decodeQuick(const char *fileName, const char *password, secureHeader * sHeader)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -215,11 +215,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "366004308.732885"
+         timestampString = "367728132.164083"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "100"
-         endingLineNumber = "100"
+         startingLineNumber = "107"
+         endingLineNumber = "107"
          landmarkName = "decodeQuick(const char *fileName, const char *password, secureHeader * sHeader)"
          landmarkType = "7">
       </FileBreakpoint>
@@ -229,11 +229,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "myFsec/Encryption/QuickEncode.cpp"
-         timestampString = "366004308.732885"
+         timestampString = "367728132.164083"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "86"
-         endingLineNumber = "86"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
          landmarkName = "decodeQuick(const char *fileName, const char *password, secureHeader * sHeader)"
          landmarkType = "7">
       </FileBreakpoint>

@@ -36,7 +36,7 @@ using namespace std;
  * @return ENCODED if ok, error otherwise
  */
 int encodeQuick (const char *fileName, const char *password, secureHeader* sHeader) {
-    if(fileName == NULL || *fileName == '\0' || sHeader == NULL)
+   if(fileName == NULL || *fileName == '\0' || sHeader == NULL)
     {
         return ERROR_FILE_DOES_NOT_EXIST;
     }
@@ -53,16 +53,23 @@ int encodeQuick (const char *fileName, const char *password, secureHeader* sHead
         _g_total_to_do = sHeader->fileSize;
 
         file.seekg (0);
-        if((sizeReaded = file.readsome (buffer, sizeof(secureHeader))) < sizeof(secureHeader))
+        int file_too_short = 0;
+        if((file_too_short = (sizeReaded = file.readsome (buffer, sizeof(secureHeader))) < sizeof(secureHeader)))
         {
             debug( "File is smaller than Header");//sizeof(sHeader));
         }
+        //Writing first sizeof(secureHeader) bytes to the end of the file
+        if( file_too_short)
+        {
+            file.seekg(sizeof(secureHeader));
+        }else
+        {
+            file.seekp(0,ios::end);   
+        }
+        file.write(reinterpret_cast<char*>(buffer), sizeReaded);
         //Writting header to file
         file.seekp(0,ios::beg);
         file.write(reinterpret_cast<char*>(sHeader), sizeof(secureHeader) );
-        //Writing first sizeof(secureHeader) bytes to the end of the file
-        file.seekp(0,ios::end);
-        file.write(reinterpret_cast<char*>(buffer), sizeReaded);
         file.flush();
         file.close();
         _g_amount_done = sHeader->fileSize;
