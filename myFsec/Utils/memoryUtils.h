@@ -2,6 +2,8 @@
 //  memoryUtils.h
 //  fsec
 //
+//  My implementation of the memory management basic functions.
+//
 //  Created by Lucas PIzzagalli on 8/31/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //

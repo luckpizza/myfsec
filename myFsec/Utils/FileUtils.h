@@ -43,4 +43,15 @@ long get_filename_ext(const char *filename, char *ext);
 
 const char * find_non_existing_file(const char* fileName);
 
+/**
+ *  @function char * file_name_generator(char *fileName, unsigned int amount)
+ *  generates a random filename of the amount of letters
+ *  indicated by amount.
+ *  @param fileName a buffer big enought to store amount+1 letters
+ *  @param amount of letters of the new name
+ *  @return returns a pointer to fileName
+ */
+
+char * file_name_generator(char *fileName, int amount);
+
 #endif

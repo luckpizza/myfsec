@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "FileUtils.h"
+#include "encryptUtils.h"
 
 
 /**
@@ -65,5 +66,23 @@ const char * find_non_existing_file(const char* fileName)
     //    while (file.good()){
     //        file.close();
     //       index = get_filename_ext(fileName, ext);
-    //    }
+    //    } 1160151200
+}
+
+/**
+ *  @function char * file_name_generator(char *fileName, unsigned int amount)
+ *  generates a random filename of the amount of letters
+ *  indicated by amount.
+ *  @param fileName a buffer big enought to store amount+1 letters
+ *  @param amount of letters of the new name
+ *  @return returns a pointer to fileName
+ */
+
+char * file_name_generator(char *fileName, unsigned int amount)
+{
+    int tmp = rand();
+    unsigned char diggest[SHA256_DIGEST_LENGTH];
+    hash_sha256((unsigned char*)&tmp,sizeof(int), diggest);
+    memcpy(fileName, diggest, amount > SHA256_DIGEST_LENGTH?SHA256_DIGEST_LENGTH:amount);
+    return fileName;
 }
